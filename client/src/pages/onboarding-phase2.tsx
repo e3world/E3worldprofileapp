@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowRight, ArrowLeft, Plus, X, Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, TiktokIcon } from "lucide-react";
+import { ArrowRight, ArrowLeft, Plus, X, Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, TiktokIcon, Mail } from "lucide-react";
 import { SiSnapchat } from "react-icons/si";
 
 interface LinkData {
@@ -23,6 +23,7 @@ const iconOptions = [
   { value: "Linkedin", label: "LinkedIn", icon: <Linkedin className="w-4 h-4" /> },
   { value: "Github", label: "GitHub", icon: <Github className="w-4 h-4" /> },
   { value: "Snapchat", label: "Snapchat", icon: <SiSnapchat className="w-4 h-4" /> },
+  { value: "Mail", label: "Email", icon: <Mail className="w-4 h-4" /> },
 ];
 
 export default function OnboardingPhase2() {
@@ -71,6 +72,22 @@ export default function OnboardingPhase2() {
     }
   };
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const formatLinkForIcon = (url: string, icon: string) => {
+    if (icon === "Mail") {
+      // For email, ensure it has mailto: prefix
+      if (!url.startsWith("mailto:")) {
+        return `mailto:${url}`;
+      }
+      return url;
+    }
+    return url;
+  };
+
   const handleContinue = () => {
     // Filter out empty links
     const validLinks = links.filter(link => link.name && link.url && link.icon);
@@ -84,19 +101,35 @@ export default function OnboardingPhase2() {
       return;
     }
 
-    // Validate all URLs
-    const invalidUrls = validLinks.filter(link => !validateUrl(link.url));
-    if (invalidUrls.length > 0) {
+    // Validate URLs and emails
+    const invalidLinks = validLinks.filter(link => {
+      if (link.icon === "Mail") {
+        // For email links, validate email format (with or without mailto:)
+        const emailToValidate = link.url.startsWith("mailto:") ? link.url.substring(7) : link.url;
+        return !validateEmail(emailToValidate);
+      } else {
+        // For other links, validate URL format
+        return !validateUrl(link.url);
+      }
+    });
+    
+    if (invalidLinks.length > 0) {
       toast({
-        title: "Invalid URLs",
-        description: "Please check your URLs and make sure they're valid.",
+        title: "Invalid Links",
+        description: "Please enter valid URLs or email addresses for all links.",
         variant: "destructive",
       });
       return;
     }
 
+    // Format links for proper handling (e.g., add mailto: prefix for emails)
+    const formattedLinks = validLinks.map(link => ({
+      ...link,
+      url: formatLinkForIcon(link.url, link.icon)
+    }));
+    
     // Store links data in localStorage
-    localStorage.setItem("onboarding_phase2", JSON.stringify(validLinks));
+    localStorage.setItem("onboarding_phase2", JSON.stringify(formattedLinks));
     
     // Navigate to phase 3
     window.location.href = "/onboarding/phase3";
@@ -166,8 +199,8 @@ export default function OnboardingPhase2() {
                   />
                   
                   <Input
-                    type="url"
-                    placeholder="https://example.com"
+                    type="text"
+                    placeholder="https://example.com or email@example.com"
                     value={link.url}
                     onChange={(e) => updateLink(index, "url", e.target.value)}
                     className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50 text-[#292929]"
