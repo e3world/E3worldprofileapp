@@ -129,7 +129,8 @@ export default function OnboardingPhase3() {
           <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
             FINAL <span className="italic font-medium">STEP</span>
           </h1>
-          <p className="text-[#292929]/70 text-sm font-medium">Step 3 of 3</p>
+          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 3 of 3</p>
+          <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
         {/* Profile Image Upload */}

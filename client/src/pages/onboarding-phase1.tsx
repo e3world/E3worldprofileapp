@@ -76,7 +76,8 @@ export default function OnboardingPhase1() {
           <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
             TELL US <span className="italic font-medium">ABOUT</span> YOU
           </h1>
-          <p className="text-[#292929]/70 text-sm font-medium">Step 1 of 3</p>
+          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 1 of 3</p>
+          <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
 

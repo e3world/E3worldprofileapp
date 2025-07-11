@@ -117,7 +117,8 @@ export default function OnboardingPhase2() {
           <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
             SHARE YOUR <span className="italic font-medium">LINKS</span>
           </h1>
-          <p className="text-[#292929]/70 text-sm font-medium">Step 2 of 3</p>
+          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 2 of 3</p>
+          <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
         <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
