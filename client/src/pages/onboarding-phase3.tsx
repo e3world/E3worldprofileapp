@@ -214,7 +214,7 @@ export default function OnboardingPhase3() {
                 placeholder="Tell us about yourself..."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 min-h-[100px] resize-none placeholder:text-[#e7e6e3]/60 text-[#292929]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 min-h-[100px] resize-none placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
           </div>
@@ -248,7 +248,7 @@ export default function OnboardingPhase3() {
                   id="terms"
                   checked={acceptedTerms}
                   onCheckedChange={setAcceptedTerms}
-                  className="border-[#292929]/30 data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
+                  className="border-[#fefefa] data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
                 <label htmlFor="terms" className="text-[#e7e6e3] text-sm font-medium">
                   I agree to the Terms of Service
@@ -282,7 +282,7 @@ export default function OnboardingPhase3() {
                   id="privacy"
                   checked={acceptedPrivacy}
                   onCheckedChange={setAcceptedPrivacy}
-                  className="border-[#292929]/30 data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
+                  className="border-[#fefefa] data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
                 <label htmlFor="privacy" className="text-[#e7e6e3] text-sm font-medium">
                   I agree to the Privacy Policy
@@ -307,8 +307,7 @@ export default function OnboardingPhase3() {
           <div className="flex justify-between items-center mt-8 gap-3">
             <Button 
               onClick={goBack}
-              variant="outline"
-              className="flex items-center gap-2 border-[#e7e6e3]/20 text-[#e7e6e3] hover:bg-[#e7e6e3]/10"
+              className="bg-[#292929] hover:bg-[#292929]/80 text-[#e7e6e3] flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Back
@@ -317,7 +316,8 @@ export default function OnboardingPhase3() {
             <Button 
               onClick={handleFinish}
               disabled={createProfileMutation.isPending || !acceptedTerms || !acceptedPrivacy}
-              className="bg-[#292929] hover:bg-[#292929]/80 text-[#e7e6e3] flex items-center gap-2 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              variant="outline"
+              className="flex items-center gap-2 border-[#e7e6e3]/20 text-[#e7e6e3] hover:bg-[#e7e6e3]/10 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {createProfileMutation.isPending ? (
                 "Creating Profile..."
