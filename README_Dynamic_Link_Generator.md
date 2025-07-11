@@ -3,10 +3,22 @@
 ## Overview
 This toolkit generates unique dynamic links for NFT serial codes in the format: `https://SerialCode/e3world.co.uk`
 
+**Total Serial Codes Processed: 251**
+- Original batch: 200 serial codes (EAVO53, E9RIU3, etc.)
+- Additional batch: 51 serial codes (E00378-E00428)
+
 ## Files Created
 - `generate_dynamic_links.py` - Simple script for basic CSV processing
 - `batch_link_generator.py` - Advanced script with validation and error handling
+- `fix_serial_codes.py` - Corrected processing for original 200 codes
+- `process_additional_codes.py` - Handler for additional 51 codes
+- `combine_all_codes.py` - Master script combining all 251 codes
 - `sample_serial_codes.csv` - Example input file for testing
+
+## Output Files
+- `correct_nft_dynamic_links.csv` - Original 200 codes (corrected)
+- `additional_nft_dynamic_links_20250711_165047.csv` - Additional 51 codes
+- `complete_nft_dynamic_links_20250711_165206.csv` - **ALL 251 codes combined**
 
 ## Quick Start
 
