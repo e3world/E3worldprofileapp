@@ -14,6 +14,7 @@ import backgroundImage from "@assets/Painitng _1752240240701.jpg";
 import e3Logo from "@assets/8_1752241069398.png";
 import cloudyBackgroundImage from "@assets/Painitng _1752242587741.jpg";
 import darkSkyImage from "@assets/Dark mode_1752242828174.jpg";
+import newBackgroundGif from "@assets/download (3)_1752242917124.gif";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -139,7 +140,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     <div 
       className="min-h-screen p-4 relative"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${newBackgroundGif})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
