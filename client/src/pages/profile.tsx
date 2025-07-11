@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe } from "lucide-react";
 import type { Question, InsertSubmission } from "@shared/schema";
-import greenGradientGif from "@assets/download (3)_1752194334958.gif";
+import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752194334959.gif";
 
 interface ProfileData {
