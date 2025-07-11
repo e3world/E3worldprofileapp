@@ -192,44 +192,7 @@ export default function OnboardingPhase1() {
           </div>
         </Card>
 
-        {/* Container 2: Contact Info */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
-          <div className="space-y-4">
-            <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
-                YOUR <span className="italic font-medium">CONTACT</span> INFO
-              </h3>
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-            </div>
-            
-            {/* Email */}
-            <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Email *</label>
-              <Input
-                type="email"
-                placeholder="your.email@example.com"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30"
-              />
-            </div>
-
-            {/* Phone */}
-            <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Phone *</label>
-              <Input
-                type="tel"
-                placeholder="+44 7xxx xxx xxx"
-                value={formData.phone}
-                onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30"
-              />
-            </div>
-          </div>
-        </Card>
-
-        {/* Container 3: Personal Details */}
+        {/* Container 2: Personal Details */}
         <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
@@ -295,8 +258,43 @@ export default function OnboardingPhase1() {
                 </SelectContent>
               </Select>
             </div>
+          </div>
+        </Card>
 
+        {/* Container 3: Contact Info */}
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+          <div className="space-y-4">
+            <div className="flex items-center mb-4">
+              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+                YOUR <span className="italic font-medium">CONTACT</span> INFO
+              </h3>
+              <div className="flex-1 h-px bg-[#292929]/20"></div>
+            </div>
+            
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-medium text-[#292929] mb-1">Email *</label>
+              <Input
+                type="email"
+                placeholder="your.email@example.com"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30"
+              />
+            </div>
 
+            {/* Phone */}
+            <div>
+              <label className="block text-sm font-medium text-[#292929] mb-1">Phone *</label>
+              <Input
+                type="tel"
+                placeholder="+44 7xxx xxx xxx"
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30"
+              />
+            </div>
           </div>
         </Card>
 
