@@ -88,10 +88,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/profiles/serial/:serialCode", async (req, res) => {
     try {
       const serialCode = req.params.serialCode;
+      console.log(`Searching for profile with serial code: ${serialCode}`);
+      
       const profile = await storage.getProfileBySerialCode(serialCode);
       if (!profile) {
+        console.log(`No profile found for serial code: ${serialCode}`);
         return res.status(404).json({ message: "Profile not found for this serial code" });
       }
+      
+      console.log(`Found profile for serial code: ${serialCode}`, profile.name);
       res.json(profile);
     } catch (error) {
       console.error("Error fetching profile by serial code:", error);

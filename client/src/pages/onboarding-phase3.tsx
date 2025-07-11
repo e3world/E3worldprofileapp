@@ -77,8 +77,13 @@ export default function OnboardingPhase3() {
       localStorage.removeItem("onboarding_phase1");
       localStorage.removeItem("onboarding_phase2");
       
-      // Navigate to the created profile
-      window.location.href = `/profile/${profile.id}`;
+      // Navigate to the created profile using serial code
+      const serialCode = localStorage.getItem("nft_serial_code");
+      if (serialCode) {
+        window.location.href = `/profile/${serialCode}`;
+      } else {
+        window.location.href = `/`;
+      }
     },
     onError: (error) => {
       toast({

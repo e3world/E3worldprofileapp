@@ -188,11 +188,17 @@ export class MemStorage implements IStorage {
   }
 
   async getProfileBySerialCode(serialCode: string): Promise<Profile | undefined> {
+    console.log(`Storage: Looking for serial code: ${serialCode}`);
+    console.log(`Storage: Available profiles:`, Array.from(this.profiles.values()).map(p => ({ id: p.id, name: p.name, serialCode: p.serialCode })));
+    
     for (const profile of this.profiles.values()) {
+      console.log(`Comparing: "${profile.serialCode}" === "${serialCode}"`);
       if (profile.serialCode === serialCode) {
+        console.log(`Found matching profile: ${profile.name}`);
         return profile;
       }
     }
+    console.log(`No profile found for serial code: ${serialCode}`);
     return undefined;
   }
 
