@@ -8,6 +8,10 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe } from "lucide-react";
 import type { Question, InsertSubmission } from "@shared/schema";
+import greenGradientGif from "@assets/download (3)_1752194334958.gif";
+import brownGradientGif from "@assets/download (4)_1752194334959.gif";
+import greenGradientGif from "@assets/download (3)_1752194334958.gif";
+import brownGradientGif from "@assets/download (4)_1752194334959.gif";
 
 interface ProfileData {
   name: string;
@@ -136,7 +140,17 @@ export default function Profile() {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0">
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 opacity-50"
+            style={{
+              backgroundImage: `url(${greenGradientGif})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          ></div>
+          <div className="relative z-10">
           <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
             Connect with me
           </h2>
