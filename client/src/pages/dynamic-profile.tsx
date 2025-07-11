@@ -10,6 +10,7 @@ import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, Map
 import type { Question, InsertSubmission, Profile } from "@shared/schema";
 import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
+import backgroundImage from "@assets/Painitng _1752240240701.jpg";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -132,7 +133,16 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4">
+    <div 
+      className="min-h-screen p-4 relative"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <div className="max-w-sm mx-auto space-y-6">
         
         {/* Profile Identity Section */}
