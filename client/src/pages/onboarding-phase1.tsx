@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, User, UserCheck, Users } from "lucide-react";
 
@@ -16,6 +17,7 @@ interface Phase1Data {
   relationshipStatus: string;
   jobTitle: string;
   area: string;
+  hidePersonalInfo: boolean;
 }
 
 export default function OnboardingPhase1() {
@@ -28,10 +30,11 @@ export default function OnboardingPhase1() {
     relationshipStatus: "",
     jobTitle: "",
     area: "",
+    hidePersonalInfo: false,
   });
   const { toast } = useToast();
 
-  const handleInputChange = (field: keyof Phase1Data, value: string) => {
+  const handleInputChange = (field: keyof Phase1Data, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -258,6 +261,24 @@ export default function OnboardingPhase1() {
                   <SelectItem value="central-london">Central London</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+            
+            {/* Privacy Settings */}
+            <div className="mt-6 pt-4 border-t border-[#e7e6e3]/20">
+              <div className="flex items-center space-x-3">
+                <Checkbox
+                  id="hide-personal"
+                  checked={formData.hidePersonalInfo}
+                  onCheckedChange={(checked) => handleInputChange("hidePersonalInfo", checked as boolean)}
+                  className="border-[#e7e6e3]/30 data-[state=checked]:bg-[#e7e6e3] data-[state=checked]:text-[#292929]"
+                />
+                <label htmlFor="hide-personal" className="text-[#e7e6e3] text-sm font-medium">
+                  Hide personal information from my profile
+                </label>
+              </div>
+              <p className="text-[#e7e6e3]/60 text-xs mt-2 ml-7">
+                When checked, your relationship status, job title, and area will be hidden from your public profile
+              </p>
             </div>
           </div>
         </Card>

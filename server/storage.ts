@@ -173,6 +173,7 @@ export class MemStorage implements IStorage {
       ...insertProfile, 
       id,
       phone: insertProfile.phone ?? null,
+      hidePersonalInfo: insertProfile.hidePersonalInfo ?? false,
       links: insertProfile.links as Array<{name: string, url: string, icon: string}>,
       acceptedTerms: insertProfile.acceptedTerms ?? false,
       createdAt: new Date()
@@ -199,6 +200,7 @@ export class MemStorage implements IStorage {
       ...existingProfile,
       ...profileData,
       phone: profileData.phone ?? existingProfile.phone,
+      hidePersonalInfo: profileData.hidePersonalInfo ?? existingProfile.hidePersonalInfo,
       links: profileData.links ? profileData.links as Array<{name: string, url: string, icon: string}> : existingProfile.links,
       acceptedTerms: profileData.acceptedTerms ?? existingProfile.acceptedTerms,
     };

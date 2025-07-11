@@ -46,6 +46,9 @@ export const profiles = pgTable("profiles", {
   email: text("email").notNull(),
   phone: text("phone"),
   
+  // Privacy Settings
+  hidePersonalInfo: boolean("hide_personal_info").default(false),
+  
   // Phase 2: Links
   links: json("links").$type<Array<{name: string, url: string, icon: string}>>().notNull(),
   

@@ -156,31 +156,33 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             </p>
             
             {/* Profile Details */}
-            <div className="flex flex-col items-center gap-3 mt-4">
-              {/* Relationship Status */}
-              <div className="flex items-center gap-2">
-                {getRelationshipIcon(profile.relationshipStatus)}
-                <span className="text-white/70 text-sm capitalize">
-                  {profile.relationshipStatus.replace('-', ' ')}
-                </span>
-              </div>
-              
-              {/* Job Title & Area */}
-              <div className="flex items-center gap-4">
+            {!profile.hidePersonalInfo && (
+              <div className="flex flex-col items-center gap-3 mt-4">
+                {/* Relationship Status */}
                 <div className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-white/70" />
+                  {getRelationshipIcon(profile.relationshipStatus)}
                   <span className="text-white/70 text-sm capitalize">
-                    {profile.jobTitle?.replace('-', ' ')}
+                    {profile.relationshipStatus.replace('-', ' ')}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-white/70" />
-                  <span className="text-white/70 text-sm capitalize">
-                    {profile.area?.replace('-', ' ')}
-                  </span>
+                
+                {/* Job Title & Area */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <Briefcase className="w-4 h-4 text-white/70" />
+                    <span className="text-white/70 text-sm capitalize">
+                      {profile.jobTitle?.replace('-', ' ')}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-white/70" />
+                    <span className="text-white/70 text-sm capitalize">
+                      {profile.area?.replace('-', ' ')}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </Card>
 

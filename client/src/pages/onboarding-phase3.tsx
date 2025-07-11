@@ -105,6 +105,7 @@ export default function OnboardingPhase3() {
       area: phase1Data.area,
       email: phase1Data.email,
       phone: phase1Data.phone || null,
+      hidePersonalInfo: phase1Data.hidePersonalInfo || false,
       links: phase2Data,
       acceptedTerms: true,
     };
