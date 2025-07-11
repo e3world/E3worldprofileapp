@@ -262,36 +262,45 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 </p>
                 
                 {/* Button Options */}
-                <div className="space-y-4">
-                  <Button
+                <div className="grid grid-cols-3 gap-3">
+                  <button
                     type="button"
                     onClick={() => setSelectedAnswer('earth')}
-                    className={`w-full bg-amber-800 hover:bg-amber-900 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto ${
-                      selectedAnswer === 'earth' ? 'ring-2 ring-white/50' : ''
+                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                      selectedAnswer === 'earth' 
+                        ? "border-[#8B4513] bg-[#8B4513] text-white" 
+                        : "border-white/20 bg-white/10 hover:border-[#8B4513]/40 text-white"
                     }`}
                   >
-                    Earth
-                  </Button>
+                    <div className="w-6 h-6 bg-[#8B4513] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Earth</span>
+                  </button>
                   
-                  <Button
+                  <button
                     type="button"
                     onClick={() => setSelectedAnswer('land')}
-                    className={`w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto ${
-                      selectedAnswer === 'land' ? 'ring-2 ring-white/50' : ''
+                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                      selectedAnswer === 'land' 
+                        ? "border-[#228B22] bg-[#228B22] text-white" 
+                        : "border-white/20 bg-white/10 hover:border-[#228B22]/40 text-white"
                     }`}
                   >
-                    Land
-                  </Button>
+                    <div className="w-6 h-6 bg-[#228B22] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Land</span>
+                  </button>
                   
-                  <Button
+                  <button
                     type="button"
                     onClick={() => setSelectedAnswer('sea')}
-                    className={`w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto ${
-                      selectedAnswer === 'sea' ? 'ring-2 ring-white/50' : ''
+                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                      selectedAnswer === 'sea' 
+                        ? "border-[#0066CC] bg-[#0066CC] text-white" 
+                        : "border-white/20 bg-white/10 hover:border-[#0066CC]/40 text-white"
                     }`}
                   >
-                    Sea
-                  </Button>
+                    <div className="w-6 h-6 bg-[#0066CC] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Sea</span>
+                  </button>
                 </div>
                 
                 {/* Email Input */}
