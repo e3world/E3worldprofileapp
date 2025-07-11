@@ -33,17 +33,17 @@ const externalLinks: ExternalLink[] = [
   {
     name: "My Playlist",
     url: "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M",
-    icon: <Music className="w-5 h-5" />
+    icon: <Music className="w-6 h-6 text-white" />
   },
   {
     name: "@chrisalli.a",
     url: "https://instagram.com/chrisalli.a",
-    icon: <Instagram className="w-5 h-5" />
+    icon: <Instagram className="w-6 h-6 text-white" />
   },
   {
     name: "Chris model Book",
     url: "https://chrisalli.com/portfolio",
-    icon: <Globe className="w-5 h-5" />
+    icon: <Globe className="w-6 h-6 text-white" />
   }
 ];
 
@@ -156,19 +156,20 @@ export default function Profile() {
             Select an option below:
           </p>
           
-          <div className="space-y-4">
+          <div className="grid grid-cols-3 gap-6 justify-items-center">
             {externalLinks.map((link, index) => (
-              <Button
+              <div 
                 key={index}
                 onClick={() => handleExternalLinkClick(link.url)}
-                className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white font-medium text-base hover:bg-white/20 transition-all duration-200 hover:scale-105 transform h-auto"
-                variant="ghost"
+                className="cursor-pointer group"
               >
-                <div className="flex items-center justify-between w-full">
-                  <span>{link.name}</span>
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
                   {link.icon}
                 </div>
-              </Button>
+                <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
+                  {link.name}
+                </p>
+              </div>
             ))}
           </div>
           </div>

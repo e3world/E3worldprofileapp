@@ -15,15 +15,15 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Music: <Music className="w-5 h-5" />,
-    Instagram: <Instagram className="w-5 h-5" />,
-    Globe: <Globe className="w-5 h-5" />,
-    Youtube: <Youtube className="w-5 h-5" />,
-    Twitter: <Twitter className="w-5 h-5" />,
-    Linkedin: <Linkedin className="w-5 h-5" />,
-    Github: <Github className="w-5 h-5" />,
+    Music: <Music className="w-6 h-6 text-white" />,
+    Instagram: <Instagram className="w-6 h-6 text-white" />,
+    Globe: <Globe className="w-6 h-6 text-white" />,
+    Youtube: <Youtube className="w-6 h-6 text-white" />,
+    Twitter: <Twitter className="w-6 h-6 text-white" />,
+    Linkedin: <Linkedin className="w-6 h-6 text-white" />,
+    Github: <Github className="w-6 h-6 text-white" />,
   };
-  return icons[iconName as keyof typeof icons] || <Globe className="w-5 h-5" />;
+  return icons[iconName as keyof typeof icons] || <Globe className="w-6 h-6 text-white" />;
 };
 
 const getRelationshipIcon = (status: string) => {
@@ -186,19 +186,20 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             Select an option below:
           </p>
           
-          <div className="space-y-4">
+          <div className="grid grid-cols-3 gap-6 justify-items-center">
             {profile.links.map((link, index) => (
-              <Button
+              <div 
                 key={index}
                 onClick={() => handleExternalLinkClick(link.url)}
-                className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white font-medium text-base hover:bg-white/20 transition-all duration-200 hover:scale-105 transform h-auto"
-                variant="ghost"
+                className="cursor-pointer group"
               >
-                <div className="flex items-center justify-between w-full">
-                  <span>{link.name}</span>
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
                   {getIconComponent(link.icon)}
                 </div>
-              </Button>
+                <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
+                  {link.name}
+                </p>
+              </div>
             ))}
           </div>
         </Card>
