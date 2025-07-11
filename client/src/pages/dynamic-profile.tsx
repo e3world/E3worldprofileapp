@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, MapPin, Briefcase, Mail } from "lucide-react";
-import { SiSnapchat, SiPinterest } from "react-icons/si";
+import { SiSnapchat, SiPinterest, SiTiktok } from "react-icons/si";
 import type { Question, InsertSubmission, Profile } from "@shared/schema";
 import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
@@ -29,6 +29,7 @@ const getIconComponent = (iconName: string) => {
     Github: <Github className="w-12 h-12 text-gray-700" />,
     Snapchat: <SiSnapchat className="w-12 h-12 text-gray-700" />,
     Pinterest: <SiPinterest className="w-12 h-12 text-gray-700" />,
+    TikTok: <SiTiktok className="w-12 h-12 text-gray-700" />,
     Mail: <Mail className="w-12 h-12 text-gray-700" />,
   };
   return icons[iconName as keyof typeof icons] || <Globe className="w-12 h-12 text-gray-700" />;

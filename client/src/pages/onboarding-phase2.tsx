@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, Plus, X, Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, TiktokIcon, Mail } from "lucide-react";
-import { SiSnapchat, SiPinterest } from "react-icons/si";
+import { SiSnapchat, SiPinterest, SiTiktok } from "react-icons/si";
 
 interface LinkData {
   name: string;
@@ -24,6 +24,7 @@ const iconOptions = [
   { value: "Github", label: "GitHub", icon: <Github className="w-4 h-4" /> },
   { value: "Snapchat", label: "Snapchat", icon: <SiSnapchat className="w-4 h-4" /> },
   { value: "Pinterest", label: "Pinterest", icon: <SiPinterest className="w-4 h-4" /> },
+  { value: "TikTok", label: "TikTok", icon: <SiTiktok className="w-4 h-4" /> },
   { value: "Mail", label: "Email", icon: <Mail className="w-4 h-4" /> },
 ];
 
