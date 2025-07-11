@@ -308,9 +308,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                   <div className="w-32 h-32 bg-white/20 backdrop-blur-sm border-2 border-gray-300/50 rounded-2xl flex items-center justify-center hover:bg-white/30 transition-all duration-200 hover:scale-105 transform mb-3">
                     {getIconComponent(link.icon)}
                   </div>
-                  <p className="text-gray-800 text-lg font-medium text-center max-w-32 truncate">
-                    {link.name}
-                  </p>
+                  <div className="bg-[#1b1b1b] rounded-lg px-3 py-2 max-w-32 mx-auto">
+                    <p className="text-white text-lg font-medium text-center truncate">
+                      {link.name}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
