@@ -160,7 +160,7 @@ export default function OnboardingPhase2() {
                     placeholder="Link name (e.g., My Playlist)"
                     value={link.name}
                     onChange={(e) => updateLink(index, "name", e.target.value)}
-                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#e7e6e3]/60"
+                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#e7e6e3]/60 text-[#292929]"
                   />
                   
                   <Input
@@ -168,7 +168,7 @@ export default function OnboardingPhase2() {
                     placeholder="https://example.com"
                     value={link.url}
                     onChange={(e) => updateLink(index, "url", e.target.value)}
-                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#e7e6e3]/60"
+                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#e7e6e3]/60 text-[#292929]"
                   />
                   
                   <Select value={link.icon} onValueChange={(value) => updateLink(index, "icon", value)}>
