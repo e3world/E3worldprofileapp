@@ -203,7 +203,9 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         backgroundAttachment: 'fixed'
       }}
     >
-      <div className="max-w-md mx-auto space-y-6">
+      {/* Cobalt Overlay for Darkness and Contrast */}
+      <div className="absolute inset-0 bg-blue-900/25 backdrop-blur-[0.5px]"></div>
+      <div className="max-w-md mx-auto space-y-6 relative z-10">
         
         {/* Profile Identity Section */}
         <Card className="rounded-3xl text-center shadow-lg border-0 relative overflow-hidden h-96 max-w-sm mx-auto">

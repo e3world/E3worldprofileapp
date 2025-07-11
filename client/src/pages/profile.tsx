@@ -117,8 +117,10 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4">
-      <div className="max-w-sm mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 relative">
+      {/* Cobalt Overlay for Darkness and Contrast */}
+      <div className="absolute inset-0 bg-blue-900/25 backdrop-blur-[0.5px]"></div>
+      <div className="max-w-sm mx-auto space-y-6 relative z-10">
         
         {/* Chris Alli Identity Section */}
         <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
