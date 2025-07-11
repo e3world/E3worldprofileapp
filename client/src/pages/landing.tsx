@@ -27,7 +27,7 @@ export default function Landing() {
       <img 
         src={startingGif}
         alt="Landing background"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover transform scale-90"
       />
       
       {/* Overlay for better text visibility */}
