@@ -9,7 +9,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe } from "lucide-react";
 import type { Question, InsertSubmission } from "@shared/schema";
 import greenGradientGif from "@assets/download (3)_1752232023115.gif";
-import brownGradientGif from "@assets/download (4)_1752194334959.gif";
+import brownGradientGif from "@assets/download (4)_1752232152967.gif";
 
 interface ProfileData {
   name: string;
@@ -121,20 +121,32 @@ export default function Profile() {
       <div className="max-w-sm mx-auto space-y-6">
         
         {/* Chris Alli Identity Section */}
-        <Card className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-3xl p-8 text-center shadow-lg border-0">
-          <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
-            <img 
-              src={profileData.profileImage}
-              alt={`${profileData.name} profile photo`}
-              className="w-full h-full object-cover"
-            />
+        <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${profileData.profileImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-700/80"></div>
+          <div className="relative z-10">
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
+              <img 
+                src={profileData.profileImage}
+                alt={`${profileData.name} profile photo`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
+              {profileData.name}
+            </h1>
+            <p className="text-white/90 text-lg leading-relaxed">
+              {profileData.bio}
+            </p>
           </div>
-          <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
-            {profileData.name}
-          </h1>
-          <p className="text-white/90 text-lg leading-relaxed">
-            {profileData.bio}
-          </p>
         </Card>
 
         {/* Connect With Me Section */}
@@ -176,56 +188,67 @@ export default function Profile() {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0">
-          <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
-            Question About me
-          </h2>
-          
-          {isLoadingQuestion ? (
-            <div className="text-white/90 text-center">Loading question...</div>
-          ) : currentQuestion ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <p className="text-white/90 text-lg mb-6">
-                {currentQuestion.text}
-              </p>
-              
-              {/* Custom Dropdown */}
-              <div className="relative">
-                <Select value={selectedAnswer} onValueChange={setSelectedAnswer}>
-                  <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto">
-                    <SelectValue placeholder="– Select option –" className="text-white/90" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {currentQuestion.options.map((option, index) => (
-                      <SelectItem key={index} value={option.toLowerCase()}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              {/* Email Input */}
-              <Input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto"
-              />
-              
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                disabled={submitAnswerMutation.isPending}
-                className="w-full bg-black/80 hover:bg-black text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
-              >
-                {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
-              </Button>
-            </form>
-          ) : (
-            <div className="text-white/90 text-center">No question available</div>
-          )}
+        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+          <div 
+            className="absolute inset-0 opacity-50"
+            style={{
+              backgroundImage: `url(${brownGradientGif})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
+          ></div>
+          <div className="relative z-10">
+            <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
+              Question About me
+            </h2>
+            
+            {isLoadingQuestion ? (
+              <div className="text-white/90 text-center">Loading question...</div>
+            ) : currentQuestion ? (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <p className="text-white/90 text-lg mb-6">
+                  {currentQuestion.text}
+                </p>
+                
+                {/* Custom Dropdown */}
+                <div className="relative">
+                  <Select value={selectedAnswer} onValueChange={setSelectedAnswer}>
+                    <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto">
+                      <SelectValue placeholder="– Select option –" className="text-white/90" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {currentQuestion.options.map((option, index) => (
+                        <SelectItem key={index} value={option.toLowerCase()}>
+                          {option}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                {/* Email Input */}
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto"
+                />
+                
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={submitAnswerMutation.isPending}
+                  className="w-full bg-black/80 hover:bg-black text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
+                >
+                  {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
+                </Button>
+              </form>
+            ) : (
+              <div className="text-white/90 text-center">No question available</div>
+            )}
+          </div>
         </Card>
 
         {/* Create Your Own Profile CTA */}
