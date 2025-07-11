@@ -12,9 +12,6 @@ import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
 import backgroundImage from "@assets/Painitng _1752240240701.jpg";
 import e3Logo from "@assets/8_1752241069398.png";
-import cloudyBackgroundImage from "@assets/Painitng _1752242587741.jpg";
-import darkSkyImage from "@assets/Dark mode_1752242828174.jpg";
-import newBackgroundGif from "@assets/download (3)_1752242917124.gif";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -140,7 +137,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     <div 
       className="min-h-screen p-4 relative"
       style={{
-        background: 'linear-gradient(135deg, #EAE3D2 0%, #FEFEFA 50%, #D3EDE5 100%)'
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
       }}
     >
       <div className="max-w-sm mx-auto space-y-6">
@@ -196,11 +197,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
           <div 
-            className="absolute inset-0 opacity-80 blur-sm"
+            className="absolute inset-0 opacity-50"
             style={{
-              backgroundImage: `url(${cloudyBackgroundImage})`,
+              backgroundImage: `url(${greenGradientGif})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
@@ -233,11 +234,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
           <div 
-            className="absolute inset-0 opacity-80 blur-sm"
+            className="absolute inset-0 opacity-50"
             style={{
-              backgroundImage: `url(${darkSkyImage})`,
+              backgroundImage: `url(${brownGradientGif})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
