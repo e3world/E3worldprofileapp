@@ -121,33 +121,33 @@ export default function OnboardingPhase2() {
           <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929]">
           <div className="space-y-6">
             <div className="text-center mb-6">
-              <h2 className="text-xl font-bold text-[#292929] tracking-tight">
+              <h2 className="text-xl font-bold text-[#e7e6e3] tracking-tight">
                 CONNECT YOUR <span className="italic font-medium">DIGITAL</span> WORLD
               </h2>
-              <p className="text-[#292929]/70 text-sm font-medium mt-2">
+              <p className="text-[#e7e6e3]/70 text-sm font-medium mt-2">
                 Add up to 5 links that represent you
               </p>
             </div>
             
             {links.map((link, index) => (
-              <div key={index} className="space-y-3 p-4 bg-[#e7e6e3]/50 rounded-lg border border-[#292929]/10">
+              <div key={index} className="space-y-3 p-4 bg-[#e7e6e3]/10 rounded-lg border border-[#e7e6e3]/10">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <div className="flex-1 h-px bg-[#292929]/20"></div>
-                    <span className="px-2 text-sm font-bold text-[#292929] tracking-tight">
+                    <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+                    <span className="px-2 text-sm font-bold text-[#e7e6e3] tracking-tight">
                       LINK <span className="italic font-medium">{index + 1}</span>
                     </span>
-                    <div className="flex-1 h-px bg-[#292929]/20"></div>
+                    <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
                   </div>
                   {links.length > 1 && (
                     <Button
                       onClick={() => removeLink(index)}
                       variant="ghost"
                       size="sm"
-                      className="text-[#292929]/60 hover:text-[#292929] hover:bg-[#e7e6e3]/50 rounded-full p-1 h-6 w-6"
+                      className="text-[#e7e6e3]/60 hover:text-[#e7e6e3] hover:bg-[#e7e6e3]/10 rounded-full p-1 h-6 w-6"
                     >
                       <X className="w-3 h-3" />
                     </Button>

@@ -83,31 +83,31 @@ export default function OnboardingPhase1() {
 
 
         {/* Container 1: Personal Info */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">IDENTITY</span>
               </h3>
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             
             {/* Full Name */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Full Name *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Full Name *</label>
               <Input
                 type="text"
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30"
               />
             </div>
 
             {/* Gender */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-2">Gender *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-2">Gender *</label>
               <div className="grid grid-cols-3 gap-3">
                 <button
                   type="button"
@@ -150,7 +150,7 @@ export default function OnboardingPhase1() {
 
             {/* Eye Colour */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-2">Eye Colour *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-2">Eye Colour *</label>
               <div className="grid grid-cols-3 gap-3">
                 <button
                   type="button"
@@ -194,19 +194,19 @@ export default function OnboardingPhase1() {
         </Card>
 
         {/* Container 2: Personal Details */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">PERSONAL</span>
               </h3>
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             
             {/* Relationship Status */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Relationship Status *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Relationship Status *</label>
               <Select value={formData.relationshipStatus} onValueChange={(value) => handleInputChange("relationshipStatus", value)}>
                 <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30">
                   <SelectValue placeholder="Select relationship status" />
@@ -224,7 +224,7 @@ export default function OnboardingPhase1() {
 
             {/* Job Title */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Job Title *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Job Title *</label>
               <Select value={formData.jobTitle} onValueChange={(value) => handleInputChange("jobTitle", value)}>
                 <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30">
                   <SelectValue placeholder="Select job category" />
@@ -245,7 +245,7 @@ export default function OnboardingPhase1() {
 
             {/* Area */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Area *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Area *</label>
               <Select value={formData.area} onValueChange={(value) => handleInputChange("area", value)}>
                 <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30">
                   <SelectValue placeholder="Select your area" />
@@ -263,19 +263,19 @@ export default function OnboardingPhase1() {
         </Card>
 
         {/* Container 3: Contact Info */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">CONTACT</span>
               </h3>
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Email *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Email *</label>
               <Input
                 type="email"
                 placeholder="your.email@example.com"
@@ -287,7 +287,7 @@ export default function OnboardingPhase1() {
 
             {/* Phone */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Phone *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Phone *</label>
               <Input
                 type="tel"
                 placeholder="+44 7xxx xxx xxx"

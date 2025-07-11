@@ -134,14 +134,14 @@ export default function OnboardingPhase3() {
         </div>
 
         {/* Profile Image Upload */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="text-center">
             <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">PHOTO</span>
               </h3>
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             <div className="relative inline-block">
               <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-[#e7e6e3] flex items-center justify-center overflow-hidden border-2 border-[#292929]/20">
@@ -165,8 +165,8 @@ export default function OnboardingPhase3() {
                 <Upload className="w-3 h-3" />
               </label>
             </div>
-            <p className="text-xs text-[#292929]/60 mb-2">Upload photo *</p>
-            <div className="text-xs text-[#292929]/50 space-y-1">
+            <p className="text-xs text-[#e7e6e3]/60 mb-2">Upload photo *</p>
+            <div className="text-xs text-[#e7e6e3]/50 space-y-1">
               <p>• Max file size: 5MB</p>
               <p>• Formats: JPG, PNG, GIF</p>
               <p>• Recommended: 400x400px</p>
@@ -175,37 +175,37 @@ export default function OnboardingPhase3() {
         </Card>
 
         {/* Bio Section */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">BIO</span>
               </h3>
-              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Bio *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Bio *</label>
               <Textarea
                 placeholder="Tell us about yourself..."
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30 min-h-[100px] resize-none"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 min-h-[100px] resize-none"
               />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929]">
           <div className="space-y-6">
             {/* Terms of Service */}
-            <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
+            <div className="bg-[#e7e6e3]/10 rounded-lg p-4 border border-[#e7e6e3]/10">
               <div className="flex items-center mb-3">
-                <div className="flex-1 h-px bg-[#292929]/20"></div>
-                <h3 className="px-3 text-[#292929] font-bold text-lg tracking-tight">
+                <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+                <h3 className="px-3 text-[#e7e6e3] font-bold text-lg tracking-tight">
                   TERMS OF <span className="italic font-medium">SERVICE</span>
                 </h3>
-                <div className="flex-1 h-px bg-[#292929]/20"></div>
+                <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
               </div>
               <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
                 <p>By using this profile service, you agree to the following terms:</p>
