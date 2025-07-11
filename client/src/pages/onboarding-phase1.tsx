@@ -114,8 +114,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "male")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "male" 
-                      ? "border-[#292929] bg-[#292929] text-[#e7e6e3]" 
-                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#292929]/40"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
                   }`}
                 >
                   <User className="w-6 h-6" />
@@ -126,8 +126,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "female")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "female" 
-                      ? "border-[#292929] bg-[#292929] text-[#e7e6e3]" 
-                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#292929]/40"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
                   }`}
                 >
                   <UserCheck className="w-6 h-6" />
@@ -138,8 +138,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "non-binary")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "non-binary" 
-                      ? "border-[#292929] bg-[#292929] text-[#e7e6e3]" 
-                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#292929]/40"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
                   }`}
                 >
                   <Users className="w-6 h-6" />
