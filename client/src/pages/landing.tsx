@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import startingGif from "@assets/gif (2) copy 3_1752222699265.gif";
+import e3Logo from "@assets/8_1752223811568.png";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
@@ -31,6 +32,15 @@ export default function Landing() {
       
       {/* Overlay for better text visibility */}
       <div className="absolute inset-0 bg-black/30" />
+      
+      {/* Navigation Bar with E3 Logo */}
+      <div className="relative z-20 flex justify-start items-center p-6">
+        <img 
+          src={e3Logo}
+          alt="E3 Logo"
+          className="w-12 h-12 object-contain"
+        />
+      </div>
       
       {/* Bottom CTA Button */}
       <div className="relative z-10 flex items-end justify-center min-h-screen pb-8">
