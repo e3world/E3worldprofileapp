@@ -15,11 +15,28 @@ export default function OnboardingPhase3() {
   const [bio, setBio] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
+  const [failedAttempts, setFailedAttempts] = useState(0);
   const { toast } = useToast();
+
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Check file size
+      if (file.size > MAX_FILE_SIZE) {
+        setFailedAttempts(prev => prev + 1);
+        toast({
+          title: "File Too Large",
+          description: "Please select an image smaller than 5MB and try again.",
+          variant: "destructive",
+        });
+        
+        // Clear the file input
+        e.target.value = "";
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = (e) => {
         const result = e.target?.result as string;
@@ -167,11 +184,17 @@ export default function OnboardingPhase3() {
               </label>
             </div>
             <p className="text-xs text-[#e7e6e3]/60 mb-2">Upload photo *</p>
-            <div className="text-xs text-[#e7e6e3]/50 space-y-1">
-              <p>• Max file size: 5MB</p>
-              <p>• Formats: JPG, PNG, GIF</p>
-              <p>• Recommended: 400x400px</p>
-            </div>
+            
+            {/* Show recommendations only after 2 failed attempts */}
+            {failedAttempts >= 2 && (
+              <div className="text-xs text-[#e7e6e3]/50 space-y-1 mt-3 p-3 bg-[#e7e6e3]/10 rounded-lg border border-[#e7e6e3]/20">
+                <p className="text-[#e7e6e3]/70 font-medium mb-2">Photo Tips:</p>
+                <p>• Max file size: 5MB</p>
+                <p>• Formats: JPG, PNG, GIF</p>
+                <p>• Recommended: 400x400px</p>
+                <p>• Use image compression tools if needed</p>
+              </div>
+            )}
           </div>
         </Card>
 
