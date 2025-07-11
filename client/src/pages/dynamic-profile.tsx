@@ -136,7 +136,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
       <div className="max-w-sm mx-auto space-y-6">
         
         {/* Profile Identity Section */}
-        <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
+        <Card className="rounded-3xl text-center shadow-lg border-0 relative overflow-hidden h-96">
           <div 
             className="absolute inset-0"
             style={{
@@ -146,8 +146,8 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               backgroundRepeat: 'no-repeat'
             }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-700/30"></div>
-          <div className="relative z-10">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div className="relative z-10 h-full flex flex-col justify-end p-8">
             <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
               {profile.name}
             </h1>
