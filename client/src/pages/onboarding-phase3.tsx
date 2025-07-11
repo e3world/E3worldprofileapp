@@ -93,13 +93,15 @@ export default function OnboardingPhase3() {
       <div className="max-w-lg mx-auto">
         {/* Header with divider */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
+          <div className="flex items-center justify-center mb-6">
             <div className="flex-1 h-px bg-[#292929]"></div>
             <Shield className="w-8 h-8 mx-4 text-[#292929]" />
             <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-2xl font-bold text-[#292929] mb-2">Final Step</h1>
-          <p className="text-[#292929]/70 text-sm">Step 3 of 3</p>
+          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
+            FINAL <span className="italic font-medium">STEP</span>
+          </h1>
+          <p className="text-[#292929]/70 text-sm font-medium">Step 3 of 3</p>
         </div>
 
         <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
@@ -108,7 +110,9 @@ export default function OnboardingPhase3() {
             <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
               <div className="flex items-center mb-3">
                 <div className="flex-1 h-px bg-[#292929]/20"></div>
-                <h3 className="px-3 text-[#292929] font-semibold text-sm">Terms of Service</h3>
+                <h3 className="px-3 text-[#292929] font-bold text-lg tracking-tight">
+                  TERMS OF <span className="italic font-medium">SERVICE</span>
+                </h3>
                 <div className="flex-1 h-px bg-[#292929]/20"></div>
               </div>
               <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
@@ -140,7 +144,9 @@ export default function OnboardingPhase3() {
             <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
               <div className="flex items-center mb-3">
                 <div className="flex-1 h-px bg-[#292929]/20"></div>
-                <h3 className="px-3 text-[#292929] font-semibold text-sm">Privacy Policy</h3>
+                <h3 className="px-3 text-[#292929] font-bold text-lg tracking-tight">
+                  PRIVACY <span className="italic font-medium">POLICY</span>
+                </h3>
                 <div className="flex-1 h-px bg-[#292929]/20"></div>
               </div>
               <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
@@ -172,7 +178,9 @@ export default function OnboardingPhase3() {
             <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
               <div className="flex items-center gap-3 mb-3">
                 <CheckCircle className="w-5 h-5 text-[#292929]" />
-                <h3 className="text-[#292929] font-semibold text-sm">Ready to Create</h3>
+                <h3 className="text-[#292929] font-bold text-lg tracking-tight">
+                  READY TO <span className="italic font-medium">CREATE</span>
+                </h3>
               </div>
               <p className="text-[#292929]/70 text-xs">
                 Once you accept both agreements, your profile will be created and you'll be able to start connecting with others!

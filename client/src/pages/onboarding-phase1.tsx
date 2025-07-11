@@ -87,13 +87,15 @@ export default function OnboardingPhase1() {
       <div className="max-w-lg mx-auto">
         {/* Header with divider */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
+          <div className="flex items-center justify-center mb-6">
             <div className="flex-1 h-px bg-[#292929]"></div>
             <User className="w-8 h-8 mx-4 text-[#292929]" />
             <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-2xl font-bold text-[#292929] mb-2">About You</h1>
-          <p className="text-[#292929]/70 text-sm">Step 1 of 3</p>
+          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
+            TELL US <span className="italic font-medium">ABOUT</span> YOU
+          </h1>
+          <p className="text-[#292929]/70 text-sm font-medium">Step 1 of 3</p>
         </div>
 
         {/* Profile Image Upload */}
@@ -135,7 +137,9 @@ export default function OnboardingPhase1() {
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-sm font-semibold text-[#292929]">Personal Info</h3>
+              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+                YOUR <span className="italic font-medium">PERSONAL</span> INFO
+              </h3>
               <div className="flex-1 h-px bg-[#292929]/20"></div>
             </div>
             
@@ -192,7 +196,9 @@ export default function OnboardingPhase1() {
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-sm font-semibold text-[#292929]">Contact Info</h3>
+              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+                YOUR <span className="italic font-medium">CONTACT</span> INFO
+              </h3>
               <div className="flex-1 h-px bg-[#292929]/20"></div>
             </div>
             
@@ -227,7 +233,9 @@ export default function OnboardingPhase1() {
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#292929]/20"></div>
-              <h3 className="px-3 text-sm font-semibold text-[#292929]">Personal Details</h3>
+              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+                YOUR <span className="italic font-medium">PERSONAL</span> DETAILS
+              </h3>
               <div className="flex-1 h-px bg-[#292929]/20"></div>
             </div>
             

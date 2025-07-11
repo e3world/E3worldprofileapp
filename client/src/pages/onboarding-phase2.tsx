@@ -109,28 +109,35 @@ export default function OnboardingPhase2() {
       <div className="max-w-lg mx-auto">
         {/* Header with divider */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
+          <div className="flex items-center justify-center mb-6">
             <div className="flex-1 h-px bg-[#292929]"></div>
             <Globe className="w-8 h-8 mx-4 text-[#292929]" />
             <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-2xl font-bold text-[#292929] mb-2">Your Links</h1>
-          <p className="text-[#292929]/70 text-sm">Step 2 of 3</p>
+          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
+            SHARE YOUR <span className="italic font-medium">LINKS</span>
+          </h1>
+          <p className="text-[#292929]/70 text-sm font-medium">Step 2 of 3</p>
         </div>
 
         <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
           <div className="space-y-6">
-            <p className="text-[#292929]/70 text-sm text-center">
-              Add up to 5 links that represent you
-            </p>
+            <div className="text-center mb-6">
+              <h2 className="text-xl font-bold text-[#292929] tracking-tight">
+                CONNECT YOUR <span className="italic font-medium">DIGITAL</span> WORLD
+              </h2>
+              <p className="text-[#292929]/70 text-sm font-medium mt-2">
+                Add up to 5 links that represent you
+              </p>
+            </div>
             
             {links.map((link, index) => (
               <div key={index} className="space-y-3 p-4 bg-[#e7e6e3]/50 rounded-lg border border-[#292929]/10">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-1 h-px bg-[#292929]/20"></div>
-                    <span className="px-2 text-xs font-medium text-[#292929]">
-                      Link {index + 1}
+                    <span className="px-2 text-sm font-bold text-[#292929] tracking-tight">
+                      LINK <span className="italic font-medium">{index + 1}</span>
                     </span>
                     <div className="flex-1 h-px bg-[#292929]/20"></div>
                   </div>
