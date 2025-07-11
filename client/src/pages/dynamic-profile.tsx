@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -46,8 +46,62 @@ const getRelationshipIcon = (status: string) => {
 export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [timeData, setTimeData] = useState<{
+    isDayTime: boolean;
+    blurLevel: string;
+    opacity: number;
+    backgroundImage: string;
+  }>({
+    isDayTime: true,
+    blurLevel: 'blur-xl',
+    opacity: 0.1,
+    backgroundImage: ''
+  });
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  // Time zone adaptive system
+  useEffect(() => {
+    const updateTimeBasedStyles = () => {
+      const now = new Date();
+      const gmtTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
+      const hours = gmtTime.getHours();
+      
+      // Day time: 8:00 AM - 6:00 PM (08:00 - 18:00)
+      const isDayTime = hours >= 8 && hours < 18;
+      
+      let blurLevel: string;
+      let opacity: number;
+      
+      if (isDayTime) {
+        // Ultra thick blur (8am-6pm)
+        blurLevel = 'blur-ultra-thick';
+        opacity = 0.1; // 10% opacity
+      } else {
+        // Ultra thin blur (6pm-7:59am)
+        blurLevel = 'blur-ultra-thin';
+        opacity = 0.7; // 70% opacity
+      }
+      
+      // Background selection based on time
+      const backgroundImage = isDayTime 
+        ? 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80' // Blue sky
+        : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80'; // Dark sky with clouds
+      
+      setTimeData({
+        isDayTime,
+        blurLevel,
+        opacity,
+        backgroundImage
+      });
+    };
+
+    updateTimeBasedStyles();
+    // Update every minute
+    const interval = setInterval(updateTimeBasedStyles, 60000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   // Fetch profile data
   const { data: profile, isLoading: isLoadingProfile } = useQuery<Profile>({
@@ -197,14 +251,17 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1B1B1B 0%, #3C3C3C 50%, #5BA199 100%)' }}>
+        <Card className="rounded-2xl shadow-lg border-0 relative overflow-hidden system-panel time-adaptive-bg" style={{ 
+          background: 'linear-gradient(135deg, #1B1B1B 0%, #3C3C3C 50%, #5BA199 100%)'
+        }}>
           <div 
-            className="absolute inset-0 opacity-50"
+            className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
             style={{
-              backgroundImage: `url(${greenGradientGif})`,
+              backgroundImage: `url(${timeData.backgroundImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
+              backgroundRepeat: 'no-repeat',
+              opacity: timeData.opacity
             }}
           ></div>
           <div className="relative z-10">
@@ -234,14 +291,15 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-2xl shadow-lg border-0 relative overflow-hidden system-panel time-adaptive-bg">
           <div 
-            className="absolute inset-0 opacity-50"
+            className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
             style={{
-              backgroundImage: `url(${brownGradientGif})`,
+              backgroundImage: `url(${timeData.backgroundImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
+              backgroundRepeat: 'no-repeat',
+              opacity: timeData.opacity
             }}
           ></div>
           <div className="relative z-10 text-center">
