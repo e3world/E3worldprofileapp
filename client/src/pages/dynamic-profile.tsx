@@ -362,9 +362,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               <div className="text-gray-700 text-center">Loading question...</div>
             ) : currentQuestion ? (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <p className="text-white text-lg mb-6">
-                  {currentQuestion.text}
-                </p>
+                <div className="bg-[#1b1b1b] rounded-lg px-4 py-3 mb-6 max-w-md mx-auto">
+                  <p className="text-white text-lg text-center">
+                    {currentQuestion.text}
+                  </p>
+                </div>
                 
                 {/* Button Options */}
                 <div className="grid grid-cols-3 gap-3">
