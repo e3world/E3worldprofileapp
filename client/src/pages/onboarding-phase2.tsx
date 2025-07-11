@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, Plus, X, Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, TiktokIcon } from "lucide-react";
+import { SiSnapchat } from "react-icons/si";
 
 interface LinkData {
   name: string;
@@ -21,6 +22,7 @@ const iconOptions = [
   { value: "Twitter", label: "Twitter/X", icon: <Twitter className="w-4 h-4" /> },
   { value: "Linkedin", label: "LinkedIn", icon: <Linkedin className="w-4 h-4" /> },
   { value: "Github", label: "GitHub", icon: <Github className="w-4 h-4" /> },
+  { value: "Snapchat", label: "Snapchat", icon: <SiSnapchat className="w-4 h-4" /> },
 ];
 
 export default function OnboardingPhase2() {
