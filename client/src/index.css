@@ -262,3 +262,29 @@
     );
   }
 }
+
+/* Bio text containment utilities */
+.bio-container {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/* Ensure all text containers have proper containment */
+.text-container {
+  contain: layout style;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}

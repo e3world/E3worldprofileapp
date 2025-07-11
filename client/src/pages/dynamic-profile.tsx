@@ -288,7 +288,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           ></div>
           <div className="relative z-10" style={{ zIndex: 2 }}>
             <div className="mb-8 text-center">
-              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation finished max-w-md mx-auto" style={{ lineHeight: '2' }}>
+              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation finished max-w-md mx-auto bio-container text-container" style={{ lineHeight: '2' }}>
                 {profile.bio}
               </p>
             </div>

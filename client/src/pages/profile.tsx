@@ -138,7 +138,7 @@ export default function Profile() {
             <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
               {profileData.name}
             </h1>
-            <p className="text-white/90 text-lg leading-relaxed">
+            <p className="text-white/90 text-lg leading-relaxed bio-container text-container max-w-xs mx-auto">
               {profileData.bio}
             </p>
           </div>
