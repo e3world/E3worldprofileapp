@@ -13,14 +13,21 @@ interface LinkData {
   icon: string;
 }
 
+import instagramIcon from "@assets/1_1752249046642.png";
+import snapchatIcon from "@assets/2_1752249046641.png";
+import linkedinIcon from "@assets/3_1752249046642.png";
+import tiktokIcon from "@assets/4_1752249046639.png";
+import youtubeIcon from "@assets/6_1752249046641.png";
+import emailIcon from "@assets/7_1752249046640.png";
+
 const iconOptions = [
-  { value: "Music", label: "Music/Spotify", icon: <Music className="w-4 h-4" /> },
-  { value: "Instagram", label: "Instagram", icon: <Instagram className="w-4 h-4" /> },
-  { value: "Globe", label: "Website", icon: <Globe className="w-4 h-4" /> },
-  { value: "Youtube", label: "YouTube", icon: <Youtube className="w-4 h-4" /> },
-  { value: "Twitter", label: "Twitter/X", icon: <Twitter className="w-4 h-4" /> },
-  { value: "Linkedin", label: "LinkedIn", icon: <Linkedin className="w-4 h-4" /> },
-  { value: "Github", label: "GitHub", icon: <Github className="w-4 h-4" /> },
+  { value: "Instagram", label: "Instagram", icon: <img src={instagramIcon} alt="Instagram" className="w-4 h-4" /> },
+  { value: "Snapchat", label: "Snapchat", icon: <img src={snapchatIcon} alt="Snapchat" className="w-4 h-4" /> },
+  { value: "LinkedIn", label: "LinkedIn", icon: <img src={linkedinIcon} alt="LinkedIn" className="w-4 h-4" /> },
+  { value: "TikTok", label: "TikTok", icon: <img src={tiktokIcon} alt="TikTok" className="w-4 h-4" /> },
+  { value: "YouTube", label: "YouTube", icon: <img src={youtubeIcon} alt="YouTube" className="w-4 h-4" /> },
+  { value: "Email", label: "Email", icon: <img src={emailIcon} alt="Email" className="w-4 h-4" /> },
+  { value: "Website", label: "Website", icon: <Globe className="w-4 h-4" /> },
 ];
 
 export default function OnboardingPhase2() {
@@ -43,7 +50,7 @@ export default function OnboardingPhase2() {
   }, [toast]);
 
   const addLink = () => {
-    if (links.length < 5) {
+    if (links.length < 4) {
       setLinks([...links, { name: "", url: "", icon: "" }]);
     }
   };
