@@ -33,6 +33,34 @@ export type InsertSubmission = z.infer<typeof insertSubmissionSchema>;
 export type Submission = typeof submissions.$inferSelect;
 
 // Keep existing user schema
+// Profile data schema
+export const profiles = pgTable("profiles", {
+  id: serial("id").primaryKey(),
+  // Phase 1: Personal Details
+  name: text("name").notNull(),
+  bio: text("bio").notNull(),
+  profileImage: text("profile_image").notNull(),
+  relationshipStatus: text("relationship_status").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone"),
+  
+  // Phase 2: Links
+  links: json("links").$type<Array<{name: string, url: string, icon: string}>>().notNull(),
+  
+  // Phase 3: Terms
+  acceptedTerms: boolean("accepted_terms").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertProfileSchema = createInsertSchema(profiles).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertProfile = z.infer<typeof insertProfileSchema>;
+export type Profile = typeof profiles.$inferSelect;
+
+// Keep existing user schema for auth (if needed later)
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   username: text("username").notNull().unique(),

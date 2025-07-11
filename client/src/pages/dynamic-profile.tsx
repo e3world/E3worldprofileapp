@@ -6,50 +6,49 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Music, Instagram, Globe } from "lucide-react";
-import type { Question, InsertSubmission } from "@shared/schema";
+import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, MapPin } from "lucide-react";
+import type { Question, InsertSubmission, Profile } from "@shared/schema";
 
-interface ProfileData {
-  name: string;
-  bio: string;
-  profileImage: string;
+interface DynamicProfileProps {
+  profileId: string;
 }
 
-interface ExternalLink {
-  name: string;
-  url: string;
-  icon: React.ReactNode;
-}
-
-const profileData: ProfileData = {
-  name: "Chris Alli",
-  bio: "Full time model and content creator",
-  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
+const getIconComponent = (iconName: string) => {
+  const icons = {
+    Music: <Music className="w-5 h-5" />,
+    Instagram: <Instagram className="w-5 h-5" />,
+    Globe: <Globe className="w-5 h-5" />,
+    Youtube: <Youtube className="w-5 h-5" />,
+    Twitter: <Twitter className="w-5 h-5" />,
+    Linkedin: <Linkedin className="w-5 h-5" />,
+    Github: <Github className="w-5 h-5" />,
+  };
+  return icons[iconName as keyof typeof icons] || <Globe className="w-5 h-5" />;
 };
 
-const externalLinks: ExternalLink[] = [
-  {
-    name: "My Playlist",
-    url: "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M",
-    icon: <Music className="w-5 h-5" />
-  },
-  {
-    name: "@chrisalli.a",
-    url: "https://instagram.com/chrisalli.a",
-    icon: <Instagram className="w-5 h-5" />
-  },
-  {
-    name: "Chris model Book",
-    url: "https://chrisalli.com/portfolio",
-    icon: <Globe className="w-5 h-5" />
+const getRelationshipIcon = (status: string) => {
+  switch (status) {
+    case 'single':
+      return <Heart className="w-4 h-4 text-white/70" />;
+    case 'dating':
+    case 'engaged':
+    case 'married':
+      return <Heart className="w-4 h-4 text-red-400" />;
+    default:
+      return <Heart className="w-4 h-4 text-white/70" />;
   }
-];
+};
 
-export default function Profile() {
+export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  // Fetch profile data
+  const { data: profile, isLoading: isLoadingProfile } = useQuery<Profile>({
+    queryKey: [`/api/profiles/${profileId}`],
+  });
 
   // Fetch current question
   const { data: currentQuestion, isLoading: isLoadingQuestion } = useQuery<Question>({
@@ -114,25 +113,49 @@ export default function Profile() {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  if (isLoadingProfile) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 flex items-center justify-center">
+        <div className="text-white text-xl">Loading profile...</div>
+      </div>
+    );
+  }
+
+  if (!profile) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 flex items-center justify-center">
+        <div className="text-white text-xl">Profile not found</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4">
       <div className="max-w-sm mx-auto space-y-6">
         
-        {/* Chris Alli Identity Section */}
+        {/* Profile Identity Section */}
         <Card className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-3xl p-8 text-center shadow-lg border-0">
           <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
             <img 
-              src={profileData.profileImage}
-              alt={`${profileData.name} profile photo`}
+              src={profile.profileImage}
+              alt={`${profile.name} profile photo`}
               className="w-full h-full object-cover"
             />
           </div>
           <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
-            {profileData.name}
+            {profile.name}
           </h1>
-          <p className="text-white/90 text-lg leading-relaxed">
-            {profileData.bio}
+          <p className="text-white/90 text-lg leading-relaxed mb-4">
+            {profile.bio}
           </p>
+          
+          {/* Relationship Status */}
+          <div className="flex items-center justify-center gap-2 mt-4">
+            {getRelationshipIcon(profile.relationshipStatus)}
+            <span className="text-white/70 text-sm capitalize">
+              {profile.relationshipStatus.replace('-', ' ')}
+            </span>
+          </div>
         </Card>
 
         {/* Connect With Me Section */}
@@ -145,7 +168,7 @@ export default function Profile() {
           </p>
           
           <div className="space-y-4">
-            {externalLinks.map((link, index) => (
+            {profile.links.map((link, index) => (
               <Button
                 key={index}
                 onClick={() => handleExternalLinkClick(link.url)}
@@ -154,7 +177,7 @@ export default function Profile() {
               >
                 <div className="flex items-center justify-between w-full">
                   <span>{link.name}</span>
-                  {link.icon}
+                  {getIconComponent(link.icon)}
                 </div>
               </Button>
             ))}
@@ -214,21 +237,16 @@ export default function Profile() {
           )}
         </Card>
 
-        {/* Create Your Own Profile CTA */}
-        <Card className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl p-8 text-center shadow-lg border-0">
-          <h2 className="text-white text-2xl font-bold mb-4 tracking-tight">
-            Want Your Own Profile?
-          </h2>
-          <p className="text-white/90 text-base mb-6">
-            Create a personalized profile page with your own questions and links in just 3 simple steps.
-          </p>
-          <Button
+        {/* Footer */}
+        <div className="text-center">
+          <Button 
             onClick={() => window.location.href = "/onboarding/phase1"}
-            className="bg-white/20 hover:bg-white/30 text-white font-semibold py-4 px-8 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
+            variant="ghost" 
+            className="text-white hover:bg-white/10 rounded-full"
           >
-            Start Creating Your Profile
+            Create Your Own Profile
           </Button>
-        </Card>
+        </div>
       </div>
     </div>
   );

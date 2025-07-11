@@ -1,4 +1,4 @@
-import { users, questions, submissions, type User, type InsertUser, type Question, type InsertQuestion, type Submission, type InsertSubmission } from "@shared/schema";
+import { users, questions, submissions, profiles, type User, type InsertUser, type Question, type InsertQuestion, type Submission, type InsertSubmission, type Profile, type InsertProfile } from "@shared/schema";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -13,23 +13,33 @@ export interface IStorage {
   // Submission management
   createSubmission(submission: InsertSubmission): Promise<Submission>;
   getSubmissionsByQuestion(questionId: number): Promise<Submission[]>;
+  
+  // Profile management
+  createProfile(profile: InsertProfile): Promise<Profile>;
+  getProfile(id: number): Promise<Profile | undefined>;
+  getAllProfiles(): Promise<Profile[]>;
+  updateProfile(id: number, profile: Partial<InsertProfile>): Promise<Profile | undefined>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private questions: Map<number, Question>;
   private submissions: Map<number, Submission>;
+  private profiles: Map<number, Profile>;
   private currentUserId: number;
   private currentQuestionId: number;
   private currentSubmissionId: number;
+  private currentProfileId: number;
 
   constructor() {
     this.users = new Map();
     this.questions = new Map();
     this.submissions = new Map();
+    this.profiles = new Map();
     this.currentUserId = 1;
     this.currentQuestionId = 1;
     this.currentSubmissionId = 1;
+    this.currentProfileId = 1;
     
     // Initialize with sample questions
     this.initializeQuestions();
@@ -59,7 +69,12 @@ export class MemStorage implements IStorage {
 
     sampleQuestions.forEach(question => {
       const id = this.currentQuestionId++;
-      const fullQuestion: Question = { ...question, id };
+      const fullQuestion: Question = { 
+        ...question, 
+        id,
+        options: question.options as string[],
+        isActive: question.isActive ?? false
+      };
       this.questions.set(id, fullQuestion);
     });
   }
@@ -120,7 +135,12 @@ export class MemStorage implements IStorage {
 
   async createQuestion(insertQuestion: InsertQuestion): Promise<Question> {
     const id = this.currentQuestionId++;
-    const question: Question = { ...insertQuestion, id };
+    const question: Question = { 
+      ...insertQuestion, 
+      id,
+      options: insertQuestion.options as string[],
+      isActive: insertQuestion.isActive ?? false
+    };
     this.questions.set(id, question);
     return question;
   }
@@ -144,6 +164,47 @@ export class MemStorage implements IStorage {
     return Array.from(this.submissions.values()).filter(
       (submission) => submission.questionId === questionId
     );
+  }
+
+  // Profile management methods
+  async createProfile(insertProfile: InsertProfile): Promise<Profile> {
+    const id = this.currentProfileId++;
+    const profile: Profile = { 
+      ...insertProfile, 
+      id,
+      phone: insertProfile.phone ?? null,
+      links: insertProfile.links as Array<{name: string, url: string, icon: string}>,
+      acceptedTerms: insertProfile.acceptedTerms ?? false,
+      createdAt: new Date()
+    };
+    this.profiles.set(id, profile);
+    return profile;
+  }
+
+  async getProfile(id: number): Promise<Profile | undefined> {
+    return this.profiles.get(id);
+  }
+
+  async getAllProfiles(): Promise<Profile[]> {
+    return Array.from(this.profiles.values());
+  }
+
+  async updateProfile(id: number, profileData: Partial<InsertProfile>): Promise<Profile | undefined> {
+    const existingProfile = this.profiles.get(id);
+    if (!existingProfile) {
+      return undefined;
+    }
+    
+    const updatedProfile: Profile = {
+      ...existingProfile,
+      ...profileData,
+      phone: profileData.phone ?? existingProfile.phone,
+      links: profileData.links ? profileData.links as Array<{name: string, url: string, icon: string}> : existingProfile.links,
+      acceptedTerms: profileData.acceptedTerms ?? existingProfile.acceptedTerms,
+    };
+    
+    this.profiles.set(id, updatedProfile);
+    return updatedProfile;
   }
 }
 

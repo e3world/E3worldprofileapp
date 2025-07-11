@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertSubmissionSchema } from "@shared/schema";
+import { insertSubmissionSchema, insertProfileSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -41,6 +41,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(questions);
     } catch (error) {
       console.error("Error fetching questions:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  // Profile management routes
+  app.post("/api/profiles", async (req, res) => {
+    try {
+      const validatedData = insertProfileSchema.parse(req.body);
+      const profile = await storage.createProfile(validatedData);
+      res.status(201).json(profile);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid profile data", errors: error.errors });
+      }
+      console.error("Error creating profile:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  app.get("/api/profiles/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const profile = await storage.getProfile(id);
+      if (!profile) {
+        return res.status(404).json({ message: "Profile not found" });
+      }
+      res.json(profile);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
+  app.get("/api/profiles", async (req, res) => {
+    try {
+      const profiles = await storage.getAllProfiles();
+      res.json(profiles);
+    } catch (error) {
+      console.error("Error fetching profiles:", error);
       res.status(500).json({ message: "Internal server error" });
     }
   });

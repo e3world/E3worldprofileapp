@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application built with React and Express that creates a personal profile page with weekly interactive questions. The application allows users to view a profile, answer questions about the profile owner, and submit their responses. It features a modern UI built with shadcn/ui components and uses PostgreSQL for data persistence.
+This is a full-stack web application built with React and Express that creates personal profile pages with weekly interactive questions. The application features a 3-phase onboarding system that allows users to create their own profiles, and includes a dynamic profile display system. Users can view profiles, answer questions about profile owners, and submit their responses. It features a modern UI built with shadcn/ui components and uses in-memory storage for data persistence.
 
 ## User Preferences
 
