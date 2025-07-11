@@ -197,7 +197,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1B1B1B 0%, #3C3C3C 50%, #5BA199 100%)' }}>
           <div 
             className="absolute inset-0 opacity-50"
             style={{
