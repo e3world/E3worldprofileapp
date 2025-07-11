@@ -128,7 +128,7 @@ export default function OnboardingPhase2() {
                 CONNECT YOUR <span className="italic font-medium">DIGITAL</span> WORLD
               </h2>
               <p className="text-[#e7e6e3]/70 text-sm font-medium mt-2">
-                Add up to 5 links that represent you
+                Add up to 4 links that represent you
               </p>
             </div>
             
