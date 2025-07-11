@@ -190,7 +190,7 @@ export default function OnboardingPhase2() {
               </div>
             ))}
             
-            {links.length < 5 && (
+            {links.length < 4 && (
               <Button
                 onClick={addLink}
                 variant="outline"
