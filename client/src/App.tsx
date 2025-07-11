@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Landing from "@/pages/landing";
 import Profile from "@/pages/profile";
 import OnboardingPhase1 from "@/pages/onboarding-phase1";
 import OnboardingPhase2 from "@/pages/onboarding-phase2";
@@ -13,7 +14,8 @@ import NotFound from "@/pages/not-found";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Profile} />
+      <Route path="/" component={Landing} />
+      <Route path="/demo" component={Profile} />
       <Route path="/onboarding/phase1" component={OnboardingPhase1} />
       <Route path="/onboarding/phase2" component={OnboardingPhase2} />
       <Route path="/onboarding/phase3" component={OnboardingPhase3} />
