@@ -273,9 +273,18 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           ></div>
           <div className="relative z-10">
             <div className="mb-8 text-center">
-              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation">
+              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation max-w-md mx-auto" style={{ lineHeight: '2' }}>
                 {profile.bio}
               </p>
+            </div>
+            
+            {/* Divider */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex-1 h-px bg-gray-400/30"></div>
+              <div className="px-4">
+                <div className="w-2 h-2 bg-gray-400/50 rounded-full"></div>
+              </div>
+              <div className="flex-1 h-px bg-gray-400/30"></div>
             </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">

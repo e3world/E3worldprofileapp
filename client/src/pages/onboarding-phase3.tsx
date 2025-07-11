@@ -209,13 +209,23 @@ export default function OnboardingPhase3() {
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Bio *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">
+                Bio * (Maximum 30 words)
+              </label>
               <Textarea
-                placeholder="Tell us about yourself..."
+                placeholder="Tell us about yourself in 30 words or less..."
                 value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                onChange={(e) => {
+                  const wordCount = e.target.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+                  if (wordCount <= 30) {
+                    setBio(e.target.value);
+                  }
+                }}
                 className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 min-h-[100px] resize-none placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
+              <div className="text-xs text-[#e7e6e3]/60 mt-1">
+                {bio.trim().split(/\s+/).filter(word => word.length > 0).length}/30 words
+              </div>
             </div>
           </div>
         </Card>
