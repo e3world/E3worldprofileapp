@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertSubmissionSchema, insertProfileSchema } from "@shared/schema";
 import { z } from "zod";
+import { sendEmail, formatAnswerEmail } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get current question
@@ -24,6 +25,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertSubmissionSchema.parse(req.body);
       const submission = await storage.createSubmission(validatedData);
+      
+      // Send email notification to hello@e3world.co.uk
+      try {
+        if (validatedData.profileId) {
+          const profile = await storage.getProfile(validatedData.profileId);
+          const question = await storage.getCurrentQuestion();
+          
+          if (profile && question) {
+            const emailData = formatAnswerEmail(
+              profile.serialCode,
+              validatedData.email,
+              question.text,
+              validatedData.selectedAnswer
+            );
+            
+            await sendEmail(emailData);
+          }
+        }
+      } catch (emailError) {
+        console.error("Error sending email notification:", emailError);
+        // Continue with response even if email fails
+      }
+      
       res.status(201).json(submission);
     } catch (error) {
       if (error instanceof z.ZodError) {

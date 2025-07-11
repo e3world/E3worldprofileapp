@@ -169,6 +169,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
       questionId: currentQuestion.id,
       email,
       selectedAnswer,
+      profileId: profile.id,
     });
   };
 

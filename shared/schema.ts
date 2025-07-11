@@ -15,6 +15,7 @@ export const submissions = pgTable("submissions", {
   questionId: integer("question_id").references(() => questions.id).notNull(),
   email: text("email").notNull(),
   selectedAnswer: text("selected_answer").notNull(),
+  profileId: integer("profile_id").references(() => profiles.id),
   submittedAt: timestamp("submitted_at").defaultNow(),
 });
 
