@@ -95,6 +95,11 @@
   max-width: fit-content;
 }
 
+.typewriter-animation.finished {
+  border-right: none;
+  animation: typewriter 3s steps(40, end);
+}
+
 /* Enhanced blur system for time-based backgrounds */
 .blur-ultra-thick {
   backdrop-filter: blur(20px);
@@ -170,4 +175,90 @@
 /* Black button with opacity */
 .bg-black\/80 {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Animated Light Trace Effect */
+.light-trace-border {
+  position: relative;
+}
+
+.light-trace-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  padding: 2px;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(72, 187, 120, 0.3), 
+    rgba(56, 178, 172, 0.4), 
+    rgba(139, 69, 19, 0.2), 
+    transparent, 
+    rgba(72, 187, 120, 0.3), 
+    rgba(56, 178, 172, 0.4)
+  );
+  border-radius: 18px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  animation: light-trace 4s linear infinite;
+  z-index: 0;
+}
+
+@keyframes light-trace {
+  0% {
+    background: linear-gradient(45deg, 
+      rgba(72, 187, 120, 0.4), 
+      transparent, 
+      transparent, 
+      transparent, 
+      rgba(56, 178, 172, 0.3), 
+      transparent, 
+      transparent
+    );
+  }
+  25% {
+    background: linear-gradient(135deg, 
+      transparent, 
+      rgba(72, 187, 120, 0.4), 
+      transparent, 
+      rgba(139, 69, 19, 0.2), 
+      transparent, 
+      rgba(56, 178, 172, 0.3), 
+      transparent
+    );
+  }
+  50% {
+    background: linear-gradient(225deg, 
+      transparent, 
+      transparent, 
+      rgba(72, 187, 120, 0.4), 
+      transparent, 
+      transparent, 
+      transparent, 
+      rgba(56, 178, 172, 0.3)
+    );
+  }
+  75% {
+    background: linear-gradient(315deg, 
+      transparent, 
+      rgba(139, 69, 19, 0.2), 
+      transparent, 
+      rgba(72, 187, 120, 0.4), 
+      transparent, 
+      transparent, 
+      rgba(56, 178, 172, 0.3)
+    );
+  }
+  100% {
+    background: linear-gradient(45deg, 
+      rgba(72, 187, 120, 0.4), 
+      transparent, 
+      transparent, 
+      transparent, 
+      rgba(56, 178, 172, 0.3), 
+      transparent, 
+      transparent
+    );
+  }
 }

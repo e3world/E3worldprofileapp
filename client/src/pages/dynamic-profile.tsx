@@ -251,7 +251,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="relative overflow-hidden system-panel time-adaptive-bg" style={{ 
+        <Card className="relative overflow-hidden system-panel time-adaptive-bg light-trace-border" style={{ 
           background: 'rgba(254, 254, 250, 0.2)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
@@ -281,7 +281,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           ></div>
           <div className="relative z-10" style={{ zIndex: 2 }}>
             <div className="mb-8 text-center">
-              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation max-w-md mx-auto" style={{ lineHeight: '2' }}>
+              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation finished max-w-md mx-auto" style={{ lineHeight: '2' }}>
                 {profile.bio}
               </p>
             </div>
@@ -315,7 +315,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="relative overflow-hidden system-panel time-adaptive-bg" style={{ 
+        <Card className="relative overflow-hidden system-panel time-adaptive-bg light-trace-border" style={{ 
           background: 'rgba(254, 254, 250, 0.2)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
