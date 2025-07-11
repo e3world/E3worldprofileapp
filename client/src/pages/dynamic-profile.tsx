@@ -8,7 +8,6 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, MapPin, Briefcase } from "lucide-react";
 import type { Question, InsertSubmission, Profile } from "@shared/schema";
-import greenGradientGif from "@assets/download (3)_1752231730311.gif";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -179,40 +178,29 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 opacity-70 blur-sm"
-            style={{
-              backgroundImage: `url(${greenGradientGif})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="relative z-10 backdrop-blur-sm bg-black/20 rounded-2xl p-6 -m-6">
-            <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
-              Connect with me
-            </h2>
-            <p className="text-white/90 text-base mb-8">
-              Select an option below:
-            </p>
-            
-            <div className="grid grid-cols-3 gap-6 justify-items-center">
-              {profile.links.map((link, index) => (
-                <div 
-                  key={index}
-                  onClick={() => handleExternalLinkClick(link.url)}
-                  className="cursor-pointer group"
-                >
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
-                    {getIconComponent(link.icon)}
-                  </div>
-                  <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
-                    {link.name}
-                  </p>
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0">
+          <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
+            Connect with me
+          </h2>
+          <p className="text-white/90 text-base mb-8">
+            Select an option below:
+          </p>
+          
+          <div className="grid grid-cols-3 gap-6 justify-items-center">
+            {profile.links.map((link, index) => (
+              <div 
+                key={index}
+                onClick={() => handleExternalLinkClick(link.url)}
+                className="cursor-pointer group"
+              >
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
+                  {getIconComponent(link.icon)}
                 </div>
-              ))}
-            </div>
+                <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
+                  {link.name}
+                </p>
+              </div>
+            ))}
           </div>
         </Card>
 
