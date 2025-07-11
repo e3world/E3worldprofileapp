@@ -12,7 +12,7 @@ This is a full-stack web application built with React and Express that creates p
   - Implemented access control - only valid E numbers allow onboarding progression
   - Each E number is tied to user's profile and onboarding data
   - Added dynamic profile pages accessible via serial code URLs
-- **Bio Word Limit Refinement**: Updated bio word limit from 30 to 20 words in Phase 3 onboarding for optimal display in profile containers
+- **Bio Word Limit Refinement**: Updated bio word limit from 30 to 15 words in Phase 3 onboarding for optimal display in profile containers
 - **Bio Text Containment**: Implemented comprehensive CSS utilities to ensure bio text stays within container boundaries with proper word wrapping and truncation
 - **Profile Display Optimization**: Refined container max-width and line-height for better 20-word bio presentation
 
