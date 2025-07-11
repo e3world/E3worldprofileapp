@@ -3,15 +3,32 @@ import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { ArrowLeft, Shield, CheckCircle } from "lucide-react";
+import { ArrowLeft, Shield, CheckCircle, Upload, User } from "lucide-react";
 import type { InsertProfile } from "@shared/schema";
 
 export default function OnboardingPhase3() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
+  const [bio, setBio] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
   const { toast } = useToast();
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        setImagePreview(result);
+        setProfileImage(result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   useEffect(() => {
     // Check if previous phases data exists
@@ -65,6 +82,15 @@ export default function OnboardingPhase3() {
       return;
     }
 
+    if (!bio || !profileImage) {
+      toast({
+        title: "Missing Information",
+        description: "Please upload a photo and write a bio to continue.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Get data from previous phases
     const phase1Data = JSON.parse(localStorage.getItem("onboarding_phase1") || "{}");
     const phase2Data = JSON.parse(localStorage.getItem("onboarding_phase2") || "[]");
@@ -72,8 +98,8 @@ export default function OnboardingPhase3() {
     // Create profile data
     const profileData: InsertProfile = {
       name: phase1Data.name,
-      bio: phase1Data.bio,
-      profileImage: phase1Data.profileImage || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400",
+      bio: bio,
+      profileImage: profileImage,
       relationshipStatus: phase1Data.relationshipStatus,
       email: phase1Data.email,
       phone: phase1Data.phone || null,
@@ -103,6 +129,69 @@ export default function OnboardingPhase3() {
           </h1>
           <p className="text-[#292929]/70 text-sm font-medium">Step 3 of 3</p>
         </div>
+
+        {/* Profile Image Upload */}
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+          <div className="text-center">
+            <div className="flex items-center mb-4">
+              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+                UPLOAD YOUR <span className="italic font-medium">PHOTO</span>
+              </h3>
+              <div className="flex-1 h-px bg-[#292929]/20"></div>
+            </div>
+            <div className="relative inline-block">
+              <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-[#e7e6e3] flex items-center justify-center overflow-hidden border-2 border-[#292929]/20">
+                {imagePreview ? (
+                  <img src={imagePreview} alt="Profile preview" className="w-full h-full object-cover" />
+                ) : (
+                  <User className="w-8 h-8 text-[#292929]/40" />
+                )}
+              </div>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+                id="profile-image"
+              />
+              <label
+                htmlFor="profile-image"
+                className="absolute -bottom-1 -right-1 bg-[#292929] text-[#e7e6e3] p-2 rounded-full cursor-pointer hover:bg-[#292929]/80 transition-colors"
+              >
+                <Upload className="w-3 h-3" />
+              </label>
+            </div>
+            <p className="text-xs text-[#292929]/60 mb-2">Upload photo *</p>
+            <div className="text-xs text-[#292929]/50 space-y-1">
+              <p>• Max file size: 5MB</p>
+              <p>• Formats: JPG, PNG, GIF</p>
+              <p>• Recommended: 400x400px</p>
+            </div>
+          </div>
+        </Card>
+
+        {/* Bio Section */}
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white mb-6">
+          <div className="space-y-4">
+            <div className="flex items-center mb-4">
+              <div className="flex-1 h-px bg-[#292929]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#292929] tracking-tight">
+                TELL US <span className="italic font-medium">ABOUT</span> YOU
+              </h3>
+              <div className="flex-1 h-px bg-[#292929]/20"></div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-[#292929] mb-1">Bio *</label>
+              <Textarea
+                placeholder="Tell us about yourself..."
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30 min-h-[100px] resize-none"
+              />
+            </div>
+          </div>
+        </Card>
 
         <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
           <div className="space-y-6">
