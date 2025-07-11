@@ -1,0 +1,32 @@
+E3WORLD LTD — TERMS AND CONDITIONS 
+Effective Date: 28 June 2025
+Welcome to The Circle World, a proprietary product and service offering developed by E3WORLD LTD (“we,” “our,” or “us”). These Terms and Conditions (“Terms”) and Privacy Policy (“Policy”) govern your access to and use of our products, services, websites, applications, devices, and associated data management systems (collectively, the “Service”).
+Please read these Terms and Policy carefully before accessing, using, or providing any personal data to us. By using the Service, you acknowledge, agree, and consent to be legally bound by these Terms and this Policy.
+
+TERMS AND CONDITIONS
+Scope of Service
+The Service provides users with the ability to create smart links, answer personal questions, and maintain a personal profile page integrating NFC and web-based technology. The Service requires the collection, storage, and operational use of personal and sensitive data to provide a functional and optimised user experience.
+User Obligations
+By engaging with the Service, you warrant that you are at least 18 years of age and possess the legal capacity to enter into binding agreements. You agree to provide accurate, current, and complete information when requested, and to keep such information up to date at all times.
+Device Lifespan and Warranty
+Our proprietary devices are engineered to maintain operational integrity for a period exceeding five (5) years under standard usage conditions. Users acknowledge and accept that no refunds will be issued after ten (10) calendar days from the date of purchase or activation, whichever comes later.
+Post a five-year operational period, users may request a device replacement for a nominal fee, provided that the device has ceased to function through no fault or misuse on the part of the user.
+Risks Associated with NFC Technology
+E3WORLD LTD makes reasonable efforts to ensure that its NFC technology is safe and secure for intended consumer use. However, by using the Service, you acknowledge and accept the following potential risks:
+Interference from other electronic devices or magnetic fields
+
+
+Unauthorized data interception if used in unsecured public spaces
+
+
+Possible exposure to electromagnetic fields (EMF) within permissible regulatory limits
+
+
+Functional disruption due to physical damage or environmental factors
+
+
+E3WORLD LTD shall not be liable for any indirect, incidental, or consequential damages arising from the use or misuse of the device, nor from health-related effects allegedly associated with NFC technology.
+Limitation of Liability
+While E3WORLD LTD employs industry-standard security measures to safeguard personal and sensitive data, no system is entirely immune from unauthorized access or breaches. You expressly agree that E3WORLD LTD shall not be held liable for any data breaches, loss, or corruption of personal data. Notwithstanding this, E3WORLD LTD commits to exhaust all reasonable resources to prevent, identify, and mitigate any such occurrences.
+Data Deletion Rights
+Users may request the permanent deletion of their stored personal data by submitting a written request via email to hello@e3world.co.uk. E3WORLD LTD shall process such requests within thirty (30) calendar days in accordance with applicable data protection laws.

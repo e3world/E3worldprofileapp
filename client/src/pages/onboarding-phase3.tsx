@@ -237,20 +237,70 @@ export default function OnboardingPhase3() {
               <div className="flex items-center mb-3">
                 <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
                 <h3 className="px-3 text-[#e7e6e3] font-bold text-lg tracking-tight">
-                  TERMS OF <span className="italic font-medium">SERVICE</span>
+                  E3WORLD LTD <span className="italic font-medium">TERMS</span>
                 </h3>
                 <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
               </div>
-              <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
-                <p>By using this profile service, you agree to the following terms:</p>
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>You will provide accurate and truthful information</li>
-                  <li>You will not use the service for illegal or harmful purposes</li>
-                  <li>You are responsible for keeping your account secure</li>
-                  <li>We reserve the right to modify these terms at any time</li>
-                  <li>Your profile information may be visible to other users</li>
-                  <li>You can delete your profile at any time</li>
-                </ul>
+              <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-40 overflow-y-auto mb-4">
+                <p className="font-medium text-[#e7e6e3]">Welcome to The Circle World</p>
+                <p>By using this service, you acknowledge and agree to the following terms (Effective Date: 28 June 2025):</p>
+                
+                <div className="space-y-2">
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">User Requirements:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>You must be at least 18 years of age with legal capacity to enter binding agreements</li>
+                      <li>You agree to provide accurate, current, and complete information at all times</li>
+                      <li>You will not use the service for illegal or harmful purposes</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Service Features:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Create smart links and maintain personal profile pages</li>
+                      <li>Integration with NFC and web-based technology</li>
+                      <li>Collection and storage of personal data for optimized user experience</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Device & Warranty:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Devices engineered for 5+ years operational integrity</li>
+                      <li>No refunds after 10 calendar days from purchase/activation</li>
+                      <li>Replacement available for nominal fee after 5-year period</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">NFC Technology Risks:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Possible interference from electronic devices or magnetic fields</li>
+                      <li>Risk of unauthorized data interception in unsecured public spaces</li>
+                      <li>Exposure to electromagnetic fields within regulatory limits</li>
+                      <li>Potential functional disruption due to physical damage</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Liability Limitations:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>E3WORLD LTD not liable for indirect, incidental, or consequential damages</li>
+                      <li>No liability for data breaches, loss, or corruption despite security measures</li>
+                      <li>Company commits to reasonable resources for prevention and mitigation</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Rights:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Request permanent data deletion via email to hello@e3world.co.uk</li>
+                      <li>Deletion requests processed within 30 calendar days</li>
+                      <li>Compliance with applicable data protection laws</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               
               <div className="flex items-center space-x-3">
@@ -261,7 +311,7 @@ export default function OnboardingPhase3() {
                   className="border-[#fefefa] data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
                 <label htmlFor="terms" className="text-[#e7e6e3] text-sm font-medium">
-                  I agree to the Terms of Service
+                  I agree to the E3WORLD LTD Terms and Conditions
                 </label>
               </div>
             </div>
@@ -275,16 +325,56 @@ export default function OnboardingPhase3() {
                 </h3>
                 <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
               </div>
-              <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
-                <p>We respect your privacy and are committed to protecting your personal data:</p>
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>We collect only the information you provide during registration</li>
-                  <li>Your data is stored securely and never sold to third parties</li>
-                  <li>We may use your email to send important updates</li>
-                  <li>You can request data deletion at any time</li>
-                  <li>We use cookies to improve your experience</li>
-                  <li>Your profile data is used to display your public profile</li>
-                </ul>
+              <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-40 overflow-y-auto mb-4">
+                <p className="font-medium text-[#e7e6e3]">Data Protection Commitment</p>
+                <p>E3WORLD LTD is committed to protecting your personal and sensitive data through industry-standard security measures:</p>
+                
+                <div className="space-y-2">
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Collection:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>We collect personal and sensitive data required for service functionality</li>
+                      <li>Data is used to provide optimized user experience</li>
+                      <li>Information collected includes profile details and usage patterns</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Security:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Industry-standard security measures employed for data protection</li>
+                      <li>No system is entirely immune from unauthorized access</li>
+                      <li>Company exhausts reasonable resources for prevention and mitigation</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Usage:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Personal data used for operational service delivery</li>
+                      <li>Profile information displayed to other users as intended</li>
+                      <li>Data may be used for service improvement and optimization</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Your Rights:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Request permanent deletion of personal data via hello@e3world.co.uk</li>
+                      <li>Data deletion processed within 30 calendar days</li>
+                      <li>Rights exercised in accordance with applicable data protection laws</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Breach Acknowledgment:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Users acknowledge potential risks of data breaches</li>
+                      <li>E3WORLD LTD not liable for data loss or corruption</li>
+                      <li>Company commits to reasonable prevention and response measures</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
               
               <div className="flex items-center space-x-3">
@@ -309,7 +399,7 @@ export default function OnboardingPhase3() {
                 </h3>
               </div>
               <p className="text-[#e7e6e3]/70 text-xs">
-                Once you accept both agreements, your profile will be created and you'll be able to start connecting with others!
+                By accepting these terms, you acknowledge understanding of the service features, NFC technology risks, liability limitations, and data handling practices. Your profile will be created and you'll be able to start connecting with others through The Circle World!
               </p>
             </div>
           </div>

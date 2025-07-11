@@ -1,0 +1,70 @@
+PRIVACY POLICY
+
+Information We Collect
+E3WORLD LTD collects, stores, and processes the following categories of information:
+Personal Identification Information (e.g., full name, address, date of birth, contact details)
+
+
+Profile Data (e.g., responses to personal questions, smart links, profile images)
+
+
+Device Data (e.g., hardware IDs, NFC tag readings, usage logs)
+
+
+Communications Data (e.g., emails, support requests)
+
+
+Technical Data (e.g., IP addresses, browser types, device information)
+
+
+Use of Data
+We use your data for the following legitimate business purposes:
+To provide, maintain, and enhance the Service’s features
+
+
+To personalise user experiences and interactions
+
+
+To facilitate direct and indirect communications with users
+
+
+For internal business analytics and service improvements
+
+
+For promotional, marketing, and commercial purposes both within and beyond the E3 ecosystem
+
+
+By using the Service, you explicitly consent to E3WORLD LTD’s use of your data for both internal operational needs and external commercial purposes where such use is in accordance with applicable law and essential to the functioning and commercial viability of the Service.
+External Data Usage
+E3WORLD LTD reserves the right to share, license, or otherwise disseminate aggregated, anonymized, or otherwise non-personally identifiable data to third parties for research, marketing, and commercial purposes. Where personal data is to be shared externally in identifiable form, explicit consent will be sought unless otherwise permitted by law or regulatory exemption.
+Data Retention
+We retain user data for the duration necessary to fulfil the purposes outlined in this Policy, or as required by law, whichever is longer. Data may be retained for analytics, backup, and legal obligations even after account termination, except where deletion is lawfully requested by the user.
+Security of Data
+We implement appropriate administrative, technical, and physical safeguards to protect your personal data against unauthorized access, disclosure, alteration, and destruction. Despite these efforts, no security measure is completely infallible, and you acknowledge this risk by using the Service.
+Data Subject Rights
+In accordance with applicable data protection laws, you have the right to:
+Access, rectify, or erase your personal data
+
+
+Restrict or object to certain processing activities
+
+
+Request data portability
+
+
+Withdraw consent where processing is based on consent
+
+
+Requests to exercise these rights must be sent to hello@e3world.co.uk and will be handled within statutory timeframes.
+
+ADDITIONAL POLICIES
+Amendments to Terms and Policy
+E3WORLD LTD reserves the right to amend these Terms and this Policy at any time without prior notice. Continued use of the Service constitutes acceptance of any revised Terms or Policy. Users are encouraged to review these documents periodically.
+Governing Law
+These Terms and this Policy shall be governed by and construed in accordance with the laws of England and Wales. Any disputes arising hereunder shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+Entire Agreement
+These Terms and this Policy constitute the entire agreement between the parties in relation to the Service and supersede all prior agreements, arrangements, or understandings.
+
+For queries or concerns, contact:
+ E3WORLD LTD
+ Email: hello@e3world.co.uk
