@@ -33,13 +33,15 @@ export default function Landing() {
       {/* Overlay for better text visibility */}
       <div className="absolute inset-0 bg-black/30" />
       
-      {/* Navigation Bar with E3 Logo */}
-      <div className="relative z-20 flex justify-center items-center p-6">
-        <img 
-          src={e3Logo}
-          alt="E3 Logo"
-          className="w-36 h-36 object-contain"
-        />
+      {/* Navigation Bar */}
+      <div className="relative z-20 w-full bg-[#292929] py-4 px-6">
+        <div className="flex justify-center items-center">
+          <img 
+            src={e3Logo}
+            alt="E3 Logo"
+            className="w-24 h-24 object-contain"
+          />
+        </div>
       </div>
       
       {/* Bottom CTA Button */}
