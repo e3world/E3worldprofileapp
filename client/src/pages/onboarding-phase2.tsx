@@ -35,6 +35,18 @@ export default function OnboardingPhase2() {
   const { toast } = useToast();
 
   useEffect(() => {
+    // Check if user has valid serial code access
+    const serialCode = localStorage.getItem("nft_serial_code");
+    if (!serialCode) {
+      toast({
+        title: "Access Denied",
+        description: "Please enter a valid serial code from the landing page to continue.",
+        variant: "destructive",
+      });
+      window.location.href = "/";
+      return;
+    }
+
     // Check if phase 1 data exists
     const phase1Data = localStorage.getItem("onboarding_phase1");
     if (!phase1Data) {

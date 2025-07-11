@@ -54,6 +54,11 @@ export const profiles = pgTable("profiles", {
   
   // Phase 3: Terms
   acceptedTerms: boolean("accepted_terms").default(false),
+  
+  // NFT Serial Code Association
+  serialCode: text("serial_code").notNull(),
+  dynamicLink: text("dynamic_link").notNull(),
+  
   createdAt: timestamp("created_at").defaultNow(),
 });
 

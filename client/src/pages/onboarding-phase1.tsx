@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -33,6 +33,24 @@ export default function OnboardingPhase1() {
     hidePersonalInfo: false,
   });
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Check if user has valid serial code access
+    const serialCode = localStorage.getItem("nft_serial_code");
+    if (!serialCode) {
+      toast({
+        title: "Access Denied",
+        description: "Please enter a valid serial code from the landing page to continue.",
+        variant: "destructive",
+      });
+      window.location.href = "/";
+      return;
+    }
+
+    // Reset any existing data when starting fresh
+    localStorage.removeItem("onboarding_phase1");
+    localStorage.removeItem("onboarding_phase2");
+  }, [toast]);
 
   const handleInputChange = (field: keyof Phase1Data, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));

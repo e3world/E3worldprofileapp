@@ -111,6 +111,18 @@ export default function OnboardingPhase3() {
     // Get data from previous phases
     const phase1Data = JSON.parse(localStorage.getItem("onboarding_phase1") || "{}");
     const phase2Data = JSON.parse(localStorage.getItem("onboarding_phase2") || "[]");
+    const serialCode = localStorage.getItem("nft_serial_code") || "";
+    const dynamicLink = localStorage.getItem("nft_dynamic_link") || "";
+
+    if (!serialCode || !dynamicLink) {
+      toast({
+        title: "Error",
+        description: "Serial code information missing. Please start over from the landing page.",
+        variant: "destructive",
+      });
+      window.location.href = "/";
+      return;
+    }
 
     // Create profile data
     const profileData: InsertProfile = {
@@ -125,6 +137,8 @@ export default function OnboardingPhase3() {
       hidePersonalInfo: phase1Data.hidePersonalInfo || false,
       links: phase2Data,
       acceptedTerms: true,
+      serialCode: serialCode,
+      dynamicLink: dynamicLink,
     };
 
     createProfileMutation.mutate(profileData);
