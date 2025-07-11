@@ -41,6 +41,8 @@ export const profiles = pgTable("profiles", {
   bio: text("bio").notNull(),
   profileImage: text("profile_image").notNull(),
   relationshipStatus: text("relationship_status").notNull(),
+  jobTitle: text("job_title").notNull(),
+  area: text("area").notNull(),
   email: text("email").notNull(),
   phone: text("phone"),
   

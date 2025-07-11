@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, MapPin } from "lucide-react";
+import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, MapPin, Briefcase } from "lucide-react";
 import type { Question, InsertSubmission, Profile } from "@shared/schema";
 
 interface DynamicProfileProps {
@@ -149,12 +149,31 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             {profile.bio}
           </p>
           
-          {/* Relationship Status */}
-          <div className="flex items-center justify-center gap-2 mt-4">
-            {getRelationshipIcon(profile.relationshipStatus)}
-            <span className="text-white/70 text-sm capitalize">
-              {profile.relationshipStatus.replace('-', ' ')}
-            </span>
+          {/* Profile Details */}
+          <div className="flex flex-col items-center gap-3 mt-4">
+            {/* Relationship Status */}
+            <div className="flex items-center gap-2">
+              {getRelationshipIcon(profile.relationshipStatus)}
+              <span className="text-white/70 text-sm capitalize">
+                {profile.relationshipStatus.replace('-', ' ')}
+              </span>
+            </div>
+            
+            {/* Job Title & Area */}
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Briefcase className="w-4 h-4 text-white/70" />
+                <span className="text-white/70 text-sm capitalize">
+                  {profile.jobTitle?.replace('-', ' ')}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-white/70" />
+                <span className="text-white/70 text-sm capitalize">
+                  {profile.area?.replace('-', ' ')}
+                </span>
+              </div>
+            </div>
           </div>
         </Card>
 

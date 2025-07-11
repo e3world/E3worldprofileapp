@@ -271,7 +271,6 @@ export default function OnboardingPhase1() {
                   <SelectItem value="student">Student</SelectItem>
                   <SelectItem value="public-services">Public Services</SelectItem>
                   <SelectItem value="arts-entertainment">Arts & Entertainment</SelectItem>
-                  <SelectItem value="creative">Creative</SelectItem>
                   <SelectItem value="politics">Politics</SelectItem>
                   <SelectItem value="engineering">Engineering</SelectItem>
                   <SelectItem value="sport">Sport</SelectItem>

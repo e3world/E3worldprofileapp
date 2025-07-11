@@ -101,6 +101,8 @@ export default function OnboardingPhase3() {
       bio: bio,
       profileImage: profileImage,
       relationshipStatus: phase1Data.relationshipStatus,
+      jobTitle: phase1Data.jobTitle,
+      area: phase1Data.area,
       email: phase1Data.email,
       phone: phase1Data.phone || null,
       links: phase2Data,
