@@ -157,23 +157,25 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             
             {/* Profile Details */}
             {!profile.hidePersonalInfo && (
-              <div className="flex flex-col items-center gap-3 mt-4">
-                {/* Relationship Status */}
-                <div className="flex items-center gap-2">
-                  {getRelationshipIcon(profile.relationshipStatus)}
-                  <span className="text-white/70 text-sm capitalize">
-                    {profile.relationshipStatus.replace('-', ' ')}
-                  </span>
-                </div>
-                
-                {/* Job Title & Area */}
-                <div className="flex items-center gap-4">
+              <div className="flex justify-center mt-4">
+                <div className="flex items-center gap-4 px-4 py-2 border-2 border-white/30 rounded-full bg-white/5 backdrop-blur-sm">
+                  {/* Relationship Status */}
+                  <div className="flex items-center gap-2">
+                    {getRelationshipIcon(profile.relationshipStatus)}
+                    <span className="text-white/70 text-sm capitalize">
+                      {profile.relationshipStatus.replace('-', ' ')}
+                    </span>
+                  </div>
+                  
+                  {/* Job Title */}
                   <div className="flex items-center gap-2">
                     <Briefcase className="w-4 h-4 text-white/70" />
                     <span className="text-white/70 text-sm capitalize">
                       {profile.jobTitle?.replace('-', ' ')}
                     </span>
                   </div>
+                  
+                  {/* Area */}
                   <div className="flex items-center gap-2">
                     <MapPin className="w-4 h-4 text-white/70" />
                     <span className="text-white/70 text-sm capitalize">
