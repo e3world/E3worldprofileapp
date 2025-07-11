@@ -317,7 +317,7 @@ export default function OnboardingPhase3() {
               onClick={handleFinish}
               disabled={createProfileMutation.isPending || !acceptedTerms || !acceptedPrivacy}
               variant="outline"
-              className="flex items-center gap-2 border-[#e7e6e3]/20 text-[#e7e6e3] hover:bg-[#e7e6e3]/10 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 border-[#e7e6e3]/20 text-[#292929] hover:bg-[#e7e6e3]/10 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {createProfileMutation.isPending ? (
                 "Creating Profile..."
