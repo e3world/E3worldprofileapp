@@ -10,8 +10,6 @@ import { Music, Instagram, Globe } from "lucide-react";
 import type { Question, InsertSubmission } from "@shared/schema";
 import greenGradientGif from "@assets/download (3)_1752194334958.gif";
 import brownGradientGif from "@assets/download (4)_1752194334959.gif";
-import greenGradientGif from "@assets/download (3)_1752194334958.gif";
-import brownGradientGif from "@assets/download (4)_1752194334959.gif";
 
 interface ProfileData {
   name: string;
@@ -172,6 +170,7 @@ export default function Profile() {
                 </div>
               </Button>
             ))}
+          </div>
           </div>
         </Card>
 
