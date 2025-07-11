@@ -8,6 +8,18 @@ This is a full-stack web application built with React and Express that creates p
 
 Preferred communication style: Simple, everyday language.
 
+## Brand Identity
+
+Brand colors:
+- Primary: #e7e6e3 (Eggshell white)
+- Secondary: #292929 (Grey-black)
+
+Design principles:
+- Mobile-first approach
+- Clean dividers for section headings
+- Minimalist aesthetic
+- Consistent spacing and typography
+
 ## System Architecture
 
 ### Frontend Architecture
