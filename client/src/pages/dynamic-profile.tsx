@@ -295,7 +295,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             
             {/* Divider */}
             <div className="flex items-center justify-center mb-8">
-              <div className="flex-1 h-0.5 bg-white"></div>
+              <div className="flex-1 h-px bg-white/40"></div>
             </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">
