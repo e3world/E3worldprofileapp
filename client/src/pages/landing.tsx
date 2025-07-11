@@ -34,11 +34,11 @@ export default function Landing() {
       <div className="absolute inset-0 bg-black/30" />
       
       {/* Navigation Bar with E3 Logo */}
-      <div className="relative z-20 flex justify-start items-center p-6">
+      <div className="relative z-20 flex justify-center items-center p-6">
         <img 
           src={e3Logo}
           alt="E3 Logo"
-          className="w-12 h-12 object-contain"
+          className="w-36 h-36 object-contain"
         />
       </div>
       
