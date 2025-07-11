@@ -1,0 +1,105 @@
+📌 Layout & Container Structure
+Container Sizes:
+
+Each card component uses a consistent border-radius of roughly 24px.
+
+Padding inside cards is even, estimated at 24px - 32px from text/content to card edge.
+
+Vertical spacing between sections within cards appears to be 16px - 24px.
+
+Cards use a fixed width, likely around 320–360px for mobile or small viewport devices, with auto margin for horizontal centering.
+
+Margins:
+
+External margins around cards are likely 16px–24px top/bottom, and auto horizontally.
+
+Consistent top margins between header text and content (~24px) within each card.
+
+📌 Typography
+Font Size:
+
+Large headings (e.g. “Chris Alli”, “Connect with me”, “Question About me”):
+
+Estimated at 24px–28px font size.
+
+Bold weight, probably 600–700.
+
+Subheadings (e.g. "Full time model and content creator", "Select an option below"):
+
+Estimated at 16px–18px font size.
+
+Regular weight (400–500).
+
+Button text and form labels:
+
+14px–16px font size.
+
+Medium weight (500–600).
+
+Line Height:
+
+Heading line height: 1.2–1.4.
+
+Body text and labels: 1.4–1.6 for readability.
+
+Letter Spacing:
+
+Generally normal to tight (likely 0 to -0.2px for headings to create a clean, modern look).
+
+Button labels possibly use slight positive letter-spacing (+0.2px).
+
+📌 Buttons & Form Controls
+Button Sizing:
+
+Height: Approximately 48px.
+
+Border-radius: Consistent 24px for pill-shaped buttons.
+
+Padding: 16px 24px inside buttons.
+
+Dropdown & Input Fields:
+
+Same button height (48px), ensuring UI consistency.
+
+Border thickness estimated at 1–1.5px.
+
+Dropdown indicator (chevron icon) sized proportionally at 16–20px.
+
+Spacing:
+
+Vertical space between input controls: 16px–20px.
+
+Between button and input fields: 24px.
+
+📌 Visual Hierarchy & Layout Flow
+Clear visual hierarchy established through:
+
+Larger, bold headings.
+
+Medium-weight subtext.
+
+Adequate spacing between elements.
+
+Prominent, full-width buttons to guide interaction flow.
+
+Grouping:
+
+Elements logically grouped into card containers.
+
+Related actions (playlist, social, book link) consistently styled and equally spaced.
+
+Alignment:
+
+All text and controls left-aligned within containers.
+
+Button content (text and icon) aligned horizontally and centered within button bounds.
+
+📌 Overall UX Observations
+Layout is mobile-first responsive — consistent card widths, full-width controls.
+
+High tap target areas — buttons and dropdowns exceed minimum recommended sizes (44x44px for mobile).
+
+Clean visual hierarchy enables effortless content scanning.
+
+Interactive elements follow a uniform design language, reducing cognitive load.
+
