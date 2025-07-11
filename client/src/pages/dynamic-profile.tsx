@@ -19,15 +19,15 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Music: <Music className="w-12 h-12 text-white" />,
-    Instagram: <Instagram className="w-12 h-12 text-white" />,
-    Globe: <Globe className="w-12 h-12 text-white" />,
-    Youtube: <Youtube className="w-12 h-12 text-white" />,
-    Twitter: <Twitter className="w-12 h-12 text-white" />,
-    Linkedin: <Linkedin className="w-12 h-12 text-white" />,
-    Github: <Github className="w-12 h-12 text-white" />,
+    Music: <Music className="w-12 h-12 text-gray-700" />,
+    Instagram: <Instagram className="w-12 h-12 text-gray-700" />,
+    Globe: <Globe className="w-12 h-12 text-gray-700" />,
+    Youtube: <Youtube className="w-12 h-12 text-gray-700" />,
+    Twitter: <Twitter className="w-12 h-12 text-gray-700" />,
+    Linkedin: <Linkedin className="w-12 h-12 text-gray-700" />,
+    Github: <Github className="w-12 h-12 text-gray-700" />,
   };
-  return icons[iconName as keyof typeof icons] || <Globe className="w-12 h-12 text-white" />;
+  return icons[iconName as keyof typeof icons] || <Globe className="w-12 h-12 text-gray-700" />;
 };
 
 const getRelationshipIcon = (status: string) => {
@@ -251,8 +251,15 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="rounded-2xl shadow-lg border-0 relative overflow-hidden system-panel time-adaptive-bg" style={{ 
-          background: 'linear-gradient(135deg, #1B1B1B 0%, #3C3C3C 50%, #5BA199 100%)'
+        <Card className="relative overflow-hidden system-panel time-adaptive-bg" style={{ 
+          background: 'rgba(254, 254, 250, 0.2)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderRadius: '16px',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+          padding: '2rem',
+          color: '#1B1B1B'
         }}>
           <div 
             className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
@@ -266,7 +273,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           ></div>
           <div className="relative z-10">
             <div className="mb-8 text-center">
-              <p className="text-white/90 text-lg leading-relaxed typewriter-animation">
+              <p className="text-gray-800 text-lg leading-relaxed typewriter-animation">
                 {profile.bio}
               </p>
             </div>
@@ -278,10 +285,10 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                   onClick={() => handleExternalLinkClick(link.url)}
                   className="cursor-pointer group"
                 >
-                  <div className="w-32 h-32 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-3">
+                  <div className="w-32 h-32 bg-white/20 backdrop-blur-sm border-2 border-gray-300/50 rounded-2xl flex items-center justify-center hover:bg-white/30 transition-all duration-200 hover:scale-105 transform mb-3">
                     {getIconComponent(link.icon)}
                   </div>
-                  <p className="text-white/90 text-xs font-medium text-center max-w-32 truncate">
+                  <p className="text-gray-800 text-xs font-medium text-center max-w-32 truncate">
                     {link.name}
                   </p>
                 </div>
@@ -291,7 +298,16 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-2xl shadow-lg border-0 relative overflow-hidden system-panel time-adaptive-bg">
+        <Card className="relative overflow-hidden system-panel time-adaptive-bg" style={{ 
+          background: 'rgba(254, 254, 250, 0.2)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderRadius: '16px',
+          border: '1px solid rgba(255, 255, 255, 0.25)',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+          padding: '2rem',
+          color: '#1B1B1B'
+        }}>
           <div 
             className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
             style={{
