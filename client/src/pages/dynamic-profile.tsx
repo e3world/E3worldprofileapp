@@ -309,7 +309,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                     {getIconComponent(link.icon)}
                   </div>
                   <div className="bg-[#1b1b1b] rounded-lg px-3 py-2 max-w-32 mx-auto">
-                    <p className="text-white text-lg font-medium text-center truncate">
+                    <p className="text-white text-base font-medium text-center truncate">
                       {link.name}
                     </p>
                   </div>
