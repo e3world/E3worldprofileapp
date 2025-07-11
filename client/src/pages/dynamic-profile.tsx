@@ -234,7 +234,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0 opacity-50"
             style={{
@@ -254,10 +254,10 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             </div>
             
             {isLoadingQuestion ? (
-              <div className="text-white/90 text-center">Loading question...</div>
+              <div className="text-gray-700 text-center">Loading question...</div>
             ) : currentQuestion ? (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <p className="text-white/90 text-lg mb-6">
+                <p className="text-gray-700 text-lg mb-6">
                   {currentQuestion.text}
                 </p>
                 
@@ -269,7 +269,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                     className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                       selectedAnswer === 'earth' 
                         ? "border-[#8B4513] bg-[#8B4513] text-white" 
-                        : "border-white/20 bg-white/10 hover:border-[#8B4513]/40 text-white"
+                        : "border-gray-300 bg-white/50 hover:border-[#8B4513]/40 text-gray-700"
                     }`}
                   >
                     <div className="w-6 h-6 bg-[#8B4513] rounded-full border-2 border-white shadow-inner"></div>
@@ -282,7 +282,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                     className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                       selectedAnswer === 'land' 
                         ? "border-[#228B22] bg-[#228B22] text-white" 
-                        : "border-white/20 bg-white/10 hover:border-[#228B22]/40 text-white"
+                        : "border-gray-300 bg-white/50 hover:border-[#228B22]/40 text-gray-700"
                     }`}
                   >
                     <div className="w-6 h-6 bg-[#228B22] rounded-full border-2 border-white shadow-inner"></div>
@@ -295,7 +295,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                     className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                       selectedAnswer === 'sea' 
                         ? "border-[#0066CC] bg-[#0066CC] text-white" 
-                        : "border-white/20 bg-white/10 hover:border-[#0066CC]/40 text-white"
+                        : "border-gray-300 bg-white/50 hover:border-[#0066CC]/40 text-gray-700"
                     }`}
                   >
                     <div className="w-6 h-6 bg-[#0066CC] rounded-full border-2 border-white shadow-inner"></div>
@@ -309,20 +309,20 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto"
+                  className="w-full bg-white/70 backdrop-blur-sm border-2 border-gray-300 rounded-full py-4 px-6 text-gray-700 placeholder-gray-500 focus:ring-2 focus:ring-gray-400 focus:border-gray-400 transition-all duration-200 h-auto"
                 />
                 
                 {/* Submit Button */}
                 <Button
                   type="submit"
                   disabled={submitAnswerMutation.isPending}
-                  className="w-full bg-black/80 hover:bg-black text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
+                  className="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-gray-400 h-auto"
                 >
                   {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
                 </Button>
               </form>
             ) : (
-              <div className="text-white/90 text-center">No question available</div>
+              <div className="text-gray-700 text-center">No question available</div>
             )}
           </div>
         </Card>
