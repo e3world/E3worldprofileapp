@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Music, Instagram, Globe } from "lucide-react";
+import { Music, Instagram, ExternalLink } from "lucide-react";
 import type { Question, InsertSubmission } from "@shared/schema";
 import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
@@ -43,7 +43,7 @@ const externalLinks: ExternalLink[] = [
   {
     name: "Chris model Book",
     url: "https://chrisalli.com/portfolio",
-    icon: <Globe className="w-8 h-8 text-white" />
+    icon: <ExternalLink className="w-8 h-8 text-white" />
   }
 ];
 
