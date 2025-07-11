@@ -326,52 +326,75 @@ export default function OnboardingPhase3() {
                 <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
               </div>
               <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-40 overflow-y-auto mb-4">
-                <p className="font-medium text-[#e7e6e3]">Data Protection Commitment</p>
-                <p>E3WORLD LTD is committed to protecting your personal and sensitive data through industry-standard security measures:</p>
+                <p className="font-medium text-[#e7e6e3]">E3WORLD LTD Privacy Policy</p>
+                <p>This policy governs how E3WORLD LTD collects, stores, and processes your information:</p>
                 
                 <div className="space-y-2">
                   <div>
-                    <p className="font-medium text-[#e7e6e3]/90">Data Collection:</p>
+                    <p className="font-medium text-[#e7e6e3]/90">Information We Collect:</p>
                     <ul className="list-disc pl-4 space-y-1">
-                      <li>We collect personal and sensitive data required for service functionality</li>
-                      <li>Data is used to provide optimized user experience</li>
-                      <li>Information collected includes profile details and usage patterns</li>
+                      <li>Personal Identification Information (name, address, date of birth, contact details)</li>
+                      <li>Profile Data (responses to questions, smart links, profile images)</li>
+                      <li>Device Data (hardware IDs, NFC tag readings, usage logs)</li>
+                      <li>Communications Data (emails, support requests)</li>
+                      <li>Technical Data (IP addresses, browser types, device information)</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <p className="font-medium text-[#e7e6e3]/90">Data Security:</p>
+                    <p className="font-medium text-[#e7e6e3]/90">Use of Data:</p>
                     <ul className="list-disc pl-4 space-y-1">
-                      <li>Industry-standard security measures employed for data protection</li>
-                      <li>No system is entirely immune from unauthorized access</li>
-                      <li>Company exhausts reasonable resources for prevention and mitigation</li>
+                      <li>To provide, maintain, and enhance the Service's features</li>
+                      <li>To personalise user experiences and interactions</li>
+                      <li>To facilitate direct and indirect communications with users</li>
+                      <li>For internal business analytics and service improvements</li>
+                      <li>For promotional, marketing, and commercial purposes within and beyond the E3 ecosystem</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <p className="font-medium text-[#e7e6e3]/90">Data Usage:</p>
+                    <p className="font-medium text-[#e7e6e3]/90">External Data Usage:</p>
                     <ul className="list-disc pl-4 space-y-1">
-                      <li>Personal data used for operational service delivery</li>
-                      <li>Profile information displayed to other users as intended</li>
-                      <li>Data may be used for service improvement and optimization</li>
+                      <li>We may share aggregated, anonymized, or non-personally identifiable data with third parties</li>
+                      <li>For research, marketing, and commercial purposes</li>
+                      <li>Explicit consent sought for sharing identifiable personal data externally</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <p className="font-medium text-[#e7e6e3]/90">Your Rights:</p>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Retention:</p>
                     <ul className="list-disc pl-4 space-y-1">
-                      <li>Request permanent deletion of personal data via hello@e3world.co.uk</li>
-                      <li>Data deletion processed within 30 calendar days</li>
-                      <li>Rights exercised in accordance with applicable data protection laws</li>
+                      <li>Data retained for duration necessary to fulfil outlined purposes</li>
+                      <li>May be retained for analytics, backup, and legal obligations after account termination</li>
+                      <li>Except where deletion is lawfully requested by the user</li>
                     </ul>
                   </div>
                   
                   <div>
-                    <p className="font-medium text-[#e7e6e3]/90">Data Breach Acknowledgment:</p>
+                    <p className="font-medium text-[#e7e6e3]/90">Security of Data:</p>
                     <ul className="list-disc pl-4 space-y-1">
-                      <li>Users acknowledge potential risks of data breaches</li>
-                      <li>E3WORLD LTD not liable for data loss or corruption</li>
-                      <li>Company commits to reasonable prevention and response measures</li>
+                      <li>Appropriate administrative, technical, and physical safeguards implemented</li>
+                      <li>Protection against unauthorized access, disclosure, alteration, and destruction</li>
+                      <li>No security measure is completely infallible - you acknowledge this risk</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Data Subject Rights:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Access, rectify, or erase your personal data</li>
+                      <li>Restrict or object to certain processing activities</li>
+                      <li>Request data portability and withdraw consent</li>
+                      <li>Contact hello@e3world.co.uk to exercise these rights</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="font-medium text-[#e7e6e3]/90">Governing Law:</p>
+                    <ul className="list-disc pl-4 space-y-1">
+                      <li>Policy governed by laws of England and Wales</li>
+                      <li>Disputes subject to exclusive jurisdiction of English courts</li>
+                      <li>E3WORLD LTD reserves right to amend without prior notice</li>
                     </ul>
                   </div>
                 </div>
