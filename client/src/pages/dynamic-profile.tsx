@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -17,33 +17,34 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Music: <Music className="w-6 h-6 text-white" />,
-    Instagram: <Instagram className="w-6 h-6 text-white" />,
-    Globe: <Globe className="w-6 h-6 text-white" />,
-    Youtube: <Youtube className="w-6 h-6 text-white" />,
-    Twitter: <Twitter className="w-6 h-6 text-white" />,
-    Linkedin: <Linkedin className="w-6 h-6 text-white" />,
-    Github: <Github className="w-6 h-6 text-white" />,
+    Music: <Music className="w-6 h-6 text-[#292929]" />,
+    Instagram: <Instagram className="w-6 h-6 text-[#292929]" />,
+    Globe: <Globe className="w-6 h-6 text-[#292929]" />,
+    Youtube: <Youtube className="w-6 h-6 text-[#292929]" />,
+    Twitter: <Twitter className="w-6 h-6 text-[#292929]" />,
+    Linkedin: <Linkedin className="w-6 h-6 text-[#292929]" />,
+    Github: <Github className="w-6 h-6 text-[#292929]" />,
   };
-  return icons[iconName as keyof typeof icons] || <Globe className="w-6 h-6 text-white" />;
+  return icons[iconName as keyof typeof icons] || <Globe className="w-6 h-6 text-[#292929]" />;
 };
 
 const getRelationshipIcon = (status: string) => {
   switch (status) {
     case 'single':
-      return <Heart className="w-4 h-4 text-white/70" />;
+      return <Heart className="w-4 h-4 text-[#292929]/70" />;
     case 'dating':
     case 'engaged':
     case 'married':
       return <Heart className="w-4 h-4 text-red-400" />;
     default:
-      return <Heart className="w-4 h-4 text-white/70" />;
+      return <Heart className="w-4 h-4 text-[#292929]/70" />;
   }
 };
 
 export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [displayedBio, setDisplayedBio] = useState<string>("");
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -115,6 +116,34 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  // Typewriter effect for bio
+  useEffect(() => {
+    if (!profile?.bio) return;
+    
+    let index = 0;
+    let isDeleting = false;
+    const fullText = profile.bio;
+    
+    const typewriterEffect = () => {
+      if (!isDeleting && index < fullText.length) {
+        setDisplayedBio(fullText.substring(0, index + 1));
+        index++;
+        setTimeout(typewriterEffect, 100);
+      } else if (!isDeleting && index === fullText.length) {
+        setTimeout(() => { isDeleting = true; typewriterEffect(); }, 5000);
+      } else if (isDeleting && index > 0) {
+        setDisplayedBio(fullText.substring(0, index - 1));
+        index--;
+        setTimeout(typewriterEffect, 50);
+      } else if (isDeleting && index === 0) {
+        isDeleting = false;
+        setTimeout(typewriterEffect, 500);
+      }
+    };
+    
+    typewriterEffect();
+  }, [profile?.bio]);
+
   if (isLoadingProfile) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 flex items-center justify-center">
@@ -132,36 +161,39 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4">
-      <div className="max-w-sm mx-auto space-y-6">
-        
-        {/* Profile Identity Section */}
-        <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${profile.profileImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-700/30"></div>
-          <div className="relative z-10">
-            <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
-              {profile.name}
+    <div 
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${profile.profileImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center p-4">
+        <div className="max-w-sm mx-auto space-y-6 text-center">
+          
+          {/* Bio Container */}
+          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-xl border-0">
+            <h1 className="text-[#292929] text-2xl font-bold mb-4 tracking-tight">
+              Hi I'm {profile.name}
             </h1>
-            <p className="text-white/90 text-lg leading-relaxed mb-4">
-              {profile.bio}
+            <p className="text-[#292929]/80 text-lg leading-relaxed mb-4 font-mono min-h-[3rem]">
+              {displayedBio}
+              <span className="animate-pulse">|</span>
             </p>
             
             {/* Profile Details */}
             {!profile.hidePersonalInfo && (
-              <div className="flex flex-col items-center gap-3 mt-4">
+              <div className="flex flex-col items-center gap-2 mt-4 pt-4 border-t border-[#292929]/20">
                 {/* Relationship Status */}
                 <div className="flex items-center gap-2">
                   {getRelationshipIcon(profile.relationshipStatus)}
-                  <span className="text-white/70 text-sm capitalize">
+                  <span className="text-[#292929]/70 text-sm capitalize">
                     {profile.relationshipStatus.replace('-', ' ')}
                   </span>
                 </div>
@@ -169,14 +201,14 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 {/* Job Title & Area */}
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-white/70" />
-                    <span className="text-white/70 text-sm capitalize">
+                    <Briefcase className="w-4 h-4 text-[#292929]/70" />
+                    <span className="text-[#292929]/70 text-sm capitalize">
                       {profile.jobTitle?.replace('-', ' ')}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-white/70" />
-                    <span className="text-white/70 text-sm capitalize">
+                    <MapPin className="w-4 h-4 text-[#292929]/70" />
+                    <span className="text-[#292929]/70 text-sm capitalize">
                       {profile.area?.replace('-', ' ')}
                     </span>
                   </div>
@@ -184,119 +216,91 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               </div>
             )}
           </div>
-        </Card>
 
-        {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 opacity-50"
-            style={{
-              backgroundImage: `url(${greenGradientGif})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="relative z-10">
-            <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
-              Connect with me
-            </h2>
-            <p className="text-white/90 text-base mb-8">
-              Select an option below:
-            </p>
-            
-            <div className="grid grid-cols-3 gap-6 justify-items-center">
-              {profile.links.map((link, index) => (
-                <div 
-                  key={index}
-                  onClick={() => handleExternalLinkClick(link.url)}
-                  className="cursor-pointer group"
-                >
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
-                    {getIconComponent(link.icon)}
-                  </div>
-                  <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
-                    {link.name}
-                  </p>
+          {/* Vertical Links */}
+          <div className="flex flex-col items-center gap-4">
+            {profile.links.map((link, index) => (
+              <div 
+                key={index}
+                onClick={() => handleExternalLinkClick(link.url)}
+                className="cursor-pointer group flex flex-col items-center"
+              >
+                <div className="w-20 h-20 bg-white/90 backdrop-blur-sm border-2 border-white/50 rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 hover:scale-105 transform mb-2 shadow-lg">
+                  {getIconComponent(link.icon)}
                 </div>
-              ))}
-            </div>
-          </div>
-        </Card>
-
-        {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 opacity-50"
-            style={{
-              backgroundImage: `url(${brownGradientGif})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="relative z-10">
-            <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
-              Question About me
-            </h2>
-            
-            {isLoadingQuestion ? (
-              <div className="text-white/90 text-center">Loading question...</div>
-            ) : currentQuestion ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <p className="text-white/90 text-lg mb-6">
-                  {currentQuestion.text}
+                <p className="text-white text-sm font-medium text-center bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full">
+                  {link.name}
                 </p>
-                
-                {/* Custom Dropdown */}
-                <div className="relative">
-                  <Select value={selectedAnswer} onValueChange={setSelectedAnswer}>
-                    <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto">
-                      <SelectValue placeholder="– Select option –" className="text-white/90" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {currentQuestion.options.map((option, index) => (
-                        <SelectItem key={index} value={option.toLowerCase()}>
-                          {option}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                
-                {/* Email Input */}
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto"
-                />
-                
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={submitAnswerMutation.isPending}
-                  className="w-full bg-black/80 hover:bg-black text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
-                >
-                  {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
-                </Button>
-              </form>
-            ) : (
-              <div className="text-white/90 text-center">No question available</div>
-            )}
+              </div>
+            ))}
           </div>
-        </Card>
 
-        {/* Footer */}
-        <div className="text-center">
-          <Button 
-            onClick={() => window.location.href = "/onboarding/phase1"}
-            variant="ghost" 
-            className="text-white hover:bg-white/10 rounded-full"
-          >
-            Create Your Own Profile
-          </Button>
+          {/* Question Section */}
+          {isLoadingQuestion ? (
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl">
+              <div className="text-[#292929]/70 text-center py-8">
+                Loading question...
+              </div>
+            </div>
+          ) : currentQuestion ? (
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl">
+              <h2 className="text-[#292929] text-xl font-bold mb-3 tracking-tight">
+                Question about me
+              </h2>
+              <p className="text-[#292929]/70 text-sm mb-6">
+                Guess the answer and submit to get to know me better!
+              </p>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="text-center">
+                  <p className="text-[#292929] text-lg font-medium mb-4">
+                    {currentQuestion.text}
+                  </p>
+                  
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    {currentQuestion.options.map((option, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        onClick={() => setSelectedAnswer(option)}
+                        className={`p-3 rounded-xl border-2 transition-all duration-200 text-sm ${
+                          selectedAnswer === option
+                            ? 'bg-[#292929] text-white border-[#292929] shadow-lg'
+                            : 'bg-white text-[#292929] border-[#292929]/30 hover:bg-[#292929]/10'
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <Input
+                      type="email"
+                      placeholder="Your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="bg-white border-[#292929]/30 text-[#292929] placeholder:text-[#292929]/50"
+                    />
+                    
+                    <Button
+                      type="submit"
+                      disabled={submitAnswerMutation.isPending}
+                      className="w-full bg-[#292929] text-white hover:bg-[#292929]/90 font-medium py-3 rounded-xl"
+                    >
+                      {submitAnswerMutation.isPending ? "Submitting..." : "Submit Answer"}
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          ) : (
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl">
+              <div className="text-[#292929]/70 text-center py-8">
+                No question available at the moment.
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
