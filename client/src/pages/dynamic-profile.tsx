@@ -208,7 +208,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             }}
           ></div>
           <div className="relative z-10">
-            <div className="mb-8">
+            <div className="mb-8 text-center">
               <p className="text-white/90 text-lg leading-relaxed typewriter-animation">
                 {profile.bio}
               </p>
@@ -244,7 +244,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               backgroundRepeat: 'no-repeat'
             }}
           ></div>
-          <div className="relative z-10">
+          <div className="relative z-10 text-center">
             <div className="flex justify-center mb-6">
               <img 
                 src={e3Logo} 
@@ -252,9 +252,6 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 className="w-20 h-20 object-contain"
               />
             </div>
-            <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
-              Question About me
-            </h2>
             
             {isLoadingQuestion ? (
               <div className="text-white/90 text-center">Loading question...</div>
@@ -264,20 +261,37 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                   {currentQuestion.text}
                 </p>
                 
-                {/* Custom Dropdown */}
-                <div className="relative">
-                  <Select value={selectedAnswer} onValueChange={setSelectedAnswer}>
-                    <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto">
-                      <SelectValue placeholder="– Select option –" className="text-white/90" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {currentQuestion.options.map((option, index) => (
-                        <SelectItem key={index} value={option.toLowerCase()}>
-                          {option}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                {/* Button Options */}
+                <div className="space-y-4">
+                  <Button
+                    type="button"
+                    onClick={() => setSelectedAnswer('earth')}
+                    className={`w-full bg-amber-800 hover:bg-amber-900 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto ${
+                      selectedAnswer === 'earth' ? 'ring-2 ring-white/50' : ''
+                    }`}
+                  >
+                    Earth
+                  </Button>
+                  
+                  <Button
+                    type="button"
+                    onClick={() => setSelectedAnswer('land')}
+                    className={`w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto ${
+                      selectedAnswer === 'land' ? 'ring-2 ring-white/50' : ''
+                    }`}
+                  >
+                    Land
+                  </Button>
+                  
+                  <Button
+                    type="button"
+                    onClick={() => setSelectedAnswer('sea')}
+                    className={`w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto ${
+                      selectedAnswer === 'sea' ? 'ring-2 ring-white/50' : ''
+                    }`}
+                  >
+                    Sea
+                  </Button>
                 </div>
                 
                 {/* Email Input */}
