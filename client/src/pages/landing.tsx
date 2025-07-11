@@ -13,13 +13,10 @@ export default function Landing() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Full-page GIF Background */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${startingGif})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+      <img 
+        src={startingGif}
+        alt="Landing background"
+        className="absolute inset-0 w-full h-full object-cover"
       />
       
       {/* Overlay for better text visibility */}
