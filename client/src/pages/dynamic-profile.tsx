@@ -17,15 +17,28 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Music: <Music className="w-6 h-6 text-white" />,
-    Instagram: <Instagram className="w-6 h-6 text-white" />,
-    Globe: <Globe className="w-6 h-6 text-white" />,
-    Youtube: <Youtube className="w-6 h-6 text-white" />,
-    Twitter: <Twitter className="w-6 h-6 text-white" />,
-    Linkedin: <Linkedin className="w-6 h-6 text-white" />,
-    Github: <Github className="w-6 h-6 text-white" />,
+    Music: <Music className="w-8 h-8 text-white" />,
+    Instagram: <Instagram className="w-8 h-8 text-white" />,
+    Globe: <Globe className="w-8 h-8 text-white" />,
+    Youtube: <Youtube className="w-8 h-8 text-white" />,
+    Twitter: <Twitter className="w-8 h-8 text-white" />,
+    Linkedin: <Linkedin className="w-8 h-8 text-white" />,
+    Github: <Github className="w-8 h-8 text-white" />,
   };
-  return icons[iconName as keyof typeof icons] || <Globe className="w-6 h-6 text-white" />;
+  return icons[iconName as keyof typeof icons] || <Globe className="w-8 h-8 text-white" />;
+};
+
+const getIconBackgroundColor = (iconName: string) => {
+  const colors = {
+    Music: "bg-green-500", // Spotify green
+    Instagram: "bg-gradient-to-br from-purple-500 to-pink-500", // Instagram gradient
+    Globe: "bg-blue-500", // Generic web blue
+    Youtube: "bg-red-500", // YouTube red
+    Twitter: "bg-blue-400", // Twitter blue
+    Linkedin: "bg-blue-600", // LinkedIn blue
+    Github: "bg-gray-800", // GitHub dark
+  };
+  return colors[iconName as keyof typeof colors] || "bg-blue-500";
 };
 
 const getRelationshipIcon = (status: string) => {
@@ -136,7 +149,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
       <div className="max-w-sm mx-auto space-y-6">
         
         {/* Profile Identity Section */}
-        <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
+        <Card className="rounded-3xl p-12 text-center shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0"
             style={{
@@ -147,35 +160,35 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             }}
           ></div>
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-700/30"></div>
-          <div className="relative z-10">
-            <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
+          <div className="relative z-10 py-8">
+            <h1 className="text-white text-4xl font-bold mb-6 tracking-tight">
               {profile.name}
             </h1>
-            <p className="text-white/90 text-lg leading-relaxed mb-4">
+            <p className="text-white/90 text-xl leading-relaxed mb-6">
               {profile.bio}
             </p>
             
             {/* Profile Details */}
-            <div className="flex flex-col items-center gap-3 mt-4">
+            <div className="flex flex-col items-center gap-4 mt-6">
               {/* Relationship Status */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 {getRelationshipIcon(profile.relationshipStatus)}
-                <span className="text-white/70 text-sm capitalize">
+                <span className="text-white/70 text-base capitalize">
                   {profile.relationshipStatus.replace('-', ' ')}
                 </span>
               </div>
               
               {/* Job Title & Area */}
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-white/70" />
-                  <span className="text-white/70 text-sm capitalize">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <Briefcase className="w-5 h-5 text-white/70" />
+                  <span className="text-white/70 text-base capitalize">
                     {profile.jobTitle?.replace('-', ' ')}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-white/70" />
-                  <span className="text-white/70 text-sm capitalize">
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5 text-white/70" />
+                  <span className="text-white/70 text-base capitalize">
                     {profile.area?.replace('-', ' ')}
                   </span>
                 </div>
@@ -185,7 +198,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-10 shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0 opacity-50"
             style={{
@@ -196,24 +209,24 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             }}
           ></div>
           <div className="relative z-10">
-            <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
+            <h2 className="text-white text-3xl font-bold mb-4 tracking-tight">
               Connect with me
             </h2>
-            <p className="text-white/90 text-base mb-8">
+            <p className="text-white/90 text-lg mb-10">
               Select an option below:
             </p>
             
-            <div className="grid grid-cols-3 gap-6 justify-items-center">
+            <div className="grid grid-cols-3 gap-8 justify-items-center">
               {profile.links.map((link, index) => (
                 <div 
                   key={index}
                   onClick={() => handleExternalLinkClick(link.url)}
                   className="cursor-pointer group"
                 >
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
+                  <div className={`w-20 h-20 ${getIconBackgroundColor(link.icon)} rounded-2xl flex items-center justify-center hover:scale-105 transition-all duration-200 shadow-lg mb-3`}>
                     {getIconComponent(link.icon)}
                   </div>
-                  <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
+                  <p className="text-white/90 text-sm font-medium text-center max-w-20 truncate">
                     {link.name}
                   </p>
                 </div>

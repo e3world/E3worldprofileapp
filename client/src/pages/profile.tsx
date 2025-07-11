@@ -33,19 +33,29 @@ const externalLinks: ExternalLink[] = [
   {
     name: "My Playlist",
     url: "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M",
-    icon: <Music className="w-6 h-6 text-white" />
+    icon: <Music className="w-8 h-8 text-white" />
   },
   {
     name: "@chrisalli.a",
     url: "https://instagram.com/chrisalli.a",
-    icon: <Instagram className="w-6 h-6 text-white" />
+    icon: <Instagram className="w-8 h-8 text-white" />
   },
   {
     name: "Chris model Book",
     url: "https://chrisalli.com/portfolio",
-    icon: <Globe className="w-6 h-6 text-white" />
+    icon: <Globe className="w-8 h-8 text-white" />
   }
 ];
+
+const getIconBackgroundColor = (url: string) => {
+  if (url.includes('spotify.com')) return "bg-green-500";
+  if (url.includes('instagram.com')) return "bg-gradient-to-br from-purple-500 to-pink-500";
+  if (url.includes('youtube.com')) return "bg-red-500";
+  if (url.includes('twitter.com')) return "bg-blue-400";
+  if (url.includes('linkedin.com')) return "bg-blue-600";
+  if (url.includes('github.com')) return "bg-gray-800";
+  return "bg-blue-500";
+};
 
 export default function Profile() {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
@@ -121,7 +131,7 @@ export default function Profile() {
       <div className="max-w-sm mx-auto space-y-6">
         
         {/* Chris Alli Identity Section */}
-        <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
+        <Card className="rounded-3xl p-12 text-center shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0"
             style={{
@@ -132,18 +142,18 @@ export default function Profile() {
             }}
           ></div>
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-700/30"></div>
-          <div className="relative z-10">
-            <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
+          <div className="relative z-10 py-8">
+            <h1 className="text-white text-4xl font-bold mb-6 tracking-tight">
               {profileData.name}
             </h1>
-            <p className="text-white/90 text-lg leading-relaxed">
+            <p className="text-white/90 text-xl leading-relaxed">
               {profileData.bio}
             </p>
           </div>
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-10 shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0 opacity-50"
             style={{
@@ -154,24 +164,24 @@ export default function Profile() {
             }}
           ></div>
           <div className="relative z-10">
-          <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
+          <h2 className="text-white text-3xl font-bold mb-4 tracking-tight">
             Connect with me
           </h2>
-          <p className="text-white/90 text-base mb-8">
+          <p className="text-white/90 text-lg mb-10">
             Select an option below:
           </p>
           
-          <div className="grid grid-cols-3 gap-6 justify-items-center">
+          <div className="grid grid-cols-3 gap-8 justify-items-center">
             {externalLinks.map((link, index) => (
               <div 
                 key={index}
                 onClick={() => handleExternalLinkClick(link.url)}
                 className="cursor-pointer group"
               >
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
+                <div className={`w-20 h-20 ${getIconBackgroundColor(link.url)} rounded-2xl flex items-center justify-center hover:scale-105 transition-all duration-200 shadow-lg mb-3`}>
                   {link.icon}
                 </div>
-                <p className="text-white/90 text-xs font-medium text-center max-w-16 truncate">
+                <p className="text-white/90 text-sm font-medium text-center max-w-20 truncate">
                   {link.name}
                 </p>
               </div>
@@ -181,7 +191,7 @@ export default function Profile() {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-10 shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0 opacity-50"
             style={{
@@ -192,23 +202,23 @@ export default function Profile() {
             }}
           ></div>
           <div className="relative z-10">
-            <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
+            <h2 className="text-white text-3xl font-bold mb-8 tracking-tight">
               Question About me
             </h2>
             
             {isLoadingQuestion ? (
-              <div className="text-white/90 text-center">Loading question...</div>
+              <div className="text-white/90 text-center text-lg">Loading question...</div>
             ) : currentQuestion ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <p className="text-white/90 text-lg mb-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <p className="text-white/90 text-xl mb-8 leading-relaxed">
                   {currentQuestion.text}
                 </p>
                 
                 {/* Custom Dropdown */}
                 <div className="relative">
                   <Select value={selectedAnswer} onValueChange={setSelectedAnswer}>
-                    <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto">
-                      <SelectValue placeholder="– Select option –" className="text-white/90" />
+                    <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-6 px-8 text-white text-lg focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto">
+                      <SelectValue placeholder="– Select option –" className="text-white/90 text-lg" />
                     </SelectTrigger>
                     <SelectContent>
                       {currentQuestion.options.map((option, index) => (
@@ -223,33 +233,33 @@ export default function Profile() {
                 {/* Email Input */}
                 <Input
                   type="email"
-                  placeholder="Email"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto"
+                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-6 px-8 text-white text-lg placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto"
                 />
                 
                 {/* Submit Button */}
                 <Button
                   type="submit"
                   disabled={submitAnswerMutation.isPending}
-                  className="w-full bg-black/80 hover:bg-black text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
+                  className="w-full bg-black/80 hover:bg-black text-white font-semibold py-6 px-8 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto text-lg"
                 >
                   {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
                 </Button>
               </form>
             ) : (
-              <div className="text-white/90 text-center">No question available</div>
+              <div className="text-white/90 text-center text-lg">No question available</div>
             )}
           </div>
         </Card>
 
         {/* Create Your Own Profile CTA */}
-        <Card className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl p-8 text-center shadow-lg border-0">
-          <h2 className="text-white text-2xl font-bold mb-4 tracking-tight">
+        <Card className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-3xl p-10 text-center shadow-lg border-0">
+          <h2 className="text-white text-3xl font-bold mb-6 tracking-tight">
             Want Your Own Profile?
           </h2>
-          <p className="text-white/90 text-base mb-6">
+          <p className="text-white/90 text-lg mb-8 leading-relaxed">
             Create a personalized profile page with your own questions and links in just 3 simple steps.
           </p>
           <Button
