@@ -261,6 +261,14 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           padding: '2rem',
           color: '#1B1B1B'
         }}>
+          {/* Gradient Overlay */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(135deg, rgba(254, 254, 250, 0.15), rgba(254, 254, 250, 0.05))',
+              zIndex: 1
+            }}
+          ></div>
           <div 
             className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
             style={{
@@ -271,7 +279,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               opacity: timeData.opacity
             }}
           ></div>
-          <div className="relative z-10">
+          <div className="relative z-10" style={{ zIndex: 2 }}>
             <div className="mb-8 text-center">
               <p className="text-gray-800 text-lg leading-relaxed typewriter-animation max-w-md mx-auto" style={{ lineHeight: '2' }}>
                 {profile.bio}
@@ -317,6 +325,14 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           padding: '2rem',
           color: '#1B1B1B'
         }}>
+          {/* Gradient Overlay */}
+          <div 
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(135deg, rgba(254, 254, 250, 0.15), rgba(254, 254, 250, 0.05))',
+              zIndex: 1
+            }}
+          ></div>
           <div 
             className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
             style={{
@@ -327,7 +343,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               opacity: timeData.opacity
             }}
           ></div>
-          <div className="relative z-10 text-center">
+          <div className="relative z-10 text-center" style={{ zIndex: 2 }}>
             <div className="flex justify-center mb-6">
               <img 
                 src={e3Logo} 
