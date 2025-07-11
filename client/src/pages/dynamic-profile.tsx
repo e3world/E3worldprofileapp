@@ -140,11 +140,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     <div 
       className="min-h-screen p-4 relative"
       style={{
-        backgroundImage: `url(${newBackgroundGif})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
+        background: 'linear-gradient(135deg, #EAE3D2 0%, #FEFEFA 50%, #D3EDE5 100%)'
       }}
     >
       <div className="max-w-sm mx-auto space-y-6">
