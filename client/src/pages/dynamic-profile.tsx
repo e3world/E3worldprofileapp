@@ -161,9 +161,6 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
               {profile.name}
             </h1>
-            <p className="text-white/90 text-lg leading-relaxed mb-4">
-              {profile.bio}
-            </p>
             
             {/* Profile Details */}
             {!profile.hidePersonalInfo && (
@@ -210,9 +207,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             }}
           ></div>
           <div className="relative z-10">
-            <h2 className="text-white text-2xl font-bold mb-8 tracking-tight">
-              Connect with me
-            </h2>
+            <div className="mb-8">
+              <p className="text-white/90 text-lg leading-relaxed typewriter-animation">
+                {profile.bio}
+              </p>
+            </div>
             
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">
               {profile.links.map((link, index) => (
