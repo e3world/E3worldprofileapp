@@ -214,14 +214,14 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               Connect with me
             </h2>
             
-            <div className="grid grid-cols-3 gap-6 justify-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">
               {profile.links.map((link, index) => (
                 <div 
                   key={index}
                   onClick={() => handleExternalLinkClick(link.url)}
                   className="cursor-pointer group"
                 >
-                  <div className="w-32 h-32 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-2">
+                  <div className="w-32 h-32 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-2xl flex items-center justify-center hover:bg-white/20 transition-all duration-200 hover:scale-105 transform mb-3">
                     {getIconComponent(link.icon)}
                   </div>
                   <p className="text-white/90 text-xs font-medium text-center max-w-32 truncate">
