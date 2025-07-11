@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowRight, ArrowLeft, Upload, User } from "lucide-react";
+import { ArrowRight, ArrowLeft, Upload, User, UserCheck, Users, Eye } from "lucide-react";
 
 interface Phase1Data {
   name: string;
@@ -157,36 +157,88 @@ export default function OnboardingPhase1() {
 
             {/* Gender */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Gender *</label>
-              <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30">
-                  <SelectValue placeholder="Select gender" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-[#292929]/20">
-                  <SelectItem value="male">Male</SelectItem>
-                  <SelectItem value="female">Female</SelectItem>
-                  <SelectItem value="non-binary">Non-binary</SelectItem>
-                  <SelectItem value="prefer-not-to-say">Prefer not to say</SelectItem>
-                </SelectContent>
-              </Select>
+              <label className="block text-sm font-medium text-[#292929] mb-2">Gender *</label>
+              <div className="grid grid-cols-3 gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleInputChange("gender", "male")}
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                    formData.gender === "male" 
+                      ? "border-[#292929] bg-[#292929] text-[#e7e6e3]" 
+                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#292929]/40"
+                  }`}
+                >
+                  <User className="w-6 h-6" />
+                  <span className="text-sm font-medium">Male</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleInputChange("gender", "female")}
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                    formData.gender === "female" 
+                      ? "border-[#292929] bg-[#292929] text-[#e7e6e3]" 
+                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#292929]/40"
+                  }`}
+                >
+                  <UserCheck className="w-6 h-6" />
+                  <span className="text-sm font-medium">Female</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleInputChange("gender", "non-binary")}
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                    formData.gender === "non-binary" 
+                      ? "border-[#292929] bg-[#292929] text-[#e7e6e3]" 
+                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#292929]/40"
+                  }`}
+                >
+                  <Users className="w-6 h-6" />
+                  <span className="text-sm font-medium">Non-binary</span>
+                </button>
+              </div>
             </div>
 
             {/* Eye Colour */}
             <div>
-              <label className="block text-sm font-medium text-[#292929] mb-1">Eye Colour *</label>
-              <Select value={formData.eyeColour} onValueChange={(value) => handleInputChange("eyeColour", value)}>
-                <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30">
-                  <SelectValue placeholder="Select eye colour" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-[#292929]/20">
-                  <SelectItem value="brown">Brown</SelectItem>
-                  <SelectItem value="blue">Blue</SelectItem>
-                  <SelectItem value="green">Green</SelectItem>
-                  <SelectItem value="hazel">Hazel</SelectItem>
-                  <SelectItem value="grey">Grey</SelectItem>
-                  <SelectItem value="amber">Amber</SelectItem>
-                </SelectContent>
-              </Select>
+              <label className="block text-sm font-medium text-[#292929] mb-2">Eye Colour *</label>
+              <div className="grid grid-cols-3 gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleInputChange("eyeColour", "brown")}
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                    formData.eyeColour === "brown" 
+                      ? "border-[#8B4513] bg-[#8B4513] text-white" 
+                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#8B4513]/40"
+                  }`}
+                >
+                  <div className="w-6 h-6 bg-[#8B4513] rounded-full border-2 border-white shadow-inner"></div>
+                  <span className="text-sm font-medium">Earth</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleInputChange("eyeColour", "blue")}
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                    formData.eyeColour === "blue" 
+                      ? "border-[#0066CC] bg-[#0066CC] text-white" 
+                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#0066CC]/40"
+                  }`}
+                >
+                  <div className="w-6 h-6 bg-[#0066CC] rounded-full border-2 border-white shadow-inner"></div>
+                  <span className="text-sm font-medium">Sea</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleInputChange("eyeColour", "green")}
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                    formData.eyeColour === "green" 
+                      ? "border-[#228B22] bg-[#228B22] text-white" 
+                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#228B22]/40"
+                  }`}
+                >
+                  <div className="w-6 h-6 bg-[#228B22] rounded-full border-2 border-white shadow-inner"></div>
+                  <span className="text-sm font-medium">Land</span>
+                </button>
+              </div>
             </div>
           </div>
         </Card>
@@ -260,13 +312,23 @@ export default function OnboardingPhase1() {
             {/* Job Title */}
             <div>
               <label className="block text-sm font-medium text-[#292929] mb-1">Job Title *</label>
-              <Input
-                type="text"
-                placeholder="e.g. Software Engineer, Teacher, Student"
-                value={formData.jobTitle}
-                onChange={(e) => handleInputChange("jobTitle", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30"
-              />
+              <Select value={formData.jobTitle} onValueChange={(value) => handleInputChange("jobTitle", value)}>
+                <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#e7e6e3]/30">
+                  <SelectValue placeholder="Select job category" />
+                </SelectTrigger>
+                <SelectContent className="bg-white border-[#292929]/20">
+                  <SelectItem value="retail">Retail</SelectItem>
+                  <SelectItem value="technology">Technology</SelectItem>
+                  <SelectItem value="student">Student</SelectItem>
+                  <SelectItem value="public-services">Public Services</SelectItem>
+                  <SelectItem value="arts-entertainment">Arts & Entertainment</SelectItem>
+                  <SelectItem value="creative">Creative</SelectItem>
+                  <SelectItem value="politics">Politics</SelectItem>
+                  <SelectItem value="engineering">Engineering</SelectItem>
+                  <SelectItem value="sport">Sport</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             {/* Area */}
