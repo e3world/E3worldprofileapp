@@ -207,7 +207,7 @@ export default function OnboardingPhase3() {
                 </h3>
                 <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
               </div>
-              <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
+              <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
                 <p>By using this profile service, you agree to the following terms:</p>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>You will provide accurate and truthful information</li>
@@ -226,22 +226,22 @@ export default function OnboardingPhase3() {
                   onCheckedChange={setAcceptedTerms}
                   className="border-[#292929]/30 data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
-                <label htmlFor="terms" className="text-[#292929] text-sm font-medium">
+                <label htmlFor="terms" className="text-[#e7e6e3] text-sm font-medium">
                   I agree to the Terms of Service
                 </label>
               </div>
             </div>
 
             {/* Privacy Policy */}
-            <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
+            <div className="bg-[#e7e6e3]/10 rounded-lg p-4 border border-[#e7e6e3]/10">
               <div className="flex items-center mb-3">
-                <div className="flex-1 h-px bg-[#292929]/20"></div>
-                <h3 className="px-3 text-[#292929] font-bold text-lg tracking-tight">
+                <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+                <h3 className="px-3 text-[#e7e6e3] font-bold text-lg tracking-tight">
                   PRIVACY <span className="italic font-medium">POLICY</span>
                 </h3>
-                <div className="flex-1 h-px bg-[#292929]/20"></div>
+                <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
               </div>
-              <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
+              <div className="text-[#e7e6e3]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
                 <p>We respect your privacy and are committed to protecting your personal data:</p>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>We collect only the information you provide during registration</li>
@@ -260,21 +260,21 @@ export default function OnboardingPhase3() {
                   onCheckedChange={setAcceptedPrivacy}
                   className="border-[#292929]/30 data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
-                <label htmlFor="privacy" className="text-[#292929] text-sm font-medium">
+                <label htmlFor="privacy" className="text-[#e7e6e3] text-sm font-medium">
                   I agree to the Privacy Policy
                 </label>
               </div>
             </div>
 
             {/* Summary */}
-            <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
+            <div className="bg-[#e7e6e3]/10 rounded-lg p-4 border border-[#e7e6e3]/10">
               <div className="flex items-center gap-3 mb-3">
-                <CheckCircle className="w-5 h-5 text-[#292929]" />
-                <h3 className="text-[#292929] font-bold text-lg tracking-tight">
+                <CheckCircle className="w-5 h-5 text-[#e7e6e3]" />
+                <h3 className="text-[#e7e6e3] font-bold text-lg tracking-tight">
                   READY TO <span className="italic font-medium">CREATE</span>
                 </h3>
               </div>
-              <p className="text-[#292929]/70 text-xs">
+              <p className="text-[#e7e6e3]/70 text-xs">
                 Once you accept both agreements, your profile will be created and you'll be able to start connecting with others!
               </p>
             </div>
@@ -284,7 +284,7 @@ export default function OnboardingPhase3() {
             <Button 
               onClick={goBack}
               variant="outline"
-              className="flex items-center gap-2 border-[#292929]/20 text-[#292929] hover:bg-[#e7e6e3]/50"
+              className="flex items-center gap-2 border-[#e7e6e3]/20 text-[#e7e6e3] hover:bg-[#e7e6e3]/10"
             >
               <ArrowLeft className="w-4 h-4" />
               Back
