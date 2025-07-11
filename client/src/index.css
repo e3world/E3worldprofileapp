@@ -263,7 +263,7 @@
   }
 }
 
-/* Bio text containment utilities */
+/* Bio text containment utilities - optimized for 20 words */
 .bio-container {
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -277,7 +277,7 @@
   text-overflow: ellipsis;
   max-width: 100%;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 

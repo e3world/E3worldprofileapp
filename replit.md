@@ -4,6 +4,12 @@
 
 This is a full-stack web application built with React and Express that creates personal profile pages with weekly interactive questions. The application features a 3-phase onboarding system that allows users to create their own profiles, and includes a dynamic profile display system. Users can view profiles, answer questions about profile owners, and submit their responses. It features a modern UI built with shadcn/ui components and uses in-memory storage for data persistence.
 
+## Recent Changes
+
+- **Bio Word Limit Refinement (July 11, 2025)**: Updated bio word limit from 30 to 20 words in Phase 3 onboarding for optimal display in profile containers
+- **Bio Text Containment**: Implemented comprehensive CSS utilities to ensure bio text stays within container boundaries with proper word wrapping and truncation
+- **Profile Display Optimization**: Refined container max-width and line-height for better 20-word bio presentation
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.

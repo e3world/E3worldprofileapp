@@ -210,21 +210,21 @@ export default function OnboardingPhase3() {
             </div>
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">
-                Bio * (Maximum 30 words)
+                Bio * (Maximum 20 words)
               </label>
               <Textarea
-                placeholder="Tell us about yourself in 30 words or less..."
+                placeholder="Tell us about yourself in 20 words or less..."
                 value={bio}
                 onChange={(e) => {
                   const wordCount = e.target.value.trim().split(/\s+/).filter(word => word.length > 0).length;
-                  if (wordCount <= 30) {
+                  if (wordCount <= 20) {
                     setBio(e.target.value);
                   }
                 }}
                 className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 min-h-[100px] resize-none placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
               <div className="text-xs text-[#e7e6e3]/60 mt-1">
-                {bio.trim().split(/\s+/).filter(word => word.length > 0).length}/30 words
+                {bio.trim().split(/\s+/).filter(word => word.length > 0).length}/20 words
               </div>
             </div>
           </div>
