@@ -131,15 +131,8 @@ export default function Profile() {
               backgroundRepeat: 'no-repeat'
             }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-700/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-purple-700/30"></div>
           <div className="relative z-10">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
-              <img 
-                src={profileData.profileImage}
-                alt={`${profileData.name} profile photo`}
-                className="w-full h-full object-cover"
-              />
-            </div>
             <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
               {profileData.name}
             </h1>
