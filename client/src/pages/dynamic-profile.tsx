@@ -197,9 +197,10 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-blue-400/30 to-blue-600/40 backdrop-blur-md rounded-3xl p-8 shadow-lg border border-blue-300/20 relative overflow-hidden">
+        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden" style={{ backgroundColor: '#80808059' }}>
           <div 
-            className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-700/20 backdrop-blur-sm"
+            className="absolute inset-0 opacity-40"
+            style={{ backgroundColor: '#808080' }}
           ></div>
           <div className="relative z-10">
             <div className="mb-8 text-center">
@@ -228,15 +229,10 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
+        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden" style={{ backgroundColor: '#80808059' }}>
           <div 
-            className="absolute inset-0 opacity-50"
-            style={{
-              backgroundImage: `url(${brownGradientGif})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
+            className="absolute inset-0 opacity-40"
+            style={{ backgroundColor: '#808080' }}
           ></div>
           <div className="relative z-10 text-center">
             <div className="flex justify-center mb-6">
