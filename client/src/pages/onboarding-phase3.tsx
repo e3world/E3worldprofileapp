@@ -89,31 +89,31 @@ export default function OnboardingPhase3() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4">
-      <div className="max-w-sm mx-auto space-y-6">
-        
-        {/* Header */}
-        <div className="text-center text-white mb-8">
-          <h1 className="text-3xl font-bold mb-2">Create Your Profile</h1>
-          <p className="text-lg">Phase 3 of 3: Terms & Conditions</p>
+    <div className="min-h-screen bg-[#e7e6e3] p-4">
+      <div className="max-w-lg mx-auto">
+        {/* Header with divider */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center mb-4">
+            <div className="flex-1 h-px bg-[#292929]"></div>
+            <Shield className="w-8 h-8 mx-4 text-[#292929]" />
+            <div className="flex-1 h-px bg-[#292929]"></div>
+          </div>
+          <h1 className="text-2xl font-bold text-[#292929] mb-2">Final Step</h1>
+          <p className="text-[#292929]/70 text-sm">Step 3 of 3</p>
         </div>
 
-        {/* Terms Card */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <Shield className="w-6 h-6 text-white" />
-            <h2 className="text-white text-2xl font-bold tracking-tight">
-              Terms & Conditions
-            </h2>
-          </div>
-          
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
           <div className="space-y-6">
             {/* Terms of Service */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <h3 className="text-white font-semibold text-lg mb-4">Terms of Service</h3>
-              <div className="text-white/90 text-sm space-y-3 max-h-48 overflow-y-auto">
+            <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
+              <div className="flex items-center mb-3">
+                <div className="flex-1 h-px bg-[#292929]/20"></div>
+                <h3 className="px-3 text-[#292929] font-semibold text-sm">Terms of Service</h3>
+                <div className="flex-1 h-px bg-[#292929]/20"></div>
+              </div>
+              <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
                 <p>By using this profile service, you agree to the following terms:</p>
-                <ul className="list-disc pl-4 space-y-2">
+                <ul className="list-disc pl-4 space-y-1">
                   <li>You will provide accurate and truthful information</li>
                   <li>You will not use the service for illegal or harmful purposes</li>
                   <li>You are responsible for keeping your account secure</li>
@@ -123,25 +123,29 @@ export default function OnboardingPhase3() {
                 </ul>
               </div>
               
-              <div className="flex items-center space-x-3 mt-4">
+              <div className="flex items-center space-x-3">
                 <Checkbox
                   id="terms"
                   checked={acceptedTerms}
                   onCheckedChange={setAcceptedTerms}
-                  className="bg-white/10 border-white/30 data-[state=checked]:bg-white data-[state=checked]:text-orange-600"
+                  className="border-[#292929]/30 data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
-                <label htmlFor="terms" className="text-white/90 text-sm font-medium">
+                <label htmlFor="terms" className="text-[#292929] text-sm font-medium">
                   I agree to the Terms of Service
                 </label>
               </div>
             </div>
 
             {/* Privacy Policy */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-              <h3 className="text-white font-semibold text-lg mb-4">Privacy Policy</h3>
-              <div className="text-white/90 text-sm space-y-3 max-h-48 overflow-y-auto">
+            <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
+              <div className="flex items-center mb-3">
+                <div className="flex-1 h-px bg-[#292929]/20"></div>
+                <h3 className="px-3 text-[#292929] font-semibold text-sm">Privacy Policy</h3>
+                <div className="flex-1 h-px bg-[#292929]/20"></div>
+              </div>
+              <div className="text-[#292929]/70 text-xs space-y-2 max-h-32 overflow-y-auto mb-4">
                 <p>We respect your privacy and are committed to protecting your personal data:</p>
-                <ul className="list-disc pl-4 space-y-2">
+                <ul className="list-disc pl-4 space-y-1">
                   <li>We collect only the information you provide during registration</li>
                   <li>Your data is stored securely and never sold to third parties</li>
                   <li>We may use your email to send important updates</li>
@@ -151,58 +155,57 @@ export default function OnboardingPhase3() {
                 </ul>
               </div>
               
-              <div className="flex items-center space-x-3 mt-4">
+              <div className="flex items-center space-x-3">
                 <Checkbox
                   id="privacy"
                   checked={acceptedPrivacy}
                   onCheckedChange={setAcceptedPrivacy}
-                  className="bg-white/10 border-white/30 data-[state=checked]:bg-white data-[state=checked]:text-orange-600"
+                  className="border-[#292929]/30 data-[state=checked]:bg-[#292929] data-[state=checked]:text-[#e7e6e3]"
                 />
-                <label htmlFor="privacy" className="text-white/90 text-sm font-medium">
+                <label htmlFor="privacy" className="text-[#292929] text-sm font-medium">
                   I agree to the Privacy Policy
                 </label>
               </div>
             </div>
 
             {/* Summary */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+            <div className="bg-[#e7e6e3]/50 rounded-lg p-4 border border-[#292929]/10">
               <div className="flex items-center gap-3 mb-3">
-                <CheckCircle className="w-5 h-5 text-white" />
-                <h3 className="text-white font-semibold text-lg">Ready to Create</h3>
+                <CheckCircle className="w-5 h-5 text-[#292929]" />
+                <h3 className="text-[#292929] font-semibold text-sm">Ready to Create</h3>
               </div>
-              <p className="text-white/90 text-sm">
+              <p className="text-[#292929]/70 text-xs">
                 Once you accept both agreements, your profile will be created and you'll be able to start connecting with others!
               </p>
             </div>
           </div>
-        </Card>
 
-        {/* Navigation */}
-        <div className="flex justify-between items-center">
-          <Button 
-            onClick={goBack}
-            variant="ghost" 
-            className="text-white hover:bg-white/10 rounded-full"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
-          </Button>
-          
-          <Button 
-            onClick={handleFinish}
-            disabled={createProfileMutation.isPending || !acceptedTerms || !acceptedPrivacy}
-            className="bg-black/80 hover:bg-black text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {createProfileMutation.isPending ? (
-              "Creating Profile..."
-            ) : (
-              <>
-                Create Profile
-                <CheckCircle className="w-4 h-4 ml-2" />
-              </>
-            )}
-          </Button>
-        </div>
+          <div className="flex justify-between items-center mt-8 gap-3">
+            <Button 
+              onClick={goBack}
+              variant="outline"
+              className="flex items-center gap-2 border-[#292929]/20 text-[#292929] hover:bg-[#e7e6e3]/50"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Button>
+            
+            <Button 
+              onClick={handleFinish}
+              disabled={createProfileMutation.isPending || !acceptedTerms || !acceptedPrivacy}
+              className="bg-[#292929] hover:bg-[#292929]/80 text-[#e7e6e3] flex items-center gap-2 flex-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {createProfileMutation.isPending ? (
+                "Creating Profile..."
+              ) : (
+                <>
+                  Create Profile
+                  <CheckCircle className="w-4 h-4" />
+                </>
+              )}
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
   );

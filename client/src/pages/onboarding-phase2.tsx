@@ -105,117 +105,114 @@ export default function OnboardingPhase2() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4">
-      <div className="max-w-sm mx-auto space-y-6">
-        
-        {/* Header */}
-        <div className="text-center text-white mb-8">
-          <h1 className="text-3xl font-bold mb-2">Create Your Profile</h1>
-          <p className="text-lg">Phase 2 of 3: Links Attachment</p>
+    <div className="min-h-screen bg-[#e7e6e3] p-4">
+      <div className="max-w-lg mx-auto">
+        {/* Header with divider */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center mb-4">
+            <div className="flex-1 h-px bg-[#292929]"></div>
+            <Globe className="w-8 h-8 mx-4 text-[#292929]" />
+            <div className="flex-1 h-px bg-[#292929]"></div>
+          </div>
+          <h1 className="text-2xl font-bold text-[#292929] mb-2">Your Links</h1>
+          <p className="text-[#292929]/70 text-sm">Step 2 of 3</p>
         </div>
 
-        {/* Links Card */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <Globe className="w-6 h-6 text-white" />
-            <h2 className="text-white text-2xl font-bold tracking-tight">
-              Connect Your Links
-            </h2>
-          </div>
-          
-          <p className="text-white/90 text-base mb-6">
-            Add up to 5 links that represent you best:
-          </p>
-          
-          <div className="space-y-4">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-white">
+          <div className="space-y-6">
+            <p className="text-[#292929]/70 text-sm text-center">
+              Add up to 5 links that represent you
+            </p>
+            
             {links.map((link, index) => (
-              <div key={index} className="space-y-3 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+              <div key={index} className="space-y-3 p-4 bg-[#e7e6e3]/50 rounded-lg border border-[#292929]/10">
                 <div className="flex items-center justify-between">
-                  <span className="text-white/90 text-sm font-medium">
-                    Link {index + 1}
-                  </span>
+                  <div className="flex items-center">
+                    <div className="flex-1 h-px bg-[#292929]/20"></div>
+                    <span className="px-2 text-xs font-medium text-[#292929]">
+                      Link {index + 1}
+                    </span>
+                    <div className="flex-1 h-px bg-[#292929]/20"></div>
+                  </div>
                   {links.length > 1 && (
                     <Button
                       onClick={() => removeLink(index)}
                       variant="ghost"
                       size="sm"
-                      className="text-white/70 hover:text-white hover:bg-white/10 rounded-full p-1"
+                      className="text-[#292929]/60 hover:text-[#292929] hover:bg-[#e7e6e3]/50 rounded-full p-1 h-6 w-6"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-3 h-3" />
                     </Button>
                   )}
                 </div>
                 
-                {/* Link Name */}
-                <Input
-                  type="text"
-                  placeholder="Link name (e.g., My Playlist)"
-                  value={link.name}
-                  onChange={(e) => updateLink(index, "name", e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-3 px-4 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto text-sm"
-                />
-                
-                {/* Link URL */}
-                <Input
-                  type="url"
-                  placeholder="https://example.com"
-                  value={link.url}
-                  onChange={(e) => updateLink(index, "url", e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-3 px-4 text-white placeholder-white/60 focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto text-sm"
-                />
-                
-                {/* Icon Selection */}
-                <Select value={link.icon} onValueChange={(value) => updateLink(index, "icon", value)}>
-                  <SelectTrigger className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-3 px-4 text-white focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 h-auto text-sm">
-                    <SelectValue placeholder="Choose icon" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {iconOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        <div className="flex items-center gap-2">
-                          {option.icon}
-                          {option.label}
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <div className="space-y-3">
+                  <Input
+                    type="text"
+                    placeholder="Link name (e.g., My Playlist)"
+                    value={link.name}
+                    onChange={(e) => updateLink(index, "name", e.target.value)}
+                    className="w-full border-[#292929]/20 focus:border-[#292929] bg-white text-sm"
+                  />
+                  
+                  <Input
+                    type="url"
+                    placeholder="https://example.com"
+                    value={link.url}
+                    onChange={(e) => updateLink(index, "url", e.target.value)}
+                    className="w-full border-[#292929]/20 focus:border-[#292929] bg-white text-sm"
+                  />
+                  
+                  <Select value={link.icon} onValueChange={(value) => updateLink(index, "icon", value)}>
+                    <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-white text-sm">
+                      <SelectValue placeholder="Choose icon" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border-[#292929]/20">
+                      {iconOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          <div className="flex items-center gap-2">
+                            {option.icon}
+                            {option.label}
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             ))}
             
-            {/* Add Link Button */}
             {links.length < 5 && (
               <Button
                 onClick={addLink}
-                variant="ghost"
-                className="w-full bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-full py-4 px-6 text-white hover:bg-white/20 transition-all duration-200 h-auto"
+                variant="outline"
+                className="w-full border-[#292929]/20 text-[#292929] hover:bg-[#e7e6e3]/50 border-dashed py-3"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Another Link
               </Button>
             )}
           </div>
-        </Card>
 
-        {/* Navigation */}
-        <div className="flex justify-between items-center">
-          <Button 
-            onClick={goBack}
-            variant="ghost" 
-            className="text-white hover:bg-white/10 rounded-full"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
-          </Button>
-          
-          <Button 
-            onClick={handleContinue}
-            className="bg-black/80 hover:bg-black text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-white/50 h-auto"
-          >
-            Continue
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
+          <div className="flex justify-between items-center mt-8 gap-3">
+            <Button 
+              onClick={goBack}
+              variant="outline"
+              className="flex items-center gap-2 border-[#292929]/20 text-[#292929] hover:bg-[#e7e6e3]/50"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back
+            </Button>
+            
+            <Button 
+              onClick={handleContinue}
+              className="bg-[#292929] hover:bg-[#292929]/80 text-[#e7e6e3] flex items-center gap-2 flex-1"
+            >
+              Continue
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </div>
+        </Card>
       </div>
     </div>
   );
