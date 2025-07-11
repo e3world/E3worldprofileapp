@@ -12,12 +12,6 @@ import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
 import backgroundImage from "@assets/Painitng _1752240240701.jpg";
 import e3Logo from "@assets/8_1752241069398.png";
-import instagramIcon from "@assets/1_1752249046642.png";
-import snapchatIcon from "@assets/2_1752249046641.png";
-import linkedinIcon from "@assets/3_1752249046642.png";
-import tiktokIcon from "@assets/4_1752249046639.png";
-import youtubeIcon from "@assets/6_1752249046641.png";
-import emailIcon from "@assets/7_1752249046640.png";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -25,20 +19,13 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Instagram: <img src={instagramIcon} alt="Instagram" className="w-12 h-12 object-contain" />,
-    Snapchat: <img src={snapchatIcon} alt="Snapchat" className="w-12 h-12 object-contain" />,
-    LinkedIn: <img src={linkedinIcon} alt="LinkedIn" className="w-12 h-12 object-contain" />,
-    TikTok: <img src={tiktokIcon} alt="TikTok" className="w-12 h-12 object-contain" />,
-    YouTube: <img src={youtubeIcon} alt="YouTube" className="w-12 h-12 object-contain" />,
-    Email: <img src={emailIcon} alt="Email" className="w-12 h-12 object-contain" />,
-    Website: <Globe className="w-12 h-12 text-gray-700" />,
-    // Legacy fallbacks
     Music: <Music className="w-12 h-12 text-gray-700" />,
-    Youtube: <img src={youtubeIcon} alt="YouTube" className="w-12 h-12 object-contain" />,
-    Twitter: <Twitter className="w-12 h-12 text-gray-700" />,
-    Linkedin: <img src={linkedinIcon} alt="LinkedIn" className="w-12 h-12 object-contain" />,
-    Github: <Github className="w-12 h-12 text-gray-700" />,
+    Instagram: <Instagram className="w-12 h-12 text-gray-700" />,
     Globe: <Globe className="w-12 h-12 text-gray-700" />,
+    Youtube: <Youtube className="w-12 h-12 text-gray-700" />,
+    Twitter: <Twitter className="w-12 h-12 text-gray-700" />,
+    Linkedin: <Linkedin className="w-12 h-12 text-gray-700" />,
+    Github: <Github className="w-12 h-12 text-gray-700" />,
   };
   return icons[iconName as keyof typeof icons] || <Globe className="w-12 h-12 text-gray-700" />;
 };
