@@ -12,6 +12,7 @@ import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
 import backgroundImage from "@assets/Painitng _1752240240701.jpg";
 import e3Logo from "@assets/8_1752241069398.png";
+import cloudyBackgroundImage from "@assets/Painitng _1752242587741.jpg";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -197,10 +198,15 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden" style={{ backgroundColor: '#80808059' }}>
+        <Card className="rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
           <div 
-            className="absolute inset-0 opacity-40"
-            style={{ backgroundColor: '#808080' }}
+            className="absolute inset-0 opacity-80 blur-sm"
+            style={{
+              backgroundImage: `url(${cloudyBackgroundImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
+            }}
           ></div>
           <div className="relative z-10">
             <div className="mb-8 text-center">
