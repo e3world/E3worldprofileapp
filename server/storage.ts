@@ -17,6 +17,7 @@ export interface IStorage {
   // Profile management
   createProfile(profile: InsertProfile): Promise<Profile>;
   getProfile(id: number): Promise<Profile | undefined>;
+  getProfileBySerialCode(serialCode: string): Promise<Profile | undefined>;
   getAllProfiles(): Promise<Profile[]>;
   updateProfile(id: number, profile: Partial<InsertProfile>): Promise<Profile | undefined>;
 }
@@ -184,6 +185,15 @@ export class MemStorage implements IStorage {
 
   async getProfile(id: number): Promise<Profile | undefined> {
     return this.profiles.get(id);
+  }
+
+  async getProfileBySerialCode(serialCode: string): Promise<Profile | undefined> {
+    for (const profile of this.profiles.values()) {
+      if (profile.serialCode === serialCode) {
+        return profile;
+      }
+    }
+    return undefined;
   }
 
   async getAllProfiles(): Promise<Profile[]> {

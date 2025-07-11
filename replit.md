@@ -6,7 +6,13 @@ This is a full-stack web application built with React and Express that creates p
 
 ## Recent Changes
 
-- **Bio Word Limit Refinement (July 11, 2025)**: Updated bio word limit from 30 to 20 words in Phase 3 onboarding for optimal display in profile containers
+- **NFT Serial Code System (July 11, 2025)**: Implemented comprehensive E number (serial code) authentication system
+  - Added serial code input field on landing page with "Enter your E number" placeholder
+  - Created validation against 251 authorized NFT serial codes (200 original + 51 additional)
+  - Implemented access control - only valid E numbers allow onboarding progression
+  - Each E number is tied to user's profile and onboarding data
+  - Added dynamic profile pages accessible via serial code URLs
+- **Bio Word Limit Refinement**: Updated bio word limit from 30 to 20 words in Phase 3 onboarding for optimal display in profile containers
 - **Bio Text Containment**: Implemented comprehensive CSS utilities to ensure bio text stays within container boundaries with proper word wrapping and truncation
 - **Profile Display Optimization**: Refined container max-width and line-height for better 20-word bio presentation
 
@@ -48,11 +54,18 @@ Design principles:
 
 ### Database Layer
 - **ORM**: Drizzle ORM for type-safe database operations
-- **Schema**: Defined in `shared/schema.ts` with three main tables:
+- **Schema**: Defined in `shared/schema.ts` with four main tables:
   - `questions`: Stores weekly questions with multiple choice options
   - `submissions`: Stores user answers with email and selected responses
+  - `profiles`: Stores user profiles with NFT serial code association
   - `users`: Basic user authentication structure (currently unused)
 - **Migrations**: Managed through Drizzle Kit with PostgreSQL dialect
+
+### NFT Authentication System
+- **Serial Code Validation**: 251 authorized E numbers stored in `client/src/lib/serialCodes.ts`
+- **Access Control**: Landing page validates E numbers before allowing onboarding access
+- **Profile Association**: Each profile is linked to a unique E number and dynamic URL
+- **Dynamic Profile Pages**: Profiles accessible via `/profile/:serialCode` routes
 
 ### API Layer
 - **Routes**: Defined in `server/routes.ts`

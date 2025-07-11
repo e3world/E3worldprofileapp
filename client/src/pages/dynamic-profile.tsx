@@ -108,9 +108,9 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch profile data
+  // Fetch profile data by serial code
   const { data: profile, isLoading: isLoadingProfile } = useQuery<Profile>({
-    queryKey: [`/api/profiles/${profileId}`],
+    queryKey: [`/api/profiles/serial/${profileId}`],
   });
 
   // Fetch current question

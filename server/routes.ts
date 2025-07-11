@@ -84,6 +84,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get profile by serial code
+  app.get("/api/profiles/serial/:serialCode", async (req, res) => {
+    try {
+      const serialCode = req.params.serialCode;
+      const profile = await storage.getProfileBySerialCode(serialCode);
+      if (!profile) {
+        return res.status(404).json({ message: "Profile not found for this serial code" });
+      }
+      res.json(profile);
+    } catch (error) {
+      console.error("Error fetching profile by serial code:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
