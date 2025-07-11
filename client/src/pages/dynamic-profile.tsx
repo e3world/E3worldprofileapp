@@ -11,6 +11,7 @@ import type { Question, InsertSubmission, Profile } from "@shared/schema";
 import greenGradientGif from "@assets/download (3)_1752232023115.gif";
 import brownGradientGif from "@assets/download (4)_1752232152967.gif";
 import backgroundImage from "@assets/Painitng _1752240240701.jpg";
+import e3Logo from "@assets/8_1752241069398.png";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -244,6 +245,13 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             }}
           ></div>
           <div className="relative z-10">
+            <div className="flex justify-center mb-6">
+              <img 
+                src={e3Logo} 
+                alt="E3 Logo" 
+                className="w-20 h-20 object-contain"
+              />
+            </div>
             <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
               Question About me
             </h2>
