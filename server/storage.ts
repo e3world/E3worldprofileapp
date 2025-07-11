@@ -39,10 +39,12 @@ export class MemStorage implements IStorage {
     this.currentUserId = 1;
     this.currentQuestionId = 1;
     this.currentSubmissionId = 1;
-    this.currentProfileId = 1;
+    this.currentProfileId = 2;
     
     // Initialize with sample questions
     this.initializeQuestions();
+    // Initialize with sample profile
+    this.initializeProfiles();
   }
 
   private initializeQuestions() {
@@ -98,6 +100,30 @@ export class MemStorage implements IStorage {
     const futureWeek = new Date(now);
     futureWeek.setDate(now.getDate() - now.getDay() + (weeksFromNow * 7));
     return futureWeek.toISOString().split('T')[0];
+  }
+
+  private initializeProfiles() {
+    const sampleProfile: Profile = {
+      id: 1,
+      name: "Christopher Alli",
+      bio: "Something good, something great. I'm a full-time model and content creator living in London.",
+      profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400",
+      relationshipStatus: "single",
+      jobTitle: "arts-entertainment",
+      area: "central-london",
+      email: "chris@example.com",
+      phone: "+44 7123 456 789",
+      hidePersonalInfo: false,
+      links: [
+        { name: "Instagram", url: "https://instagram.com/chrisalli", icon: "Instagram" },
+        { name: "Amazon", url: "https://amazon.com/shop/chris", icon: "Globe" },
+        { name: "Contact", url: "mailto:chris@example.com", icon: "Globe" }
+      ],
+      acceptedTerms: true,
+      createdAt: new Date()
+    };
+
+    this.profiles.set(1, sampleProfile);
   }
 
   async getUser(id: number): Promise<User | undefined> {
