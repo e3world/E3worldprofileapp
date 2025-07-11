@@ -205,8 +205,7 @@ export default function OnboardingPhase2() {
           <div className="flex justify-between items-center mt-8 gap-3">
             <Button 
               onClick={goBack}
-              variant="outline"
-              className="flex items-center gap-2 border-[#292929]/20 text-[#292929] hover:bg-[#e7e6e3]/50"
+              className="bg-[#292929] hover:bg-[#292929]/80 text-[#e7e6e3] flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               Back
@@ -214,7 +213,8 @@ export default function OnboardingPhase2() {
             
             <Button 
               onClick={handleContinue}
-              className="bg-[#292929] hover:bg-[#292929]/80 text-[#e7e6e3] flex items-center gap-2 flex-1"
+              variant="outline"
+              className="flex items-center gap-2 border-[#292929]/20 text-[#292929] hover:bg-[#e7e6e3]/50 flex-1"
             >
               Continue
               <ArrowRight className="w-4 h-4" />
