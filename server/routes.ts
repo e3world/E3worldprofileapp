@@ -38,7 +38,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             
             // Send notification email to hello@e3world.co.uk
             const emailData = formatAnswerEmail(
-              profile.name,
+              profile.serialCode,
               validatedData.email,
               question.text,
               validatedData.selectedAnswer

@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, ArrowLeft, User, UserCheck, Users } from "lucide-react";
 
 interface Phase1Data {
+  eNumber: string;
   name: string;
   gender: string;
   eyeColour: string;
@@ -22,6 +23,7 @@ interface Phase1Data {
 
 export default function OnboardingPhase1() {
   const [formData, setFormData] = useState<Phase1Data>({
+    eNumber: "",
     name: "",
     gender: "",
     eyeColour: "",
@@ -35,17 +37,29 @@ export default function OnboardingPhase1() {
   const { toast } = useToast();
 
   useEffect(() => {
+    // Check if user has valid serial code access
+    const serialCode = localStorage.getItem("nft_serial_code");
+    if (!serialCode) {
+      toast({
+        title: "Access Denied",
+        description: "Please enter a valid serial code from the landing page to continue.",
+        variant: "destructive",
+      });
+      window.location.href = "/";
+      return;
+    }
+
     // Reset any existing data when starting fresh
     localStorage.removeItem("onboarding_phase1");
     localStorage.removeItem("onboarding_phase2");
-  }, []);
+  }, [toast]);
 
   const handleInputChange = (field: keyof Phase1Data, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
   const handleContinue = () => {
-    if (!formData.name || !formData.gender || !formData.eyeColour || !formData.email || !formData.phone || !formData.relationshipStatus || !formData.jobTitle || !formData.area) {
+    if (!formData.eNumber || !formData.name || !formData.gender || !formData.eyeColour || !formData.email || !formData.phone || !formData.relationshipStatus || !formData.jobTitle || !formData.area) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields.",
@@ -100,6 +114,18 @@ export default function OnboardingPhase1() {
                 <span className="italic font-medium">IDENTITY</span>
               </h3>
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+            </div>
+            
+            {/* E Number */}
+            <div>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">E Number *</label>
+              <Input
+                type="text"
+                placeholder="Enter your E number"
+                value={formData.eNumber}
+                onChange={(e) => handleInputChange("eNumber", e.target.value.toUpperCase())}
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
+              />
             </div>
             
             {/* Full Name */}
