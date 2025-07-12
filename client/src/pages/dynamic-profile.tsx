@@ -348,45 +348,60 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                   </p>
                 </div>
                 
-                {/* Button Options */}
-                <div className="grid grid-cols-3 gap-3">
+                {/* Button Options - 2x2 Grid for Symmetrical Layout */}
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Top Row */}
                   <button
                     type="button"
-                    onClick={() => setSelectedAnswer('earth')}
+                    onClick={() => setSelectedAnswer('leader')}
                     className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'earth' 
-                        ? "border-[#8B4513] bg-[#8B4513] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#8B4513]/40 text-gray-700"
+                      selectedAnswer === 'leader' 
+                        ? "border-[#FF6B35] bg-[#FF6B35] text-white" 
+                        : "border-gray-300 bg-white/50 hover:border-[#FF6B35]/40 text-gray-700"
                     }`}
                   >
-                    <div className="w-6 h-6 bg-[#8B4513] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Earth</span>
+                    <div className="w-6 h-6 bg-[#FF6B35] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Leader</span>
                   </button>
                   
                   <button
                     type="button"
-                    onClick={() => setSelectedAnswer('land')}
+                    onClick={() => setSelectedAnswer('supporter')}
                     className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'land' 
-                        ? "border-[#228B22] bg-[#228B22] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#228B22]/40 text-gray-700"
+                      selectedAnswer === 'supporter' 
+                        ? "border-[#4CAF50] bg-[#4CAF50] text-white" 
+                        : "border-gray-300 bg-white/50 hover:border-[#4CAF50]/40 text-gray-700"
                     }`}
                   >
-                    <div className="w-6 h-6 bg-[#228B22] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Land</span>
+                    <div className="w-6 h-6 bg-[#4CAF50] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Supporter</span>
+                  </button>
+                  
+                  {/* Bottom Row */}
+                  <button
+                    type="button"
+                    onClick={() => setSelectedAnswer('entertainer')}
+                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                      selectedAnswer === 'entertainer' 
+                        ? "border-[#9C27B0] bg-[#9C27B0] text-white" 
+                        : "border-gray-300 bg-white/50 hover:border-[#9C27B0]/40 text-gray-700"
+                    }`}
+                  >
+                    <div className="w-6 h-6 bg-[#9C27B0] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Entertainer</span>
                   </button>
                   
                   <button
                     type="button"
-                    onClick={() => setSelectedAnswer('sea')}
+                    onClick={() => setSelectedAnswer('organiser')}
                     className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'sea' 
-                        ? "border-[#0066CC] bg-[#0066CC] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#0066CC]/40 text-gray-700"
+                      selectedAnswer === 'organiser' 
+                        ? "border-[#2196F3] bg-[#2196F3] text-white" 
+                        : "border-gray-300 bg-white/50 hover:border-[#2196F3]/40 text-gray-700"
                     }`}
                   >
-                    <div className="w-6 h-6 bg-[#0066CC] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Sea</span>
+                    <div className="w-6 h-6 bg-[#2196F3] rounded-full border-2 border-white shadow-inner"></div>
+                    <span className="text-sm font-medium">Organiser</span>
                   </button>
                 </div>
                 

@@ -49,8 +49,8 @@ export class MemStorage implements IStorage {
   private initializeQuestions() {
     const sampleQuestions: InsertQuestion[] = [
       {
-        text: "What is my eye colour?",
-        options: ["Brown", "Green", "Blue", "Hazel"],
+        text: "What is this users natural role",
+        options: ["Leader", "Supporter", "Entertainer", "Organiser"],
         weekStart: this.getCurrentWeekStart(),
         isActive: true,
       },
