@@ -78,12 +78,7 @@ export default function OnboardingPhase3() {
       localStorage.removeItem("onboarding_phase2");
       
       // Navigate to the created profile using serial code
-      const serialCode = localStorage.getItem("nft_serial_code");
-      if (serialCode) {
-        window.location.href = `/profile/${serialCode}`;
-      } else {
-        window.location.href = `/`;
-      }
+      window.location.href = `/profile/${profile.serialCode}`;
     },
     onError: (error) => {
       console.error("Profile creation error:", error);
@@ -117,18 +112,16 @@ export default function OnboardingPhase3() {
     // Get data from previous phases
     const phase1Data = JSON.parse(localStorage.getItem("onboarding_phase1") || "{}");
     const phase2Data = JSON.parse(localStorage.getItem("onboarding_phase2") || "[]");
-    const serialCode = localStorage.getItem("nft_serial_code") || "";
-    const dynamicLink = localStorage.getItem("nft_dynamic_link") || "";
-
-    if (!serialCode || !dynamicLink) {
-      toast({
-        title: "Error",
-        description: "Serial code information missing. Please start over from the landing page.",
-        variant: "destructive",
-      });
-      window.location.href = "/";
-      return;
-    }
+    
+    // Generate a unique serial code based on user data and timestamp
+    const generateSerialCode = () => {
+      const timestamp = Date.now().toString(36);
+      const nameHash = phase1Data.name ? phase1Data.name.substring(0, 3).toUpperCase() : "USR";
+      return `${nameHash}${timestamp}`.substring(0, 10);
+    };
+    
+    const serialCode = generateSerialCode();
+    const dynamicLink = `https://${serialCode}.e3world.co.uk`;
 
     // Create profile data
     const profileData: InsertProfile = {
