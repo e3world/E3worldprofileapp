@@ -8,8 +8,6 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe } from "lucide-react";
 import type { Question, InsertSubmission } from "@shared/schema";
-import greenGradientGif from "@assets/download (3)_1752232023115.gif";
-import brownGradientGif from "@assets/download (4)_1752232152967.gif";
 
 interface ProfileData {
   name: string;
@@ -145,17 +143,8 @@ export default function Profile() {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 opacity-50"
-            style={{
-              backgroundImage: `url(${greenGradientGif})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="relative z-10">
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0">
+          <div>
           <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
             Connect with me
           </h2>
@@ -183,17 +172,8 @@ export default function Profile() {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0 relative overflow-hidden">
-          <div 
-            className="absolute inset-0 opacity-50"
-            style={{
-              backgroundImage: `url(${brownGradientGif})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="relative z-10">
+        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0">
+          <div>
             <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
               Question About me
             </h2>
