@@ -95,8 +95,24 @@ export default function OnboardingPhase3() {
 
   const createProfileMutation = useMutation({
     mutationFn: async (data: InsertProfile) => {
-      const response = await apiRequest("POST", "/api/profiles", data);
-      return response.json();
+      console.log("Sending profile data:", data);
+      
+      try {
+        const response = await apiRequest("POST", "/api/profiles", data);
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("Server response error:", errorText);
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+        
+        const result = await response.json();
+        console.log("Profile created successfully:", result);
+        return result;
+      } catch (error) {
+        console.error("Request failed:", error);
+        throw error;
+      }
     },
     onSuccess: (profile) => {
       toast({
@@ -111,11 +127,20 @@ export default function OnboardingPhase3() {
       // Navigate to the created profile using serial code
       window.location.href = `/profile/${profile.serialCode}`;
     },
-    onError: (error) => {
+    onError: (error: any) => {
       console.error("Profile creation error:", error);
+      
+      let errorMessage = "An unexpected error occurred.";
+      
+      if (error.message) {
+        errorMessage = error.message;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+      
       toast({
         title: "Error",
-        description: `Failed to create profile. Please try again. Error: ${error.message}`,
+        description: `Failed to create profile. Please try again. ${errorMessage}`,
         variant: "destructive",
       });
     },
@@ -139,10 +164,33 @@ export default function OnboardingPhase3() {
       });
       return;
     }
+    
+    // Validate bio length (max 15 words)
+    const bioWords = bio.trim().split(/\s+/).filter(word => word.length > 0);
+    if (bioWords.length > 15) {
+      toast({
+        title: "Bio Too Long",
+        description: "Please keep your bio to 15 words or less.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     // Get data from previous phases
-    const phase1Data = JSON.parse(localStorage.getItem("onboarding_phase1") || "{}");
-    const phase2Data = JSON.parse(localStorage.getItem("onboarding_phase2") || "[]");
+    const phase1DataStr = localStorage.getItem("onboarding_phase1");
+    const phase2DataStr = localStorage.getItem("onboarding_phase2");
+    
+    if (!phase1DataStr || !phase2DataStr) {
+      toast({
+        title: "Missing Data",
+        description: "Please complete all previous phases first.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const phase1Data = JSON.parse(phase1DataStr);
+    const phase2Data = JSON.parse(phase2DataStr);
     
     // Generate a unique serial code based on user data and timestamp
     const generateSerialCode = () => {
@@ -236,7 +284,7 @@ export default function OnboardingPhase3() {
             {failedAttempts >= 2 && (
               <div className="text-xs text-[#e7e6e3]/50 space-y-1 mt-3 p-3 bg-[#e7e6e3]/10 rounded-lg border border-[#e7e6e3]/20">
                 <p className="text-[#e7e6e3]/70 font-medium mb-2">Photo Tips:</p>
-                <p>• Max file size: 5MB</p>
+                <p>• Max file size: 2MB</p>
                 <p>• Formats: JPG, PNG, GIF</p>
                 <p>• Recommended: 400x400px</p>
                 <p>• Use image compression tools if needed</p>

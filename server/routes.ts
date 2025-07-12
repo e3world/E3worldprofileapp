@@ -76,15 +76,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Profile management routes
   app.post("/api/profiles", async (req, res) => {
     try {
+      console.log("Received profile data:", {
+        ...req.body,
+        profileImage: req.body.profileImage ? `[Base64 Image - ${req.body.profileImage.length} chars]` : 'No image'
+      });
+      
       const validatedData = insertProfileSchema.parse(req.body);
+      console.log("Validated profile data successfully");
+      
       const profile = await storage.createProfile(validatedData);
+      console.log("Profile created successfully:", profile.id);
+      
       res.status(201).json(profile);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return res.status(400).json({ message: "Invalid profile data", errors: error.errors });
+        console.error("Validation error:", error.errors);
+        return res.status(400).json({ 
+          message: "Invalid profile data", 
+          errors: error.errors,
+          details: error.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ')
+        });
       }
       console.error("Error creating profile:", error);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ 
+        message: "Internal server error", 
+        error: error instanceof Error ? error.message : "Unknown error"
+      });
     }
   });
 
