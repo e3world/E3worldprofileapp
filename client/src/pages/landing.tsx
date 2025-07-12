@@ -49,7 +49,7 @@ export default function Landing() {
         {/* Subheadline */}
         <div className="space-y-6">
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Notice the color, feel the presence, then speak.
+            Notice the colour of their eyes, feel the presence, then speak.
           </p>
         </div>
 
