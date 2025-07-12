@@ -6,6 +6,11 @@ This is a full-stack web application built with React and Express that creates p
 
 ## Recent Changes
 
+- **Supabase Integration (July 12, 2025)**: Added Supabase client for database, storage, and authentication
+  - Created server-side Supabase client configuration (`server/supabase.ts`)
+  - Created client-side Supabase client configuration (`client/src/lib/supabase.ts`)
+  - Successfully tested connection to 'E3 world onboarding' table
+  - Environment variables configured for both server and client environments
 - **E Number Field Added to Onboarding (July 12, 2025)**: Added E number field to Phase 1 onboarding
   - Added "E Number" input field as the first field in the Identity section of Phase 1
   - Updated database schema to include eNumber field in profiles table
