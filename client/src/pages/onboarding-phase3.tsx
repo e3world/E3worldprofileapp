@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { ArrowLeft, Shield, CheckCircle, Upload, User } from "lucide-react";
 import type { InsertProfile } from "@shared/schema";
+import { uploadProfileImage } from "@/lib/uploadImage";
 
 export default function OnboardingPhase3() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -16,6 +17,7 @@ export default function OnboardingPhase3() {
   const [profileImage, setProfileImage] = useState("");
   const [imagePreview, setImagePreview] = useState("");
   const [failedAttempts, setFailedAttempts] = useState(0);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const { toast } = useToast();
 
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
@@ -37,42 +39,13 @@ export default function OnboardingPhase3() {
         return;
       }
 
-      // Compress image
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
+      // Store the file for upload
+      setImageFile(file);
       
-      img.onload = () => {
-        // Calculate new dimensions (max 800x800)
-        const maxSize = 800;
-        let { width, height } = img;
-        
-        if (width > height) {
-          if (width > maxSize) {
-            height = (height * maxSize) / width;
-            width = maxSize;
-          }
-        } else {
-          if (height > maxSize) {
-            width = (width * maxSize) / height;
-            height = maxSize;
-          }
-        }
-        
-        canvas.width = width;
-        canvas.height = height;
-        
-        // Draw and compress
-        ctx?.drawImage(img, 0, 0, width, height);
-        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
-        
-        setImagePreview(compressedDataUrl);
-        setProfileImage(compressedDataUrl);
-      };
-      
+      // Create preview
       const reader = new FileReader();
       reader.onload = (e) => {
-        img.src = e.target?.result as string;
+        setImagePreview(e.target?.result as string);
       };
       reader.readAsDataURL(file);
     }
@@ -146,7 +119,7 @@ export default function OnboardingPhase3() {
     },
   });
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     if (!acceptedTerms || !acceptedPrivacy) {
       toast({
         title: "Agreement Required",
@@ -156,7 +129,7 @@ export default function OnboardingPhase3() {
       return;
     }
 
-    if (!bio || !profileImage) {
+    if (!bio || !imageFile) {
       toast({
         title: "Missing Information",
         description: "Please upload a photo and write a bio to continue.",
@@ -202,27 +175,45 @@ export default function OnboardingPhase3() {
     const serialCode = generateSerialCode();
     const dynamicLink = `https://${serialCode}.e3world.co.uk`;
 
-    // Create profile data
-    const profileData: InsertProfile = {
-      eNumber: phase1Data.eNumber,
-      name: phase1Data.name,
-      bio: bio,
-      profileImage: profileImage,
-      relationshipStatus: phase1Data.relationshipStatus,
-      jobTitle: phase1Data.jobTitle,
-      area: phase1Data.area,
-      email: phase1Data.email,
-      phone: phase1Data.phone || null,
-      hidePersonalInfo: phase1Data.hidePersonalInfo || false,
-      links: phase2Data,
-      acceptedTerms: true,
-      serialCode: serialCode,
-      dynamicLink: dynamicLink,
-    };
+    // First upload the image to Supabase
+    const fileName = `user_${phase1Data.name}_${Date.now()}.jpg`;
+    
+    try {
+      const imageUrl = await uploadProfileImage(imageFile, fileName);
+      
+      if (!imageUrl) {
+        throw new Error("Failed to upload image");
+      }
+      
+      // Create profile data with uploaded image URL
+      const profileData: InsertProfile = {
+        eNumber: phase1Data.eNumber,
+        name: phase1Data.name,
+        bio: bio,
+        profileImage: imageUrl,
+        relationshipStatus: phase1Data.relationshipStatus,
+        jobTitle: phase1Data.jobTitle,
+        area: phase1Data.area,
+        email: phase1Data.email,
+        phone: phase1Data.phone || null,
+        hidePersonalInfo: phase1Data.hidePersonalInfo || false,
+        links: phase2Data,
+        acceptedTerms: true,
+        serialCode: serialCode,
+        dynamicLink: dynamicLink,
+      };
 
-    console.log("Creating profile with data:", profileData);
-    console.log("Bio word count:", bio.trim().split(/\s+/).filter(word => word.length > 0).length);
-    createProfileMutation.mutate(profileData);
+      console.log("Creating profile with data:", profileData);
+      console.log("Bio word count:", bio.trim().split(/\s+/).filter(word => word.length > 0).length);
+      createProfileMutation.mutate(profileData);
+    } catch (error) {
+      console.error("Image upload failed:", error);
+      toast({
+        title: "Upload Failed",
+        description: "Failed to upload image. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const goBack = () => {

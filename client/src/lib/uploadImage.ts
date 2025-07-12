@@ -1,10 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-export async function uploadProfileImage(file, fileName) {
+export async function uploadProfileImage(file: File, fileName: string): Promise<string | null> {
   const { data, error } = await supabase
     .storage
     .from('user-profile-images')  // your bucket name
