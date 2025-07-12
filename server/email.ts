@@ -36,7 +36,12 @@ export async function sendEmail(emailData: EmailData): Promise<boolean> {
   }
 }
 
-export async function sendWelcomeEmail(toEmail: string): Promise<boolean> {
+export async function sendWelcomeEmail(toEmail: string, userName?: string): Promise<boolean> {
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not configured');
+    return false;
+  }
+
   try {
     const { data, error } = await resend.emails.send({
       from: 'onboarding@yourdomain.com',
@@ -44,7 +49,7 @@ export async function sendWelcomeEmail(toEmail: string): Promise<boolean> {
       subject: 'Connecting with E3 World 🌍',
       html: `
         <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.5; padding: 20px;">
-          <h2>Hello,</h2>
+          <h2>Hello${userName ? ` ${userName}` : ''},</h2>
           <p><strong>Thank you for submitting your response — we appreciate your time and curiosity.</strong> Rest assured, your answers remain completely anonymous.</p>
 
           <p>We're thrilled to welcome you to <strong>E3 World</strong>.</p>
@@ -70,7 +75,7 @@ export async function sendWelcomeEmail(toEmail: string): Promise<boolean> {
       console.error('Email error:', error);
       return false;
     } else {
-      console.log('Email sent:', data);
+      console.log('Welcome email sent:', data);
       return true;
     }
   } catch (err) {

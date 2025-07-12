@@ -3,7 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertSubmissionSchema, insertProfileSchema } from "@shared/schema";
 import { z } from "zod";
-import { sendEmail, formatAnswerEmail } from "./email";
+import { sendEmail, formatAnswerEmail, sendWelcomeEmail } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get current question
@@ -26,13 +26,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertSubmissionSchema.parse(req.body);
       const submission = await storage.createSubmission(validatedData);
       
-      // Send email notification to hello@e3world.co.uk
+      // Send welcome email to the user and notification to hello@e3world.co.uk
       try {
         if (validatedData.profileId) {
           const profile = await storage.getProfile(validatedData.profileId);
           const question = await storage.getCurrentQuestion();
           
           if (profile && question) {
+            // Send welcome email to the user
+            await sendWelcomeEmail(validatedData.email);
+            
+            // Send notification email to hello@e3world.co.uk
             const emailData = formatAnswerEmail(
               profile.serialCode,
               validatedData.email,
