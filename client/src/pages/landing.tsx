@@ -38,7 +38,7 @@ export default function Landing() {
         <div className="text-center space-y-8 max-w-md mx-auto">
         
         {/* GIF Container - Square Format */}
-        <div className="relative w-72 h-72 mx-auto mb-8">
+        <div className="relative w-72 h-72 mx-auto mb-16">
           <img 
             src={animatedGif}
             alt="Animation"
