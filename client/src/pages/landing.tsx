@@ -49,7 +49,7 @@ export default function Landing() {
         {/* Headings */}
         <div className="space-y-6">
           {/* H1 - Main heading */}
-          <h1 className="text-white text-4xl md:text-5xl font-sans leading-tight" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <h1 className="text-white text-4xl md:text-5xl font-sans leading-tight font-bold italic" style={{ fontFamily: 'Inter, sans-serif' }}>
             See Their Eyes Before You Speak
           </h1>
           
