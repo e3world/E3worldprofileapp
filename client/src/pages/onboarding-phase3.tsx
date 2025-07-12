@@ -86,9 +86,10 @@ export default function OnboardingPhase3() {
       }
     },
     onError: (error) => {
+      console.error("Profile creation error:", error);
       toast({
         title: "Error",
-        description: "Failed to create profile. Please try again.",
+        description: `Failed to create profile. Please try again. Error: ${error.message}`,
         variant: "destructive",
       });
     },
@@ -146,6 +147,8 @@ export default function OnboardingPhase3() {
       dynamicLink: dynamicLink,
     };
 
+    console.log("Creating profile with data:", profileData);
+    console.log("Bio word count:", bio.trim().split(/\s+/).filter(word => word.length > 0).length);
     createProfileMutation.mutate(profileData);
   };
 

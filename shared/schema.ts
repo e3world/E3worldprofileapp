@@ -10,31 +10,7 @@ export const questions = pgTable("questions", {
   isActive: boolean("is_active").default(true),
 });
 
-export const submissions = pgTable("submissions", {
-  id: serial("id").primaryKey(),
-  questionId: integer("question_id").references(() => questions.id).notNull(),
-  email: text("email").notNull(),
-  selectedAnswer: text("selected_answer").notNull(),
-  profileId: integer("profile_id").references(() => profiles.id),
-  submittedAt: timestamp("submitted_at").defaultNow(),
-});
-
-export const insertQuestionSchema = createInsertSchema(questions).omit({
-  id: true,
-});
-
-export const insertSubmissionSchema = createInsertSchema(submissions).omit({
-  id: true,
-  submittedAt: true,
-});
-
-export type InsertQuestion = z.infer<typeof insertQuestionSchema>;
-export type Question = typeof questions.$inferSelect;
-export type InsertSubmission = z.infer<typeof insertSubmissionSchema>;
-export type Submission = typeof submissions.$inferSelect;
-
-// Keep existing user schema
-// Profile data schema
+// Profile data schema (moved up to resolve forward reference)
 export const profiles = pgTable("profiles", {
   id: serial("id").primaryKey(),
   // Phase 1: Personal Details
@@ -62,6 +38,31 @@ export const profiles = pgTable("profiles", {
   
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const submissions = pgTable("submissions", {
+  id: serial("id").primaryKey(),
+  questionId: integer("question_id").references(() => questions.id).notNull(),
+  email: text("email").notNull(),
+  selectedAnswer: text("selected_answer").notNull(),
+  profileId: integer("profile_id").references(() => profiles.id),
+  submittedAt: timestamp("submitted_at").defaultNow(),
+});
+
+export const insertQuestionSchema = createInsertSchema(questions).omit({
+  id: true,
+});
+
+export const insertSubmissionSchema = createInsertSchema(submissions).omit({
+  id: true,
+  submittedAt: true,
+});
+
+export type InsertQuestion = z.infer<typeof insertQuestionSchema>;
+export type Question = typeof questions.$inferSelect;
+export type InsertSubmission = z.infer<typeof insertSubmissionSchema>;
+export type Submission = typeof submissions.$inferSelect;
+
+// Profile schema moved up above submissions to resolve forward reference
 
 export const insertProfileSchema = createInsertSchema(profiles).omit({
   id: true,
