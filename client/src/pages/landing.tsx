@@ -46,14 +46,8 @@ export default function Landing() {
           />
         </div>
 
-        {/* Headings */}
+        {/* Subheadline */}
         <div className="space-y-6">
-          {/* H1 - Main heading */}
-          <h1 className="text-white text-4xl md:text-5xl font-sans leading-tight font-bold italic" style={{ fontFamily: 'Inter, sans-serif' }}>
-            See Their Eyes Before You Speak
-          </h1>
-          
-          {/* Subheadline */}
           <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-lg mx-auto" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Notice the color, feel the presence, then speak.
           </p>
