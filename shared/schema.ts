@@ -14,6 +14,7 @@ export const questions = pgTable("questions", {
 export const profiles = pgTable("profiles", {
   id: serial("id").primaryKey(),
   // Phase 1: Personal Details
+  eNumber: text("e_number").notNull().default(""),
   name: text("name").notNull(),
   bio: text("bio").notNull(),
   profileImage: text("profile_image").notNull(),

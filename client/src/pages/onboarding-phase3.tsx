@@ -125,6 +125,7 @@ export default function OnboardingPhase3() {
 
     // Create profile data
     const profileData: InsertProfile = {
+      eNumber: phase1Data.eNumber,
       name: phase1Data.name,
       bio: bio,
       profileImage: profileImage,

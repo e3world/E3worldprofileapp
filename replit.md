@@ -6,6 +6,11 @@ This is a full-stack web application built with React and Express that creates p
 
 ## Recent Changes
 
+- **E Number Field Added to Onboarding (July 12, 2025)**: Added E number field to Phase 1 onboarding
+  - Added "E Number" input field as the first field in the Identity section of Phase 1
+  - Updated database schema to include eNumber field in profiles table
+  - E number is now required for profile creation and stored in the database
+  - E number input automatically converts to uppercase for consistency
 - **E Number Authentication Removal (July 12, 2025)**: Removed NFT serial code authentication system
   - Removed "Enter your E number" input field from landing page
   - Simplified onboarding flow to allow direct profile creation without E number validation
