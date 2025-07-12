@@ -259,7 +259,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="relative overflow-hidden system-panel time-adaptive-bg light-trace-border" style={{ 
+        <Card className="relative overflow-hidden" style={{ 
           background: 'rgba(254, 254, 250, 0.2)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
@@ -275,16 +275,6 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             style={{
               background: 'linear-gradient(135deg, rgba(254, 254, 250, 0.15), rgba(254, 254, 250, 0.05))',
               zIndex: 1
-            }}
-          ></div>
-          <div 
-            className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
-            style={{
-              backgroundImage: `url(${timeData.backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              opacity: timeData.opacity
             }}
           ></div>
           <div className="relative z-10" style={{ zIndex: 2 }}>
@@ -321,7 +311,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="relative overflow-hidden system-panel time-adaptive-bg light-trace-border" style={{ 
+        <Card className="relative overflow-hidden" style={{ 
           background: 'rgba(254, 254, 250, 0.2)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
@@ -337,16 +327,6 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             style={{
               background: 'linear-gradient(135deg, rgba(254, 254, 250, 0.15), rgba(254, 254, 250, 0.05))',
               zIndex: 1
-            }}
-          ></div>
-          <div 
-            className={`absolute inset-0 ${timeData.blurLevel} time-adaptive-bg`}
-            style={{
-              backgroundImage: `url(${timeData.backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              opacity: timeData.opacity
             }}
           ></div>
           <div className="relative z-10 text-center" style={{ zIndex: 2 }}>
