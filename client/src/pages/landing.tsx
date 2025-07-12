@@ -30,11 +30,11 @@ export default function Landing() {
         className="absolute inset-0 w-full h-full object-cover"
       />
       
-      {/* Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Overlay for better text visibility - theme aware */}
+      <div className="absolute inset-0 bg-black/30 dark:bg-black/50" />
       
-      {/* Navigation Bar */}
-      <div className="relative z-20 w-full bg-[#000000] py-3 px-6">
+      {/* Navigation Bar - theme aware */}
+      <div className="relative z-20 w-full bg-black dark:bg-gradient-secondary py-3 px-6 gradient-transition">
         <div className="flex justify-center items-center">
           <img 
             src={e3Logo}
@@ -51,9 +51,9 @@ export default function Landing() {
           <Button 
             onClick={isButtonActive ? handleCreateProfile : undefined}
             disabled={!isButtonActive}
-            className={`font-semibold py-4 px-8 rounded-full text-lg shadow-2xl transition-all duration-500 transform backdrop-blur-sm border-2 w-full ${
+            className={`font-semibold py-4 px-8 rounded-full text-lg shadow-2xl transition-all duration-500 transform backdrop-blur-sm border-2 w-full gradient-transition ${
               isButtonActive 
-                ? "bg-white/90 hover:bg-white text-black hover:shadow-3xl hover:scale-105 border-white/20 cursor-pointer" 
+                ? "bg-white/90 hover:bg-white dark:bg-primary dark:hover:bg-primary/90 text-black dark:text-primary-foreground hover:shadow-3xl hover:scale-105 border-white/20 dark:border-primary/30 cursor-pointer" 
                 : "bg-gray-500/50 text-gray-300 border-gray-500/30 cursor-not-allowed opacity-50"
             }`}
           >
