@@ -18,7 +18,7 @@ export default function OnboardingPhase3() {
   const [failedAttempts, setFailedAttempts] = useState(0);
   const { toast } = useToast();
 
-  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
+  const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -28,7 +28,7 @@ export default function OnboardingPhase3() {
         setFailedAttempts(prev => prev + 1);
         toast({
           title: "File Too Large",
-          description: "Please select an image smaller than 5MB and try again.",
+          description: "Please select an image smaller than 2MB and try again.",
           variant: "destructive",
         });
         
@@ -37,11 +37,42 @@ export default function OnboardingPhase3() {
         return;
       }
 
+      // Compress image
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = () => {
+        // Calculate new dimensions (max 800x800)
+        const maxSize = 800;
+        let { width, height } = img;
+        
+        if (width > height) {
+          if (width > maxSize) {
+            height = (height * maxSize) / width;
+            width = maxSize;
+          }
+        } else {
+          if (height > maxSize) {
+            width = (width * maxSize) / height;
+            height = maxSize;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        
+        // Draw and compress
+        ctx?.drawImage(img, 0, 0, width, height);
+        const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+        
+        setImagePreview(compressedDataUrl);
+        setProfileImage(compressedDataUrl);
+      };
+      
       const reader = new FileReader();
       reader.onload = (e) => {
-        const result = e.target?.result as string;
-        setImagePreview(result);
-        setProfileImage(result);
+        img.src = e.target?.result as string;
       };
       reader.readAsDataURL(file);
     }
