@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import animatedGif from "@assets/gif (2) copy 3_1752222699265.gif";
+import e3Logo from "@assets/8_1752223811568.png";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
@@ -20,9 +21,21 @@ export default function Landing() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black flex flex-col justify-center items-center px-6 py-12">
+    <div className="min-h-screen bg-black">
+      {/* Navigation Bar */}
+      <div className="w-full bg-black py-3 px-6 border-b border-gray-800">
+        <div className="flex justify-center items-center">
+          <img 
+            src={e3Logo}
+            alt="E3 Logo"
+            className="w-16 h-16 object-contain"
+          />
+        </div>
+      </div>
+      
       {/* Main Content Container */}
-      <div className="text-center space-y-8 max-w-md mx-auto">
+      <div className="flex flex-col justify-center items-center px-6 py-12 min-h-[calc(100vh-80px)]">
+        <div className="text-center space-y-8 max-w-md mx-auto">
         
         {/* GIF Container - Square Format */}
         <div className="relative w-72 h-72 mx-auto mb-8">
@@ -36,7 +49,7 @@ export default function Landing() {
         {/* Headings */}
         <div className="space-y-6">
           {/* H1 - Main message */}
-          <h1 className="text-white text-4xl md:text-5xl font-sans leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h1 className="text-white text-3xl md:text-4xl font-sans leading-tight" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Observe every humans eye colour before saying HELLO
           </h1>
         </div>
@@ -54,6 +67,7 @@ export default function Landing() {
           >
             Get Started
           </Button>
+        </div>
         </div>
       </div>
     </div>
