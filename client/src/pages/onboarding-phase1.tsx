@@ -87,56 +87,56 @@ export default function OnboardingPhase1() {
   };
 
   return (
-    <div className="min-h-screen bg-background gradient-transition p-4">
+    <div className="min-h-screen bg-[#e7e6e3] p-4">
       <div className="max-w-lg mx-auto">
         {/* Header with divider */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-6">
-            <div className="flex-1 h-px bg-foreground"></div>
-            <User className="w-8 h-8 mx-4 text-foreground" />
-            <div className="flex-1 h-px bg-foreground"></div>
+            <div className="flex-1 h-px bg-[#292929]"></div>
+            <User className="w-8 h-8 mx-4 text-[#292929]" />
+            <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-4 tracking-tight">
+          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
             TELL US <span className="italic font-medium">ABOUT</span> YOU
           </h1>
-          <p className="text-foreground/70 text-sm font-medium mb-6">Step 1 of 3</p>
-          <div className="h-px bg-foreground/30 w-full"></div>
+          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 1 of 3</p>
+          <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
 
 
         {/* Container 1: Personal Info */}
-        <Card className="p-6 shadow-lg border border-border bg-primary gradient-transition mb-6">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
-              <div className="flex-1 h-px bg-primary-foreground/20"></div>
-              <h3 className="px-3 text-lg font-bold text-primary-foreground tracking-tight">
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
+              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">IDENTITY</span>
               </h3>
-              <div className="flex-1 h-px bg-primary-foreground/20"></div>
+              <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             
             {/* E Number */}
             <div>
-              <label className="block text-sm font-medium text-primary-foreground mb-1">E Number *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">E Number *</label>
               <Input
                 type="text"
                 placeholder="Enter your E number"
                 value={formData.eNumber}
                 onChange={(e) => handleInputChange("eNumber", e.target.value.toUpperCase())}
-                className="w-full border-primary-foreground/20 focus:border-primary-foreground bg-primary-foreground/30 placeholder:text-primary-foreground/60 text-primary gradient-transition"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
             
             {/* Full Name */}
             <div>
-              <label className="block text-sm font-medium text-primary-foreground mb-1">Full Name *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Full Name *</label>
               <Input
                 type="text"
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full border-primary-foreground/20 focus:border-primary-foreground bg-primary-foreground/30 placeholder:text-primary-foreground/60 text-primary gradient-transition"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
 

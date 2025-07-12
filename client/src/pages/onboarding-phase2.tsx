@@ -154,23 +154,23 @@ export default function OnboardingPhase2() {
   };
 
   return (
-    <div className="min-h-screen bg-background gradient-transition p-4">
+    <div className="min-h-screen bg-[#e7e6e3] p-4">
       <div className="max-w-lg mx-auto">
         {/* Header with divider */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-6">
-            <div className="flex-1 h-px bg-foreground"></div>
-            <Globe className="w-8 h-8 mx-4 text-foreground" />
-            <div className="flex-1 h-px bg-foreground"></div>
+            <div className="flex-1 h-px bg-[#292929]"></div>
+            <Globe className="w-8 h-8 mx-4 text-[#292929]" />
+            <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-4 tracking-tight">
+          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
             SHARE YOUR <span className="italic font-medium">LINKS</span>
           </h1>
-          <p className="text-foreground/70 text-sm font-medium mb-6">Step 2 of 3</p>
-          <div className="h-px bg-foreground/30 w-full"></div>
+          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 2 of 3</p>
+          <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
-        <Card className="p-6 shadow-lg border border-border bg-primary gradient-transition">
+        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929]">
           <div className="space-y-6">
             <div className="text-center mb-6">
               <h2 className="text-xl font-bold text-[#e7e6e3] tracking-tight">
