@@ -226,4 +226,7 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+import { DatabaseStorage } from "./db-storage";
+
+// Use database storage if DATABASE_URL is available, otherwise use in-memory storage
+export const storage = process.env.DATABASE_URL ? new DatabaseStorage() : new MemStorage();
