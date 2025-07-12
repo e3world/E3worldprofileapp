@@ -6,6 +6,12 @@ This is a full-stack web application built with React and Express that creates p
 
 ## Recent Changes
 
+- **E Number Field Removal (July 12, 2025)**: Removed E number field from onboarding and database
+  - Removed eNumber field from profiles table in database schema
+  - Removed E number input from Phase 1 onboarding form
+  - Updated profile creation logic to remove E number dependency
+  - Modified email notifications to use profile name instead of E number
+  - E number presence now handled through URL context rather than user input
 - **Supabase Integration (July 12, 2025)**: Added Supabase client for database, storage, and authentication
   - Created server-side Supabase client configuration (`server/supabase.ts`)
   - Created client-side Supabase client configuration (`client/src/lib/supabase.ts`)

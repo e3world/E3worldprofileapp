@@ -84,12 +84,12 @@ export async function sendWelcomeEmail(toEmail: string, userName?: string): Prom
   }
 }
 
-export function formatAnswerEmail(eNumber: string, userEmail: string, questionText: string, selectedAnswer: string): EmailData {
-  const subject = eNumber;
+export function formatAnswerEmail(profileName: string, userEmail: string, questionText: string, selectedAnswer: string): EmailData {
+  const subject = `New Answer from ${profileName}`;
   const text = `
 New answer submission:
 
-E Number: ${eNumber}
+Profile Name: ${profileName}
 User Email: ${userEmail}
 Question: ${questionText}
 Answer: ${selectedAnswer}
@@ -102,7 +102,7 @@ Submitted at: ${new Date().toISOString()}
       <h2 style="color: #292929; border-bottom: 2px solid #e7e6e3; padding-bottom: 10px;">New Answer Submission</h2>
       
       <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-        <p><strong>E Number:</strong> ${eNumber}</p>
+        <p><strong>Profile Name:</strong> ${profileName}</p>
         <p><strong>User Email:</strong> ${userEmail}</p>
         <p><strong>Question:</strong> ${questionText}</p>
         <p><strong>Answer:</strong> <span style="color: #292929; font-weight: bold;">${selectedAnswer}</span></p>
