@@ -26,3 +26,17 @@ export async function uploadProfileImage(file: File, fileName: string): Promise<
 
   return publicUrl
 }
+
+export async function updateUserProfile(userId: string, imageUrl: string): Promise<boolean> {
+  const { data, error } = await supabase
+    .from('users')
+    .update({ profile_image: imageUrl })
+    .eq('id', userId)
+
+  if (error) {
+    console.error('Profile update error:', error)
+    return false
+  }
+
+  return true
+}

@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { ArrowLeft, Shield, CheckCircle, Upload, User } from "lucide-react";
 import type { InsertProfile } from "@shared/schema";
-import { uploadProfileImage } from "@/lib/uploadImage";
+import { uploadProfileImage, updateUserProfile } from "@/lib/uploadImage";
 
 export default function OnboardingPhase3() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -205,7 +205,16 @@ export default function OnboardingPhase3() {
 
       console.log("Creating profile with data:", profileData);
       console.log("Bio word count:", bio.trim().split(/\s+/).filter(word => word.length > 0).length);
+      
+      // Create the profile in our database
       createProfileMutation.mutate(profileData);
+      
+      // Also update the user profile in Supabase (if you have a users table)
+      // const updateSuccess = await updateUserProfile(phase1Data.eNumber, imageUrl);
+      // if (!updateSuccess) {
+      //   console.warn("Failed to update user profile in Supabase");
+      // }
+      
     } catch (error) {
       console.error("Image upload failed:", error);
       toast({
