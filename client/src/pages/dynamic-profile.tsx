@@ -61,6 +61,37 @@ const getRelationshipIcon = (status: string) => {
   }
 };
 
+// Typewriter Animation Component
+const TypewriterText = ({ text, delay = 750 }: { text: string, delay?: number }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTyping(true);
+      let i = 0;
+      const typeInterval = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(text.substring(0, i + 1));
+          i++;
+        } else {
+          clearInterval(typeInterval);
+          setIsTyping(false);
+        }
+      }, 50);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [text, delay]);
+
+  return (
+    <span>
+      {displayedText}
+      {isTyping && <span className="animate-pulse">|</span>}
+    </span>
+  );
+};
+
 export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -170,9 +201,9 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             Hello my name is {profile.name}
           </h1>
           <div className="mt-6 mb-8 max-w-md mx-auto">
-            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-lg backdrop-blur-sm min-h-[120px] flex items-center justify-center">
               <p className="text-gray-700 text-lg text-center leading-relaxed">
-                {profile.bio}
+                <TypewriterText text={profile.bio} delay={750} />
               </p>
             </div>
           </div>
@@ -232,8 +263,8 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             <div className="text-center text-white/60">Loading question...</div>
           ) : currentQuestion ? (
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Question - Matching Personal Details Width */}
-              <div className="border-2 border-white/50 rounded-2xl p-6 bg-transparent backdrop-blur-sm">
+              {/* Question - Matching Personal Details Width and Height */}
+              <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm">
                 <p className="text-white text-lg text-center">
                   {currentQuestion.text}
                 </p>
