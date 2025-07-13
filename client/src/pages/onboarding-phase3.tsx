@@ -9,6 +9,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { ArrowLeft, Shield, CheckCircle, Upload, User } from "lucide-react";
 import type { InsertProfile } from "@shared/schema";
 import { uploadProfileImage, updateUserProfile } from "@/lib/uploadImage";
+import LoadingPage from "./loading";
 
 export default function OnboardingPhase3() {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -18,6 +19,7 @@ export default function OnboardingPhase3() {
   const [imagePreview, setImagePreview] = useState("");
   const [failedAttempts, setFailedAttempts] = useState(0);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
@@ -97,8 +99,11 @@ export default function OnboardingPhase3() {
       localStorage.removeItem("onboarding_phase1");
       localStorage.removeItem("onboarding_phase2");
       
-      // Navigate to the created profile using serial code
-      window.location.href = `/profile/${profile.serialCode}`;
+      // Show loading page for 2 seconds then navigate
+      setIsLoading(true);
+      setTimeout(() => {
+        window.location.href = `/profile/${profile.serialCode}`;
+      }, 2000);
     },
     onError: (error: any) => {
       console.error("Profile creation error:", error);
@@ -228,6 +233,11 @@ export default function OnboardingPhase3() {
   const goBack = () => {
     window.location.href = "/onboarding/phase2";
   };
+
+  // Show loading page after profile creation
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className="min-h-screen bg-[#e7e6e3] p-4">
