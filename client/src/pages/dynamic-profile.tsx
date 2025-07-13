@@ -188,7 +188,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${profileImagePath})`,
-          filter: 'blur(10px)',
+          filter: 'blur(9px)',
         }}
       />
       
