@@ -247,7 +247,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 className="flex flex-col items-center group"
               >
                 <div 
-                  className={`w-32 h-32 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-white/30`}
+                  className={`w-32 h-32 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-white/30 icon-shimmy-hover icon-shimmy-active`}
                 >
                   {getIconComponent(link.icon)}
                 </div>
