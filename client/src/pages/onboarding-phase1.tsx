@@ -112,7 +112,7 @@ export default function OnboardingPhase1() {
                 placeholder="Enter your E number"
                 value={formData.eNumber}
                 onChange={(e) => handleInputChange("eNumber", e.target.value.toUpperCase())}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60 text-[#e7e6e3]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
             
@@ -124,7 +124,7 @@ export default function OnboardingPhase1() {
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60 text-[#e7e6e3]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
 
@@ -137,8 +137,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "male")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "male" 
-                      ? "border-[#292929] bg-[#292929] text-[#1b1b1b]" 
-                      : "border-[#292929]/20 bg-[#292929]/30 hover:border-[#292929]/40 text-[#e7e6e3]"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
                   }`}
                 >
                   <User className="w-6 h-6" />
@@ -149,8 +149,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "female")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "female" 
-                      ? "border-[#292929] bg-[#292929] text-[#1b1b1b]" 
-                      : "border-[#292929]/20 bg-[#292929]/30 hover:border-[#292929]/40 text-[#e7e6e3]"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
                   }`}
                 >
                   <UserCheck className="w-6 h-6" />
@@ -161,8 +161,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "non-binary")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "non-binary" 
-                      ? "border-[#292929] bg-[#292929] text-[#1b1b1b]" 
-                      : "border-[#292929]/20 bg-[#292929]/30 hover:border-[#292929]/40 text-[#e7e6e3]"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
                   }`}
                 >
                   <Users className="w-6 h-6" />
@@ -231,7 +231,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Relationship Status *</label>
               <Select value={formData.relationshipStatus} onValueChange={(value) => handleInputChange("relationshipStatus", value)}>
-                <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60">
                   <SelectValue placeholder="Select relationship status" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -249,7 +249,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Job Title *</label>
               <Select value={formData.jobTitle} onValueChange={(value) => handleInputChange("jobTitle", value)}>
-                <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60">
                   <SelectValue placeholder="Select job category" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -270,7 +270,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Area *</label>
               <Select value={formData.area} onValueChange={(value) => handleInputChange("area", value)}>
-                <SelectTrigger className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60">
                   <SelectValue placeholder="Select your area" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -322,7 +322,7 @@ export default function OnboardingPhase1() {
                 placeholder="your.email@example.com"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60 text-[#e7e6e3]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
 
@@ -334,7 +334,7 @@ export default function OnboardingPhase1() {
                 placeholder="+44 7xxx xxx xxx"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full border-[#292929]/20 focus:border-[#292929] bg-[#292929] placeholder:text-[#e7e6e3]/60 text-[#e7e6e3]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
               />
             </div>
           </div>
