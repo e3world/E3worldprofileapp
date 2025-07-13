@@ -290,14 +290,16 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 ))}
               </div>
 
-              {/* Email Input - Matching Question Width */}
-              <Input
-                type="email"
-                placeholder="Your Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-2 border-white/50 rounded-2xl text-white placeholder:text-white/60 focus:border-white p-4"
-              />
+              {/* Email Input - Matching Question Width and Height */}
+              <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm">
+                <Input
+                  type="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-transparent border-none text-white placeholder:text-white/60 focus:ring-0 focus:outline-none p-0"
+                />
+              </div>
 
               {/* Submit Button */}
               <Button
