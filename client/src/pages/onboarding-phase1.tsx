@@ -137,8 +137,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "male")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "male" 
-                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
-                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#1b1b1b]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
                   <User className="w-6 h-6" />
@@ -149,8 +149,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "female")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "female" 
-                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
-                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#1b1b1b]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
                   <UserCheck className="w-6 h-6" />
@@ -161,8 +161,8 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "non-binary")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "non-binary" 
-                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#292929]" 
-                      : "border-[#e7e6e3]/20 bg-[#e7e6e3]/30 hover:border-[#e7e6e3]/40 text-[#e7e6e3]"
+                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#1b1b1b]" 
+                      : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
                   <Users className="w-6 h-6" />
@@ -181,7 +181,7 @@ export default function OnboardingPhase1() {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.eyeColour === "brown" 
                       ? "border-[#8B4513] bg-[#8B4513] text-white" 
-                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#8B4513]/40"
+                      : "border-[#292929]/20 bg-[#e7e6e3] hover:border-[#8B4513]/40 text-[#1b1b1b]"
                   }`}
                 >
                   <div className="w-6 h-6 bg-[#8B4513] rounded-full border-2 border-white shadow-inner"></div>
@@ -193,7 +193,7 @@ export default function OnboardingPhase1() {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.eyeColour === "blue" 
                       ? "border-[#0066CC] bg-[#0066CC] text-white" 
-                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#0066CC]/40"
+                      : "border-[#292929]/20 bg-[#e7e6e3] hover:border-[#0066CC]/40 text-[#1b1b1b]"
                   }`}
                 >
                   <div className="w-6 h-6 bg-[#0066CC] rounded-full border-2 border-white shadow-inner"></div>
@@ -205,7 +205,7 @@ export default function OnboardingPhase1() {
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.eyeColour === "green" 
                       ? "border-[#228B22] bg-[#228B22] text-white" 
-                      : "border-[#292929]/20 bg-[#e7e6e3]/30 hover:border-[#228B22]/40"
+                      : "border-[#292929]/20 bg-[#e7e6e3] hover:border-[#228B22]/40 text-[#1b1b1b]"
                   }`}
                 >
                   <div className="w-6 h-6 bg-[#228B22] rounded-full border-2 border-white shadow-inner"></div>
