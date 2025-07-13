@@ -268,7 +268,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               {/* Question - Black Background with Question Mark */}
               <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
                 <p className="text-white text-lg text-center">
-                  {currentQuestion.text}?
+                  <TypewriterText text={`${currentQuestion.text}?`} delay={500} />
                 </p>
               </div>
 
