@@ -104,12 +104,13 @@ export default function OnboardingPhase1() {
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             
-            {/* E Number */}
+            {/* E Serial */}
             <div>
-              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">E Number *</label>
+              <label className="block text-sm font-medium text-[#e7e6e3] mb-1">E Serial *</label>
+              <p className="text-xs text-[#e7e6e3]/70 mb-2">You can find this serial number on the product</p>
               <Input
                 type="text"
-                placeholder="Enter your E number"
+                placeholder="Enter your E serial"
                 value={formData.eNumber}
                 onChange={(e) => handleInputChange("eNumber", e.target.value.toUpperCase())}
                 className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
