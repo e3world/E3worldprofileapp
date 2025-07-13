@@ -231,7 +231,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Relationship Status *</label>
               <Select value={formData.relationshipStatus} onValueChange={(value) => handleInputChange("relationshipStatus", value)}>
-                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]">
                   <SelectValue placeholder="Select relationship status" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -249,7 +249,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Job Title *</label>
               <Select value={formData.jobTitle} onValueChange={(value) => handleInputChange("jobTitle", value)}>
-                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]">
                   <SelectValue placeholder="Select job category" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -270,7 +270,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Area *</label>
               <Select value={formData.area} onValueChange={(value) => handleInputChange("area", value)}>
-                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]">
                   <SelectValue placeholder="Select your area" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
