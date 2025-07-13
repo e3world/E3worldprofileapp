@@ -228,14 +228,21 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             <div className="text-center text-white/60">Loading question...</div>
           ) : currentQuestion ? (
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Answer Options */}
+              {/* Question - Matching Personal Details Width */}
+              <div className="border-2 border-white/50 rounded-2xl p-6 bg-transparent backdrop-blur-sm">
+                <p className="text-white text-lg text-center">
+                  {currentQuestion.text}
+                </p>
+              </div>
+
+              {/* Answer Options - Matching Icon Width */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {currentQuestion.options.map((option, index) => (
                   <button
                     key={index}
                     type="button"
                     onClick={() => setSelectedAnswer(option)}
-                    className={`p-6 rounded-2xl transition-all duration-200 ${
+                    className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 ${
                       selectedAnswer === option
                         ? "bg-purple-600 text-white"
                         : "bg-white/90 text-gray-700 hover:bg-white/100"
@@ -246,23 +253,14 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 ))}
               </div>
 
-              {/* Email Input */}
-              <div className="space-y-4">
-                <Input
-                  type="text"
-                  placeholder="Describe this user in one word"
-                  value={selectedAnswer}
-                  readOnly
-                  className="w-full bg-transparent border-2 border-white/50 rounded-2xl text-white placeholder:text-white/60 focus:border-white p-4"
-                />
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-transparent border-2 border-white/50 rounded-2xl text-white placeholder:text-white/60 focus:border-white p-4"
-                />
-              </div>
+              {/* Email Input - Matching Question Width */}
+              <Input
+                type="email"
+                placeholder="Your Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-transparent border-2 border-white/50 rounded-2xl text-white placeholder:text-white/60 focus:border-white p-4"
+              />
 
               {/* Submit Button */}
               <Button
