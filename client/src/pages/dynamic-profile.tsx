@@ -265,10 +265,10 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             <div className="text-center text-white/60">Loading question...</div>
           ) : currentQuestion ? (
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Question - Matching Personal Details Width and Height */}
-              <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm">
+              {/* Question - Black Background with Question Mark */}
+              <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm">
                 <p className="text-white text-lg text-center">
-                  {currentQuestion.text}
+                  {currentQuestion.text}?
                 </p>
               </div>
 
