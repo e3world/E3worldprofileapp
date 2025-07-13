@@ -4,8 +4,51 @@ import { storage } from "./storage";
 import { insertSubmissionSchema, insertProfileSchema } from "@shared/schema";
 import { z } from "zod";
 import { sendEmail, formatAnswerEmail, sendWelcomeEmail } from "./email";
+import { isValidSerialCode } from "@shared/serialCodes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Validate E serial code
+  app.post("/api/validate-eserial", async (req, res) => {
+    try {
+      const { eNumber } = req.body;
+      
+      if (!eNumber || typeof eNumber !== 'string') {
+        return res.status(400).json({ 
+          valid: false, 
+          message: "E serial is required" 
+        });
+      }
+
+      // Check if E serial is in valid list
+      if (!isValidSerialCode(eNumber)) {
+        return res.status(400).json({ 
+          valid: false, 
+          message: "Invalid E serial code" 
+        });
+      }
+
+      // Check if E serial is already used
+      const existingProfile = await storage.getProfileByENumber(eNumber);
+      if (existingProfile) {
+        return res.status(400).json({ 
+          valid: false, 
+          message: "This E serial has already been registered" 
+        });
+      }
+
+      res.json({ 
+        valid: true, 
+        message: "E serial is valid and available" 
+      });
+    } catch (error) {
+      console.error("Error validating E serial:", error);
+      res.status(500).json({ 
+        valid: false, 
+        message: "Internal server error" 
+      });
+    }
+  });
+
   // Get current question
   app.get("/api/questions/current", async (req, res) => {
     try {
@@ -83,6 +126,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const validatedData = insertProfileSchema.parse(req.body);
       console.log("Validated profile data successfully");
+      
+      // Additional server-side E serial validation
+      if (!isValidSerialCode(validatedData.eNumber)) {
+        return res.status(400).json({ 
+          message: "Invalid E serial code" 
+        });
+      }
+
+      // Check if E serial is already used
+      const existingProfile = await storage.getProfileByENumber(validatedData.eNumber);
+      if (existingProfile) {
+        return res.status(400).json({ 
+          message: "This E serial has already been registered" 
+        });
+      }
       
       const profile = await storage.createProfile(validatedData);
       console.log("Profile created successfully:", profile.id);

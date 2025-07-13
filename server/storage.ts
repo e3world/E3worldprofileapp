@@ -18,6 +18,7 @@ export interface IStorage {
   createProfile(profile: InsertProfile): Promise<Profile>;
   getProfile(id: number): Promise<Profile | undefined>;
   getProfileBySerialCode(serialCode: string): Promise<Profile | undefined>;
+  getProfileByENumber(eNumber: string): Promise<Profile | undefined>;
   getAllProfiles(): Promise<Profile[]>;
   updateProfile(id: number, profile: Partial<InsertProfile>): Promise<Profile | undefined>;
 }
@@ -200,6 +201,10 @@ export class MemStorage implements IStorage {
     }
     console.log(`No profile found for serial code: ${serialCode}`);
     return undefined;
+  }
+
+  async getProfileByENumber(eNumber: string): Promise<Profile | undefined> {
+    return Array.from(this.profiles.values()).find(profile => profile.eNumber === eNumber);
   }
 
   async getAllProfiles(): Promise<Profile[]> {

@@ -46,7 +46,7 @@ export default function OnboardingPhase1() {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (!formData.eNumber || !formData.name || !formData.gender || !formData.eyeColour || !formData.email || !formData.phone || !formData.relationshipStatus || !formData.jobTitle || !formData.area) {
       toast({
         title: "Missing Information",
@@ -67,11 +67,40 @@ export default function OnboardingPhase1() {
       return;
     }
 
-    // Store form data in localStorage for next phase
-    localStorage.setItem("onboarding_phase1", JSON.stringify(formData));
-    
-    // Navigate to phase 2
-    window.location.href = "/onboarding/phase2";
+    // Validate E serial before proceeding
+    try {
+      const response = await fetch('/api/validate-eserial', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ eNumber: formData.eNumber.trim().toUpperCase() }),
+      });
+
+      const validation = await response.json();
+      
+      if (!validation.valid) {
+        toast({
+          title: "Invalid E Serial",
+          description: validation.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Store form data in localStorage for next phase
+      localStorage.setItem("onboarding_phase1", JSON.stringify(formData));
+      
+      // Navigate to phase 2
+      window.location.href = "/onboarding/phase2";
+    } catch (error) {
+      console.error('E serial validation error:', error);
+      toast({
+        title: "Validation Error",
+        description: "Unable to validate E serial. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

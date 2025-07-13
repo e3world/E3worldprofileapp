@@ -76,6 +76,11 @@ export class DatabaseStorage implements IStorage {
     return result[0];
   }
 
+  async getProfileByENumber(eNumber: string): Promise<Profile | undefined> {
+    const result = await db.select().from(profiles).where(eq(profiles.eNumber, eNumber));
+    return result[0];
+  }
+
   async getAllProfiles(): Promise<Profile[]> {
     return await db.select().from(profiles);
   }
