@@ -197,8 +197,10 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
       <div className="relative z-10 w-full px-6 py-8">
         {/* Bio Section at Top */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-6 tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>
-            HELLO MY NAME IS {profile.name.toUpperCase()}
+          <h1 className="text-3xl text-white mb-6 tracking-wide" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <span className="font-bold">HELLO MY</span>{' '}
+            <span className="font-light italic">NAME</span>{' '}
+            <span className="font-bold">IS {profile.name.toUpperCase()}</span>
           </h1>
           <div className="mt-6 mb-8 max-w-md mx-auto">
             <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-lg backdrop-blur-sm min-h-[120px] flex items-center justify-center">
