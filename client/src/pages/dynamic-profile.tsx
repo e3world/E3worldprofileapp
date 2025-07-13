@@ -16,19 +16,36 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Music: <Music className="w-12 h-12 text-gray-700" />,
-    Instagram: <Instagram className="w-12 h-12 text-gray-700" />,
-    Globe: <Globe className="w-12 h-12 text-gray-700" />,
-    Youtube: <Youtube className="w-12 h-12 text-gray-700" />,
-    Twitter: <Twitter className="w-12 h-12 text-gray-700" />,
-    Linkedin: <Linkedin className="w-12 h-12 text-gray-700" />,
-    Github: <Github className="w-12 h-12 text-gray-700" />,
-    Snapchat: <SiSnapchat className="w-12 h-12 text-gray-700" />,
-    Pinterest: <SiPinterest className="w-12 h-12 text-gray-700" />,
-    TikTok: <SiTiktok className="w-12 h-12 text-gray-700" />,
-    Mail: <Mail className="w-12 h-12 text-gray-700" />,
+    Music: <Music className="w-8 h-8 text-white" />,
+    Instagram: <Instagram className="w-8 h-8 text-white" />,
+    Globe: <Globe className="w-8 h-8 text-gray-800" />,
+    Youtube: <Youtube className="w-8 h-8 text-white" />,
+    Twitter: <Twitter className="w-8 h-8 text-white" />,
+    Linkedin: <Linkedin className="w-8 h-8 text-white" />,
+    Github: <Github className="w-8 h-8 text-white" />,
+    Snapchat: <SiSnapchat className="w-8 h-8 text-gray-800" />,
+    Pinterest: <SiPinterest className="w-8 h-8 text-white" />,
+    TikTok: <SiTiktok className="w-8 h-8 text-white" />,
+    Mail: <Mail className="w-8 h-8 text-white" />,
   };
-  return icons[iconName as keyof typeof icons] || <Globe className="w-12 h-12 text-gray-700" />;
+  return icons[iconName as keyof typeof icons] || <Globe className="w-8 h-8 text-gray-800" />;
+};
+
+const getIconBackgroundColor = (iconName: string) => {
+  const backgrounds = {
+    Music: 'bg-green-500',
+    Instagram: 'bg-gradient-to-r from-purple-500 to-pink-500',
+    Globe: 'bg-[#fefefa]',
+    Youtube: 'bg-red-500',
+    Twitter: 'bg-blue-400',
+    Linkedin: 'bg-blue-600',
+    Github: 'bg-gray-800',
+    Snapchat: 'bg-yellow-400',
+    Pinterest: 'bg-red-600',
+    TikTok: 'bg-gradient-to-r from-gray-900 to-gray-700',
+    Mail: 'bg-gray-600',
+  };
+  return backgrounds[iconName as keyof typeof backgrounds] || 'bg-[#fefefa]';
 };
 
 const getRelationshipIcon = (status: string) => {
@@ -183,19 +200,21 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           </div>
         )}
         
-        {/* Social Icons - Stacked Vertically */}
+        {/* Social Icons - Squared with Descriptions */}
         {profile.links && profile.links.length > 0 && (
-          <div className="mb-8 max-w-md mx-auto space-y-4">
+          <div className="mb-8 max-w-md mx-auto grid grid-cols-2 gap-4">
             {profile.links.map((link, index) => (
               <button
                 key={index}
                 onClick={() => window.open(link.url, '_blank')}
-                className="w-full flex items-center justify-center p-4 bg-white/90 backdrop-blur-sm rounded-2xl hover:bg-white/100 transition-colors"
+                className="flex flex-col items-center group"
               >
-                <div className="mr-3">
+                <div 
+                  className={`w-16 h-16 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105`}
+                >
                   {getIconComponent(link.icon)}
                 </div>
-                <span className="text-gray-700 font-medium text-sm truncate">
+                <span className="text-white text-sm font-medium text-center truncate max-w-full">
                   {link.name}
                 </span>
               </button>
