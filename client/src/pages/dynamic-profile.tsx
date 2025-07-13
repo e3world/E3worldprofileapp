@@ -10,6 +10,7 @@ import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, Map
 import { SiSnapchat, SiPinterest, SiTiktok } from "react-icons/si";
 import type { Question, InsertSubmission, Profile } from "@shared/schema";
 import profileImagePath from "@assets/Painitng _1752445139207.jpg";
+import newProfileImage from "@assets/IMG_5298_1752445196109.jpeg";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -201,7 +202,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           {/* Circular Profile Image */}
           <div className="mb-4">
             <img 
-              src={profileImagePath}
+              src={profile.profileImage || newProfileImage}
               alt="Profile"
               className="w-32 h-32 rounded-full mx-auto border-4 border-white/50 object-cover shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
             />
