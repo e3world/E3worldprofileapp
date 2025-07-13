@@ -16,19 +16,19 @@ interface DynamicProfileProps {
 
 const getIconComponent = (iconName: string) => {
   const icons = {
-    Music: <Music className="w-8 h-8 text-white" />,
-    Instagram: <Instagram className="w-8 h-8 text-white" />,
-    Globe: <Globe className="w-8 h-8 text-gray-800" />,
-    Youtube: <Youtube className="w-8 h-8 text-white" />,
-    Twitter: <Twitter className="w-8 h-8 text-white" />,
-    Linkedin: <Linkedin className="w-8 h-8 text-white" />,
-    Github: <Github className="w-8 h-8 text-white" />,
-    Snapchat: <SiSnapchat className="w-8 h-8 text-gray-800" />,
-    Pinterest: <SiPinterest className="w-8 h-8 text-white" />,
-    TikTok: <SiTiktok className="w-8 h-8 text-white" />,
-    Mail: <Mail className="w-8 h-8 text-white" />,
+    Music: <Music className="w-16 h-16 text-white" />,
+    Instagram: <Instagram className="w-16 h-16 text-white" />,
+    Globe: <Globe className="w-16 h-16 text-gray-800" />,
+    Youtube: <Youtube className="w-16 h-16 text-white" />,
+    Twitter: <Twitter className="w-16 h-16 text-white" />,
+    Linkedin: <Linkedin className="w-16 h-16 text-white" />,
+    Github: <Github className="w-16 h-16 text-white" />,
+    Snapchat: <SiSnapchat className="w-16 h-16 text-gray-800" />,
+    Pinterest: <SiPinterest className="w-16 h-16 text-white" />,
+    TikTok: <SiTiktok className="w-16 h-16 text-white" />,
+    Mail: <Mail className="w-16 h-16 text-white" />,
   };
-  return icons[iconName as keyof typeof icons] || <Globe className="w-8 h-8 text-gray-800" />;
+  return icons[iconName as keyof typeof icons] || <Globe className="w-16 h-16 text-gray-800" />;
 };
 
 const getIconBackgroundColor = (iconName: string) => {
@@ -210,7 +210,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 className="flex flex-col items-center group"
               >
                 <div 
-                  className={`w-16 h-16 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105`}
+                  className={`w-32 h-32 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105`}
                 >
                   {getIconComponent(link.icon)}
                 </div>
