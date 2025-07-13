@@ -9,10 +9,6 @@ import { apiRequest } from "@/lib/queryClient";
 import { Music, Instagram, Globe, Youtube, Twitter, Linkedin, Github, Heart, MapPin, Briefcase, Mail } from "lucide-react";
 import { SiSnapchat, SiPinterest, SiTiktok } from "react-icons/si";
 import type { Question, InsertSubmission, Profile } from "@shared/schema";
-import greenGradientGif from "@assets/download (3)_1752232023115.gif";
-import brownGradientGif from "@assets/download (4)_1752232152967.gif";
-import backgroundImage from "@assets/Painitng _1752240240701.jpg";
-import e3Logo from "@assets/8_1752241069398.png";
 
 interface DynamicProfileProps {
   profileId: string;
@@ -51,62 +47,8 @@ const getRelationshipIcon = (status: string) => {
 export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [timeData, setTimeData] = useState<{
-    isDayTime: boolean;
-    blurLevel: string;
-    opacity: number;
-    backgroundImage: string;
-  }>({
-    isDayTime: true,
-    blurLevel: 'blur-xl',
-    opacity: 0.1,
-    backgroundImage: ''
-  });
   const { toast } = useToast();
   const queryClient = useQueryClient();
-
-  // Time zone adaptive system
-  useEffect(() => {
-    const updateTimeBasedStyles = () => {
-      const now = new Date();
-      const gmtTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
-      const hours = gmtTime.getHours();
-      
-      // Day time: 8:00 AM - 6:00 PM (08:00 - 18:00)
-      const isDayTime = hours >= 8 && hours < 18;
-      
-      let blurLevel: string;
-      let opacity: number;
-      
-      if (isDayTime) {
-        // Ultra thick blur (8am-6pm)
-        blurLevel = 'blur-ultra-thick';
-        opacity = 0.1; // 10% opacity
-      } else {
-        // Ultra thin blur (6pm-7:59am)
-        blurLevel = 'blur-ultra-thin';
-        opacity = 0.7; // 70% opacity
-      }
-      
-      // Background selection based on time
-      const backgroundImage = isDayTime 
-        ? 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80' // Blue sky
-        : 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80'; // Dark sky with clouds
-      
-      setTimeData({
-        isDayTime,
-        blurLevel,
-        opacity,
-        backgroundImage
-      });
-    };
-
-    updateTimeBasedStyles();
-    // Update every minute
-    const interval = setInterval(updateTimeBasedStyles, 60000);
-    
-    return () => clearInterval(interval);
-  }, []);
 
   // Fetch profile data by serial code
   const { data: profile, isLoading: isLoadingProfile } = useQuery<Profile>({
@@ -126,12 +68,12 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     },
     onSuccess: () => {
       toast({
-        title: "Success!",
-        description: "Thank you for your answer!",
+        title: "Answer submitted!",
+        description: "Thank you for your response.",
       });
+      queryClient.invalidateQueries({ queryKey: ["/api/submissions"] });
       setSelectedAnswer("");
       setEmail("");
-      queryClient.invalidateQueries({ queryKey: ["/api/questions/current"] });
     },
     onError: (error) => {
       toast({
@@ -173,10 +115,6 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
     });
   };
 
-  const handleExternalLinkClick = (url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
   if (isLoadingProfile) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 flex items-center justify-center">
@@ -194,250 +132,131 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
   }
 
   return (
-    <div 
-      className="min-h-screen p-4 relative"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
-    >
-      {/* Cobalt Overlay for Darkness and Contrast */}
-      <div className="absolute inset-0 bg-blue-900/25 backdrop-blur-[0.5px]"></div>
-      <div className="max-w-md mx-auto space-y-6 relative z-10">
+    <div className="min-h-screen relative">
+      {/* Profile Image as Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${profile.profileImage})`,
+          filter: 'blur(10px)',
+        }}
+      />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+      
+      {/* Content */}
+      <div className="relative z-10 w-full px-6 py-8">
+        {/* Bio Section at Top */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-white mb-4">
+            Hello my name is {profile.name}
+          </h1>
+          <p className="text-white/90 text-lg leading-relaxed">
+            {profile.bio}
+          </p>
+        </div>
         
-        {/* Profile Identity Section */}
-        <Card className="rounded-3xl text-center shadow-lg border-0 relative overflow-hidden h-96 max-w-sm mx-auto">
-          <div 
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${profile.profileImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div className="relative z-10 h-full flex flex-col justify-end p-8">
-            <h1 className="text-white text-3xl font-bold mb-3 tracking-tight">
-              {profile.name}
-            </h1>
-            
-            {/* Profile Details */}
-            {!profile.hidePersonalInfo && (
-              <div className="flex justify-center mt-4">
-                <div className="flex items-center gap-4 px-4 py-2 border-2 border-white/30 rounded-full bg-white/5 backdrop-blur-sm">
-                  {/* Relationship Status */}
-                  <div className="flex items-center gap-2">
-                    {getRelationshipIcon(profile.relationshipStatus)}
-                    <span className="text-white/70 text-sm capitalize">
-                      {profile.relationshipStatus.replace('-', ' ')}
-                    </span>
-                  </div>
-                  
-                  {/* Job Title */}
-                  <div className="flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-white/70" />
-                    <span className="text-white/70 text-sm capitalize">
-                      {profile.jobTitle?.replace('-', ' ')}
-                    </span>
-                  </div>
-                  
-                  {/* Area */}
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-white/70" />
-                    <span className="text-white/70 text-sm capitalize">
-                      {profile.area?.replace('-', ' ')}
-                    </span>
-                  </div>
-                </div>
+        {/* Personal Details - Rounded Rectangle */}
+        {!profile.hidePersonalInfo && (
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-6 max-w-md mx-auto">
+            <div className="space-y-3">
+              <div className="flex items-center text-gray-700">
+                {getRelationshipIcon(profile.relationshipStatus)}
+                <span className="ml-2 text-sm">
+                  {profile.relationshipStatus?.charAt(0).toUpperCase() + profile.relationshipStatus?.slice(1).replace('-', ' ')}
+                </span>
               </div>
-            )}
-          </div>
-        </Card>
-
-        {/* Connect With Me Section */}
-        <Card className="relative overflow-hidden" style={{ 
-          background: 'rgba(254, 254, 250, 0.2)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderRadius: '16px',
-          border: '1px solid rgba(255, 255, 255, 0.25)',
-          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 8px rgba(255, 255, 255, 0.05)',
-          padding: '2rem',
-          color: '#1B1B1B'
-        }}>
-          {/* Gradient Overlay */}
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(135deg, rgba(254, 254, 250, 0.15), rgba(254, 254, 250, 0.05))',
-              zIndex: 1
-            }}
-          ></div>
-          <div className="relative z-10" style={{ zIndex: 2 }}>
-            <div className="mb-8 text-center">
-              <p className="text-white text-lg leading-relaxed typewriter-animation finished max-w-sm mx-auto bio-container text-container" style={{ lineHeight: '1.8', fontFamily: 'Montserrat, sans-serif' }}>
-                {profile.bio}
-              </p>
-            </div>
-            
-            {/* Divider */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="flex-1 h-px bg-white/40"></div>
-            </div>
-            
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 justify-items-center">
-              {profile.links.map((link, index) => (
-                <div 
-                  key={index}
-                  onClick={() => handleExternalLinkClick(link.url)}
-                  className="cursor-pointer group"
-                >
-                  <div className="w-32 h-32 bg-white/20 backdrop-blur-sm border-2 border-gray-300/50 rounded-2xl flex items-center justify-center hover:bg-white/30 transition-all duration-200 hover:scale-105 transform mb-3">
-                    {getIconComponent(link.icon)}
-                  </div>
-                  <div className="bg-[#1b1b1b] rounded-lg px-3 py-2 max-w-32 mx-auto">
-                    <p className="text-white text-base font-medium text-center truncate">
-                      {link.name}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              <div className="flex items-center text-gray-700">
+                <Briefcase className="w-4 h-4 text-gray-700" />
+                <span className="ml-2 text-sm">
+                  {profile.jobTitle?.charAt(0).toUpperCase() + profile.jobTitle?.slice(1).replace('-', ' ')}
+                </span>
+              </div>
+              <div className="flex items-center text-gray-700">
+                <MapPin className="w-4 h-4 text-gray-700" />
+                <span className="ml-2 text-sm">
+                  {profile.area?.charAt(0).toUpperCase() + profile.area?.slice(1).replace('-', ' ')}
+                </span>
+              </div>
             </div>
           </div>
-        </Card>
+        )}
+        
+        {/* Social Icons - Stacked Vertically */}
+        {profile.links && profile.links.length > 0 && (
+          <div className="mb-8 max-w-md mx-auto space-y-4">
+            {profile.links.map((link, index) => (
+              <button
+                key={index}
+                onClick={() => window.open(link.url, '_blank')}
+                className="w-full flex items-center justify-center p-4 bg-white/90 backdrop-blur-sm rounded-2xl hover:bg-white/100 transition-colors"
+              >
+                <div className="mr-3">
+                  {getIconComponent(link.icon)}
+                </div>
+                <span className="text-gray-700 font-medium text-sm truncate">
+                  {link.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
 
-        {/* Question About Me Section */}
-        <Card className="relative overflow-hidden" style={{ 
-          background: 'rgba(254, 254, 250, 0.2)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderRadius: '16px',
-          border: '1px solid rgba(255, 255, 255, 0.25)',
-          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 8px rgba(255, 255, 255, 0.05)',
-          padding: '2rem',
-          color: '#1B1B1B'
-        }}>
-          {/* Gradient Overlay */}
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: 'linear-gradient(135deg, rgba(254, 254, 250, 0.15), rgba(254, 254, 250, 0.05))',
-              zIndex: 1
-            }}
-          ></div>
-          <div className="relative z-10 text-center" style={{ zIndex: 2 }}>
-            <div className="flex justify-center mb-6">
-              <img 
-                src={e3Logo} 
-                alt="E3 Logo" 
-                className="w-20 h-20 object-contain"
-              />
-            </div>
-            
-            {isLoadingQuestion ? (
-              <div className="text-gray-700 text-center">Loading question...</div>
-            ) : currentQuestion ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="bg-[#1b1b1b] rounded-lg px-4 py-3 mb-6 max-w-md mx-auto">
-                  <p className="text-white text-lg text-center">
-                    {currentQuestion.text}
-                  </p>
-                </div>
-                
-                {/* Button Options - 2x2 Grid for Symmetrical Layout */}
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Top Row */}
+        {/* Question Section - Maximized Spacing */}
+        <div className="max-w-md mx-auto">
+          {isLoadingQuestion ? (
+            <div className="text-center text-white/60">Loading question...</div>
+          ) : currentQuestion ? (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Answer Options */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {currentQuestion.options.map((option, index) => (
                   <button
+                    key={index}
                     type="button"
-                    onClick={() => setSelectedAnswer('leader')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'leader' 
-                        ? "border-[#FF6B35] bg-[#FF6B35] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#FF6B35]/40 text-gray-700"
+                    onClick={() => setSelectedAnswer(option)}
+                    className={`p-6 rounded-2xl transition-all duration-200 ${
+                      selectedAnswer === option
+                        ? "bg-purple-600 text-white"
+                        : "bg-white/90 text-gray-700 hover:bg-white/100"
                     }`}
                   >
-                    <div className="w-6 h-6 bg-[#FF6B35] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Leader</span>
+                    <span className="text-sm font-medium">{option}</span>
                   </button>
-                  
-                  <button
-                    type="button"
-                    onClick={() => setSelectedAnswer('supporter')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'supporter' 
-                        ? "border-[#4CAF50] bg-[#4CAF50] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#4CAF50]/40 text-gray-700"
-                    }`}
-                  >
-                    <div className="w-6 h-6 bg-[#4CAF50] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Supporter</span>
-                  </button>
-                  
-                  {/* Bottom Row */}
-                  <button
-                    type="button"
-                    onClick={() => setSelectedAnswer('entertainer')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'entertainer' 
-                        ? "border-[#9C27B0] bg-[#9C27B0] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#9C27B0]/40 text-gray-700"
-                    }`}
-                  >
-                    <div className="w-6 h-6 bg-[#9C27B0] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Entertainer</span>
-                  </button>
-                  
-                  <button
-                    type="button"
-                    onClick={() => setSelectedAnswer('organiser')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
-                      selectedAnswer === 'organiser' 
-                        ? "border-[#2196F3] bg-[#2196F3] text-white" 
-                        : "border-gray-300 bg-white/50 hover:border-[#2196F3]/40 text-gray-700"
-                    }`}
-                  >
-                    <div className="w-6 h-6 bg-[#2196F3] rounded-full border-2 border-white shadow-inner"></div>
-                    <span className="text-sm font-medium">Organiser</span>
-                  </button>
-                </div>
-                
-                {/* Email Input */}
+                ))}
+              </div>
+
+              {/* Email Input */}
+              <div className="space-y-4">
+                <Input
+                  type="text"
+                  placeholder="Describe this user in one word"
+                  value={selectedAnswer}
+                  readOnly
+                  className="w-full bg-transparent border-2 border-white/50 rounded-2xl text-white placeholder:text-white/60 focus:border-white p-4"
+                />
                 <Input
                   type="email"
-                  placeholder="Email"
+                  placeholder="Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/70 backdrop-blur-sm border-2 border-gray-300 rounded-full py-4 px-6 text-gray-700 placeholder-gray-500 focus:ring-2 focus:ring-gray-400 focus:border-gray-400 transition-all duration-200 h-auto"
+                  className="w-full bg-transparent border-2 border-white/50 rounded-2xl text-white placeholder:text-white/60 focus:border-white p-4"
                 />
-                
-                {/* Submit Button */}
-                <Button
-                  type="submit"
-                  disabled={submitAnswerMutation.isPending}
-                  className="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-4 px-6 rounded-full transition-all duration-200 hover:scale-105 transform focus:outline-none focus:ring-2 focus:ring-gray-400 h-auto"
-                >
-                  {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
-                </Button>
-              </form>
-            ) : (
-              <div className="text-gray-700 text-center">No question available</div>
-            )}
-          </div>
-        </Card>
+              </div>
 
-        {/* Footer */}
-        <div className="text-center">
-          <Button 
-            onClick={() => window.location.href = "/onboarding/phase1"}
-            variant="ghost" 
-            className="text-white hover:bg-white/10 rounded-full"
-          >
-            Create Your Own Profile
-          </Button>
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                disabled={!selectedAnswer || !email || submitAnswerMutation.isPending}
+                className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 rounded-2xl disabled:opacity-50"
+              >
+                {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
+              </Button>
+            </form>
+          ) : (
+            <div className="text-center text-white/60">No question available at this time.</div>
+          )}
         </div>
       </div>
     </div>
