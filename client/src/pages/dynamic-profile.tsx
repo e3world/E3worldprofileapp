@@ -157,25 +157,25 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           </p>
         </div>
         
-        {/* Personal Details - Rounded Rectangle */}
+        {/* Personal Details - Outline Style */}
         {!profile.hidePersonalInfo && (
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-6 max-w-md mx-auto">
-            <div className="space-y-3">
-              <div className="flex items-center text-gray-700">
+          <div className="border-2 border-white/50 rounded-2xl p-6 mb-6 max-w-md mx-auto bg-transparent backdrop-blur-sm">
+            <div className="flex items-center justify-between text-white text-sm">
+              <div className="flex items-center">
                 {getRelationshipIcon(profile.relationshipStatus)}
-                <span className="ml-2 text-sm">
+                <span className="ml-2">
                   {profile.relationshipStatus?.charAt(0).toUpperCase() + profile.relationshipStatus?.slice(1).replace('-', ' ')}
                 </span>
               </div>
-              <div className="flex items-center text-gray-700">
-                <Briefcase className="w-4 h-4 text-gray-700" />
-                <span className="ml-2 text-sm">
+              <div className="flex items-center">
+                <Briefcase className="w-4 h-4 text-white/70" />
+                <span className="ml-2">
                   {profile.jobTitle?.charAt(0).toUpperCase() + profile.jobTitle?.slice(1).replace('-', ' ')}
                 </span>
               </div>
-              <div className="flex items-center text-gray-700">
-                <MapPin className="w-4 h-4 text-gray-700" />
-                <span className="ml-2 text-sm">
+              <div className="flex items-center">
+                <MapPin className="w-4 h-4 text-white/70" />
+                <span className="ml-2">
                   {profile.area?.charAt(0).toUpperCase() + profile.area?.slice(1).replace('-', ' ')}
                 </span>
               </div>
