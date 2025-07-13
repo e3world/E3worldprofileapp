@@ -316,7 +316,7 @@ export default function OnboardingPhase3() {
                     setBio(e.target.value);
                   }
                 }}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 min-h-[100px] resize-none placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] min-h-[100px] resize-none placeholder:text-[#292929]/60 text-[#292929]"
               />
               <div className="text-xs text-[#e7e6e3]/60 mt-1">
                 {bio.trim().split(/\s+/).filter(word => word.length > 0).length}/15 words

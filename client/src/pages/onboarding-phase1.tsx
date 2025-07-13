@@ -112,7 +112,7 @@ export default function OnboardingPhase1() {
                 placeholder="Enter your E number"
                 value={formData.eNumber}
                 onChange={(e) => handleInputChange("eNumber", e.target.value.toUpperCase())}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
               />
             </div>
             
@@ -124,7 +124,7 @@ export default function OnboardingPhase1() {
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
               />
             </div>
 
@@ -322,7 +322,7 @@ export default function OnboardingPhase1() {
                 placeholder="your.email@example.com"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
               />
             </div>
 
@@ -334,7 +334,7 @@ export default function OnboardingPhase1() {
                 placeholder="+44 7xxx xxx xxx"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3]/30 placeholder:text-[#e7e6e3]/60 text-[#fefefa]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
               />
             </div>
           </div>
