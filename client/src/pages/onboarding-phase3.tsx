@@ -257,7 +257,7 @@ export default function OnboardingPhase3() {
         </div>
 
         {/* Profile Image Upload */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
+        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="text-center">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
@@ -304,7 +304,7 @@ export default function OnboardingPhase3() {
         </Card>
 
         {/* Bio Section */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
+        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
@@ -326,7 +326,7 @@ export default function OnboardingPhase3() {
                     setBio(e.target.value);
                   }
                 }}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] min-h-[100px] resize-none placeholder:text-[#292929]/60 text-[#292929]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] min-h-[100px] resize-none placeholder:text-[#292929]/60 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]"
               />
               <div className="text-xs text-[#e7e6e3]/60 mt-1">
                 {bio.trim().split(/\s+/).filter(word => word.length > 0).length}/15 words
@@ -335,7 +335,7 @@ export default function OnboardingPhase3() {
           </div>
         </Card>
 
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929]">
+        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929]">
           <div className="space-y-6">
             {/* Terms of Service */}
             <div className="bg-[#e7e6e3]/10 rounded-lg p-4 border border-[#e7e6e3]/10">

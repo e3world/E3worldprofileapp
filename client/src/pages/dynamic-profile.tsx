@@ -203,7 +203,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
             <span className="font-bold">IS {profile.name.toUpperCase()}</span>
           </h1>
           <div className="mt-6 mb-8 max-w-md mx-auto">
-            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-lg backdrop-blur-sm min-h-[120px] flex items-center justify-center">
+            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] backdrop-blur-sm min-h-[120px] flex items-center justify-center">
               <p className="text-gray-700 text-lg text-center leading-relaxed">
                 <TypewriterText text={profile.bio} delay={750} />
               </p>
@@ -213,7 +213,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         
         {/* Personal Details - Outline Style */}
         {!profile.hidePersonalInfo && (
-          <div className="border-2 border-white/50 rounded-2xl p-6 mb-6 max-w-md mx-auto bg-transparent backdrop-blur-sm">
+          <div className="border-2 border-white/50 rounded-2xl p-6 mb-6 max-w-md mx-auto bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
             <div className="flex items-center justify-between text-white text-sm">
               <div className="flex items-center">
                 {getRelationshipIcon(profile.relationshipStatus)}
@@ -247,7 +247,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 className="flex flex-col items-center group"
               >
                 <div 
-                  className={`w-32 h-32 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105`}
+                  className={`w-32 h-32 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105 shadow-[0_6px_16px_rgba(0,0,0,0.15)]`}
                 >
                   {getIconComponent(link.icon)}
                 </div>
@@ -266,7 +266,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
           ) : currentQuestion ? (
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Question - Black Background with Question Mark */}
-              <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm">
+              <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
                 <p className="text-white text-lg text-center">
                   {currentQuestion.text}?
                 </p>
@@ -279,7 +279,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                     key={index}
                     type="button"
                     onClick={() => setSelectedAnswer(option)}
-                    className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 ${
+                    className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                       selectedAnswer === option
                         ? "bg-purple-600 text-white"
                         : "bg-white/90 text-gray-700 hover:bg-white/100"
@@ -291,7 +291,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               </div>
 
               {/* Email Input - Matching Question Width and Height */}
-              <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm">
+              <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
                 <Input
                   type="email"
                   placeholder="Your Email"
@@ -305,7 +305,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
               <Button
                 type="submit"
                 disabled={!selectedAnswer || !email || submitAnswerMutation.isPending}
-                className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 rounded-2xl disabled:opacity-50"
+                className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 rounded-2xl disabled:opacity-50 shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
               >
                 {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
               </Button>

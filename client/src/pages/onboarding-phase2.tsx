@@ -158,7 +158,7 @@ export default function OnboardingPhase2() {
           <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929]">
+        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929]">
           <div className="space-y-6">
             <div className="text-center mb-6">
               <h2 className="text-xl font-bold text-[#e7e6e3] tracking-tight">
@@ -170,7 +170,7 @@ export default function OnboardingPhase2() {
             </div>
             
             {links.map((link, index) => (
-              <div key={index} className="space-y-3 p-4 bg-[#e7e6e3]/10 rounded-lg border border-[#e7e6e3]/10">
+              <div key={index} className="space-y-3 p-4 bg-[#e7e6e3]/10 rounded-lg border border-[#e7e6e3]/10 shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
@@ -197,7 +197,7 @@ export default function OnboardingPhase2() {
                     placeholder="Link name (e.g., My Playlist)"
                     value={link.name}
                     onChange={(e) => updateLink(index, "name", e.target.value)}
-                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50 text-[#292929]"
+                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]"
                   />
                   
                   <Input
@@ -205,11 +205,11 @@ export default function OnboardingPhase2() {
                     placeholder="https://example.com or email@example.com"
                     value={link.url}
                     onChange={(e) => updateLink(index, "url", e.target.value)}
-                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50 text-[#292929]"
+                    className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]"
                   />
                   
                   <Select value={link.icon} onValueChange={(value) => updateLink(index, "icon", value)}>
-                    <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50">
+                    <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-white text-sm placeholder:text-[#292929]/50 shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]">
                       <SelectValue placeholder="Choose icon" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-[#292929]/20">

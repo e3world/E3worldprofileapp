@@ -123,7 +123,7 @@ export default function OnboardingPhase1() {
 
 
         {/* Container 1: Personal Info */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
+        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
@@ -142,7 +142,7 @@ export default function OnboardingPhase1() {
                 placeholder="Enter your E serial"
                 value={formData.eNumber}
                 onChange={(e) => handleInputChange("eNumber", e.target.value.toUpperCase())}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]"
               />
             </div>
             
@@ -154,7 +154,7 @@ export default function OnboardingPhase1() {
                 placeholder="Enter your full name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]"
+                className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]"
               />
             </div>
 
@@ -165,7 +165,7 @@ export default function OnboardingPhase1() {
                 <button
                   type="button"
                   onClick={() => handleInputChange("gender", "male")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.gender === "male" 
                       ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
@@ -177,7 +177,7 @@ export default function OnboardingPhase1() {
                 <button
                   type="button"
                   onClick={() => handleInputChange("gender", "female")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.gender === "female" 
                       ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
@@ -189,7 +189,7 @@ export default function OnboardingPhase1() {
                 <button
                   type="button"
                   onClick={() => handleInputChange("gender", "non-binary")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.gender === "non-binary" 
                       ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
@@ -208,7 +208,7 @@ export default function OnboardingPhase1() {
                 <button
                   type="button"
                   onClick={() => handleInputChange("eyeColour", "brown")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.eyeColour === "brown" 
                       ? "border-[#8B4513] bg-[#8B4513] text-white" 
                       : "border-[#292929]/20 bg-[#e7e6e3] hover:border-[#8B4513]/40 text-[#1b1b1b]"
@@ -220,7 +220,7 @@ export default function OnboardingPhase1() {
                 <button
                   type="button"
                   onClick={() => handleInputChange("eyeColour", "blue")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.eyeColour === "blue" 
                       ? "border-[#0066CC] bg-[#0066CC] text-white" 
                       : "border-[#292929]/20 bg-[#e7e6e3] hover:border-[#0066CC]/40 text-[#1b1b1b]"
@@ -232,7 +232,7 @@ export default function OnboardingPhase1() {
                 <button
                   type="button"
                   onClick={() => handleInputChange("eyeColour", "green")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
+                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.eyeColour === "green" 
                       ? "border-[#228B22] bg-[#228B22] text-white" 
                       : "border-[#292929]/20 bg-[#e7e6e3] hover:border-[#228B22]/40 text-[#1b1b1b]"
@@ -247,7 +247,7 @@ export default function OnboardingPhase1() {
         </Card>
 
         {/* Container 2: Personal Details */}
-        <Card className="p-6 shadow-lg border border-[#292929]/10 bg-[#292929] mb-6">
+        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
@@ -261,7 +261,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Relationship Status *</label>
               <Select value={formData.relationshipStatus} onValueChange={(value) => handleInputChange("relationshipStatus", value)}>
-                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]">
                   <SelectValue placeholder="Select relationship status" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -279,7 +279,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Job Title *</label>
               <Select value={formData.jobTitle} onValueChange={(value) => handleInputChange("jobTitle", value)}>
-                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]">
                   <SelectValue placeholder="Select job category" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
@@ -304,7 +304,7 @@ export default function OnboardingPhase1() {
             <div>
               <label className="block text-sm font-medium text-[#e7e6e3] mb-1">Area *</label>
               <Select value={formData.area} onValueChange={(value) => handleInputChange("area", value)}>
-                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929]">
+                <SelectTrigger className="w-full border-[#e7e6e3]/20 focus:border-[#e7e6e3] bg-[#e7e6e3] placeholder:text-[#292929]/60 text-[#292929] shadow-[inset_0_2px_6px_rgba(0,0,0,0.1)]">
                   <SelectValue placeholder="Select your area" />
                 </SelectTrigger>
                 <SelectContent className="bg-white border-[#292929]/20">
