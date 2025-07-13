@@ -261,58 +261,60 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
 
         {/* Question Section - Maximized Spacing */}
         <div className="max-w-md mx-auto">
-          {isLoadingQuestion ? (
-            <div className="text-center text-white/60">Loading question...</div>
-          ) : currentQuestion ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Question - Black Background with Question Mark */}
-              <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
-                <p className="text-white text-lg text-center">
-                  <TypewriterText text={`${currentQuestion.text}?`} delay={500} />
-                </p>
-              </div>
+          <div className="border-2 border-white/50 rounded-2xl p-6 bg-black/20 backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+            {isLoadingQuestion ? (
+              <div className="text-center text-white/60">Loading question...</div>
+            ) : currentQuestion ? (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Question - Black Background with Question Mark */}
+                <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+                  <p className="text-white text-lg text-center">
+                    <TypewriterText text={`${currentQuestion.text}?`} delay={500} />
+                  </p>
+                </div>
 
-              {/* Answer Options - Matching Icon Width */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {currentQuestion.options.map((option, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => setSelectedAnswer(option)}
-                    className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
-                      selectedAnswer === option
-                        ? "bg-purple-600 text-white"
-                        : "bg-white/90 text-gray-700 hover:bg-white/100"
-                    }`}
-                  >
-                    <span className="text-sm font-medium">{option}</span>
-                  </button>
-                ))}
-              </div>
+                {/* Answer Options - Matching Icon Width */}
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {currentQuestion.options.map((option, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setSelectedAnswer(option)}
+                      className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
+                        selectedAnswer === option
+                          ? "bg-purple-600 text-white"
+                          : "bg-white/90 text-gray-700 hover:bg-white/100"
+                      }`}
+                    >
+                      <span className="text-sm font-medium">{option}</span>
+                    </button>
+                  ))}
+                </div>
 
-              {/* Email Input - Matching Question Width and Height */}
-              <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-transparent border-none text-white placeholder:text-white/60 focus:ring-0 focus:outline-none p-0"
-                />
-              </div>
+                {/* Email Input - Matching Question Width and Height */}
+                <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+                  <Input
+                    type="email"
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-transparent border-none text-white placeholder:text-white/60 focus:ring-0 focus:outline-none p-0"
+                  />
+                </div>
 
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                disabled={!selectedAnswer || !email || submitAnswerMutation.isPending}
-                className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 rounded-2xl disabled:opacity-50 shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
-              >
-                {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
-              </Button>
-            </form>
-          ) : (
-            <div className="text-center text-white/60">No question available at this time.</div>
-          )}
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={!selectedAnswer || !email || submitAnswerMutation.isPending}
+                  className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 rounded-2xl disabled:opacity-50 shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
+                >
+                  {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
+                </Button>
+              </form>
+            ) : (
+              <div className="text-center text-white/60">No question available at this time.</div>
+            )}
+          </div>
         </div>
       </div>
     </div>
