@@ -166,12 +166,16 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
       <div className="relative z-10 w-full px-6 py-8">
         {/* Bio Section at Top */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">
+          <h1 className="text-3xl font-bold text-white mb-6">
             Hello my name is {profile.name}
           </h1>
-          <p className="text-white/90 text-lg leading-relaxed">
-            {profile.bio}
-          </p>
+          <div className="mt-6 mb-8 max-w-md mx-auto">
+            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+              <p className="text-gray-700 text-lg text-center leading-relaxed">
+                {profile.bio}
+              </p>
+            </div>
+          </div>
         </div>
         
         {/* Personal Details - Outline Style */}
