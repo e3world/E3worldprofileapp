@@ -115,13 +115,13 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 relative">
+    <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 relative">
       {/* Cobalt Overlay for Darkness and Contrast */}
       <div className="absolute inset-0 bg-blue-900/25 backdrop-blur-[0.5px]"></div>
-      <div className="max-w-sm mx-auto space-y-6 relative z-10">
+      <div className="w-full relative z-10">
         
         {/* Chris Alli Identity Section */}
-        <Card className="rounded-3xl p-8 text-center shadow-lg border-0 relative overflow-hidden">
+        <Card className="rounded-none p-8 text-center shadow-lg border-0 relative overflow-hidden">
           <div 
             className="absolute inset-0"
             style={{
@@ -143,7 +143,7 @@ export default function Profile() {
         </Card>
 
         {/* Connect With Me Section */}
-        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-3xl p-8 shadow-lg border-0">
+        <Card className="bg-gradient-to-br from-green-600 to-teal-600 rounded-none p-8 shadow-lg border-0">
           <div>
           <h2 className="text-white text-2xl font-bold mb-3 tracking-tight">
             Connect with me
@@ -172,7 +172,7 @@ export default function Profile() {
         </Card>
 
         {/* Question About Me Section */}
-        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 shadow-lg border-0">
+        <Card className="bg-gradient-to-br from-orange-600 to-amber-600 rounded-none p-8 shadow-lg border-0">
           <div>
             <h2 className="text-white text-2xl font-bold mb-6 tracking-tight">
               Question About me
