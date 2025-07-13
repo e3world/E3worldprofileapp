@@ -183,12 +183,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
 
   return (
     <div className="min-h-screen relative">
-      {/* Profile Image as Background */}
+      {/* Profile Image as Background with Linear Blur */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center profile-linear-blur"
         style={{
           backgroundImage: `url(${profileImagePath})`,
-          filter: 'blur(9px)',
         }}
       />
       
