@@ -294,7 +294,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                       className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                         selectedAnswer === option
                           ? "bg-purple-600 text-white"
-                          : "bg-white/90 text-gray-700 hover:bg-white/100"
+                          : "bg-black text-white hover:bg-black/80"
                       }`}
                     >
                       <span className="text-sm font-medium">{option}</span>
