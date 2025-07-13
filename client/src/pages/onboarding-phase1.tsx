@@ -137,7 +137,7 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "male")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "male" 
-                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#1b1b1b]" 
+                      ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
@@ -149,7 +149,7 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "female")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "female" 
-                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#1b1b1b]" 
+                      ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
@@ -161,7 +161,7 @@ export default function OnboardingPhase1() {
                   onClick={() => handleInputChange("gender", "non-binary")}
                   className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 ${
                     formData.gender === "non-binary" 
-                      ? "border-[#e7e6e3] bg-[#e7e6e3] text-[#1b1b1b]" 
+                      ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
