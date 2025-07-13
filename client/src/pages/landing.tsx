@@ -53,18 +53,18 @@ export default function Landing() {
           </p>
         </div>
 
-        {/* Get Started Button */}
+        {/* Activate Button */}
         <div className="pt-8">
           <Button 
             onClick={isButtonActive ? handleCreateProfile : undefined}
             disabled={!isButtonActive}
-            className={`font-medium py-4 px-12 rounded-full text-lg transition-all duration-500 transform w-full max-w-sm ${
+            className={`font-medium py-4 px-12 rounded-full text-lg transition-all duration-500 transform w-72 ${
               isButtonActive 
                 ? "bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500 cursor-pointer hover:scale-105" 
                 : "bg-gray-800/50 text-gray-500 border border-gray-700/50 cursor-not-allowed opacity-50"
             }`}
           >
-            Get Started
+            Activate
           </Button>
         </div>
         </div>
