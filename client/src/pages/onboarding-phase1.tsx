@@ -292,7 +292,7 @@ export default function OnboardingPhase1() {
                   <SelectItem value="education">Education</SelectItem>
                   <SelectItem value="hospitality">Hospitality</SelectItem>
                   <SelectItem value="business-admin">Business and Admin</SelectItem>
-                  <SelectItem value="arts-entertainment">Arts & Entertainment</SelectItem>
+                  <SelectItem value="creative">Creative</SelectItem>
                   <SelectItem value="engineering">Engineering</SelectItem>
                   <SelectItem value="sport">Sport</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
