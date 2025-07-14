@@ -69,7 +69,7 @@ const TypewriterText = ({ text, delay = 750 }: { text: string, delay?: number })
   const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const startTyping = () => {
       setIsTyping(true);
       let i = 0;
       const typeInterval = setInterval(() => {
@@ -79,11 +79,17 @@ const TypewriterText = ({ text, delay = 750 }: { text: string, delay?: number })
         } else {
           clearInterval(typeInterval);
           setIsTyping(false);
+          // Restart after 2 seconds
+          setTimeout(() => {
+            setDisplayedText('');
+            startTyping();
+          }, 2000);
         }
       }, 50);
-    }, delay);
+    };
 
-    return () => clearTimeout(timer);
+    const initialTimer = setTimeout(startTyping, delay);
+    return () => clearTimeout(initialTimer);
   }, [text, delay]);
 
   return (
