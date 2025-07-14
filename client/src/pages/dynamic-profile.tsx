@@ -167,7 +167,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
 
   if (isLoadingProfile) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-black p-4 flex items-center justify-center">
         <div className="text-white text-xl">Loading profile...</div>
       </div>
     );
@@ -175,7 +175,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
 
   if (!profile) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-300 to-purple-300 p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-black p-4 flex items-center justify-center">
         <div className="text-white text-xl">Profile not found</div>
       </div>
     );
