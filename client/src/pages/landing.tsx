@@ -55,7 +55,7 @@ export default function Landing() {
             disabled={!isButtonActive}
             className={`font-medium py-4 px-12 rounded-full text-lg transition-all duration-500 transform w-72 ${
               isButtonActive 
-                ? "bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500 cursor-pointer hover:scale-105" 
+                ? "bg-[#FEFEFA] hover:bg-[#FEFEFA]/90 text-[#292929] border border-[#FEFEFA] hover:border-[#FEFEFA]/90 cursor-pointer hover:scale-105" 
                 : "bg-gray-800/50 text-gray-500 border border-gray-700/50 cursor-not-allowed opacity-50"
             }`}
           >
