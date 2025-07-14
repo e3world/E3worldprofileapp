@@ -104,26 +104,26 @@ export default function OnboardingPhase1() {
   };
 
   return (
-    <div className="min-h-screen bg-[#e7e6e3] p-4">
-      <div className="max-w-lg mx-auto">
+    <div className="min-h-screen bg-[#e7e6e3] p-4 md:p-8">
+      <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto">
         {/* Header with divider */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-6">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center justify-center mb-6 md:mb-8">
             <div className="flex-1 h-px bg-[#292929]"></div>
-            <User className="w-8 h-8 mx-4 text-[#292929]" />
+            <User className="w-8 h-8 md:w-12 md:h-12 mx-4 text-[#292929]" />
             <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#292929] mb-4 tracking-tight">
             TELL US <span className="italic font-medium">ABOUT</span> YOU
           </h1>
-          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 1 of 3</p>
+          <p className="text-[#292929]/70 text-sm md:text-base font-medium mb-6">Step 1 of 3</p>
           <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
 
 
         {/* Container 1: Personal Info */}
-        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6">
+        <Card className="p-6 md:p-8 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6 md:mb-8">
           <div className="space-y-4">
             <div className="flex items-center mb-4">
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
@@ -160,19 +160,19 @@ export default function OnboardingPhase1() {
 
             {/* Gender */}
             <div>
-              <label className="block text-sm font-medium text-[#e7e6e3] mb-2">Gender *</label>
-              <div className="grid grid-cols-3 gap-3">
+              <label className="block text-sm md:text-base font-medium text-[#e7e6e3] mb-2">Gender *</label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
                 <button
                   type="button"
                   onClick={() => handleInputChange("gender", "male")}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
+                  className={`p-4 md:p-6 rounded-lg border-2 transition-all duration-200 flex flex-col items-center justify-center gap-2 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                     formData.gender === "male" 
                       ? "border-[#000000] bg-[#000000] text-[#e7e6e3]" 
                       : "border-[#e7e6e3]/20 bg-[#e7e6e3] hover:border-[#e7e6e3]/40 text-[#1b1b1b]"
                   }`}
                 >
-                  <User className="w-6 h-6" />
-                  <span className="text-sm font-medium">Male</span>
+                  <User className="w-6 h-6 md:w-8 md:h-8" />
+                  <span className="text-sm md:text-base font-medium">Male</span>
                 </button>
                 <button
                   type="button"

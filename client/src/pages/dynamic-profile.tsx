@@ -201,26 +201,26 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
       <div className="absolute inset-0 bg-black/50" />
       
       {/* Content */}
-      <div className="relative z-10 w-full px-6 py-8">
+      <div className="relative z-10 w-full px-4 md:px-8 py-8 md:py-12">
         {/* Profile Image and Name at Top */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 md:mb-12">
           {/* Circular Profile Image */}
-          <div className="mb-4">
+          <div className="mb-4 md:mb-6">
             <img 
               src={profile.profileImage || newProfileImage}
               alt="Profile"
-              className="w-32 h-32 rounded-full mx-auto border-4 border-white/50 object-cover shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
+              className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full mx-auto border-4 border-white/50 object-cover shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
             />
           </div>
           
           {/* Name Only - Reduced Size */}
-          <h1 className="text-lg text-white mb-6 tracking-wide font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <h1 className="text-lg md:text-xl lg:text-2xl text-white mb-6 tracking-wide font-bold" style={{ fontFamily: 'Inter, sans-serif' }}>
             {profile.name.toUpperCase()}
           </h1>
           
-          <div className="mt-6 mb-8 max-w-md mx-auto">
-            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] backdrop-blur-sm min-h-[120px] flex items-center justify-center">
-              <p className="text-gray-700 text-lg text-center leading-relaxed">
+          <div className="mt-6 mb-8 max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+            <div className="bg-white/90 border-2 border-white/50 rounded-2xl p-6 md:p-8 shadow-[0_6px_16px_rgba(0,0,0,0.15)] backdrop-blur-sm min-h-[120px] md:min-h-[140px] flex items-center justify-center">
+              <p className="text-gray-700 text-lg md:text-xl text-center leading-relaxed">
                 <TypewriterText text={profile.bio} delay={750} />
               </p>
             </div>
@@ -229,8 +229,8 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         
         {/* Personal Details - Outline Style */}
         {!profile.hidePersonalInfo && (
-          <div className="border-2 border-white/50 rounded-2xl p-6 mb-6 max-w-md mx-auto bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
-            <div className="flex items-center justify-between text-white text-sm">
+          <div className="border-2 border-white/50 rounded-2xl p-6 md:p-8 mb-6 md:mb-8 max-w-md md:max-w-lg lg:max-w-xl mx-auto bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+            <div className="flex flex-col md:flex-row items-center justify-between text-white text-sm md:text-base gap-4 md:gap-2">
               <div className="flex items-center">
                 {getRelationshipIcon(profile.relationshipStatus)}
                 <span className="ml-2">
@@ -238,13 +238,13 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 </span>
               </div>
               <div className="flex items-center">
-                <Briefcase className="w-4 h-4 text-white/70" />
+                <Briefcase className="w-4 h-4 md:w-5 md:h-5 text-white/70" />
                 <span className="ml-2">
                   {profile.jobTitle?.charAt(0).toUpperCase() + profile.jobTitle?.slice(1).replace('-', ' ')}
                 </span>
               </div>
               <div className="flex items-center">
-                <MapPin className="w-4 h-4 text-white/70" />
+                <MapPin className="w-4 h-4 md:w-5 md:h-5 text-white/70" />
                 <span className="ml-2">
                   {profile.area?.charAt(0).toUpperCase() + profile.area?.slice(1).replace('-', ' ')}
                 </span>
@@ -255,7 +255,7 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         
         {/* Social Icons - Squared with Descriptions */}
         {profile.links && profile.links.length > 0 && (
-          <div className="mb-8 max-w-md mx-auto grid grid-cols-2 gap-4">
+          <div className="mb-8 md:mb-12 max-w-md md:max-w-lg lg:max-w-2xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {profile.links.map((link, index) => (
               <button
                 key={index}
@@ -263,11 +263,11 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 className="flex flex-col items-center group"
               >
                 <div 
-                  className={`w-32 h-32 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-white/30 icon-shimmy-hover icon-shimmy-active`}
+                  className={`w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 ${getIconBackgroundColor(link.icon)} rounded-lg flex items-center justify-center mb-2 transition-all duration-200 hover:scale-105 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-white/30 icon-shimmy-hover icon-shimmy-active`}
                 >
                   {getIconComponent(link.icon)}
                 </div>
-                <span className="text-white text-sm font-medium text-center truncate max-w-full">
+                <span className="text-white text-sm md:text-base font-medium text-center truncate max-w-full">
                   {link.name}
                 </span>
               </button>
@@ -276,45 +276,45 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
         )}
 
         {/* Question Section - Maximized Spacing */}
-        <div className="max-w-md mx-auto">
-          <div className="border-2 border-white/50 rounded-2xl p-6 bg-black/20 backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+        <div className="max-w-md md:max-w-lg lg:max-w-xl mx-auto">
+          <div className="border-2 border-white/50 rounded-2xl p-6 md:p-8 bg-black/20 backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
             {isLoadingQuestion ? (
-              <div className="text-center text-white/60">Loading question...</div>
+              <div className="text-center text-white/60 text-base md:text-lg">Loading question...</div>
             ) : currentQuestion ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
                 {/* Question - Black Background with Question Mark */}
-                <div className="border-2 border-white/50 rounded-2xl p-4 bg-black backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
-                  <p className="text-white text-lg text-center">
+                <div className="border-2 border-white/50 rounded-2xl p-4 md:p-6 bg-black backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+                  <p className="text-white text-lg md:text-xl text-center">
                     <TypewriterText text={`${currentQuestion.text}?`} delay={500} />
                   </p>
                 </div>
 
-                {/* Answer Options - Matching Icon Width */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                {/* Answer Options - Responsive Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
                   {currentQuestion.options.map((option, index) => (
                     <button
                       key={index}
                       type="button"
                       onClick={() => setSelectedAnswer(option)}
-                      className={`w-32 h-16 mx-auto rounded-2xl transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
+                      className={`w-full md:w-auto h-16 md:h-20 mx-auto rounded-2xl transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.15)] ${
                         selectedAnswer === option
                           ? "bg-purple-600 text-white"
                           : "bg-black text-white hover:bg-black/80"
                       }`}
                     >
-                      <span className="text-sm font-medium">{option}</span>
+                      <span className="text-sm md:text-base font-medium">{option}</span>
                     </button>
                   ))}
                 </div>
 
                 {/* Email Input - Matching Question Width and Height */}
-                <div className="border-2 border-white/50 rounded-2xl p-4 bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
+                <div className="border-2 border-white/50 rounded-2xl p-4 md:p-6 bg-transparent backdrop-blur-sm shadow-[0_6px_16px_rgba(0,0,0,0.15)]">
                   <Input
                     type="email"
                     placeholder="Your Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-transparent border-none text-white placeholder:text-white/60 focus:ring-0 focus:outline-none p-0"
+                    className="w-full bg-transparent border-none text-white placeholder:text-white/60 focus:ring-0 focus:outline-none p-0 text-base md:text-lg"
                   />
                 </div>
 
@@ -322,13 +322,13 @@ export default function DynamicProfile({ profileId }: DynamicProfileProps) {
                 <Button
                   type="submit"
                   disabled={!selectedAnswer || !email || submitAnswerMutation.isPending}
-                  className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 rounded-2xl disabled:opacity-50 shadow-[0_6px_16px_rgba(0,0,0,0.15)]"
+                  className="w-full bg-white/90 hover:bg-white/100 text-gray-700 font-medium py-4 md:py-6 rounded-2xl disabled:opacity-50 shadow-[0_6px_16px_rgba(0,0,0,0.15)] text-base md:text-lg"
                 >
                   {submitAnswerMutation.isPending ? "Submitting..." : "Submit"}
                 </Button>
               </form>
             ) : (
-              <div className="text-center text-white/60">No question available at this time.</div>
+              <div className="text-center text-white/60 text-base md:text-lg">No question available at this time.</div>
             )}
           </div>
         </div>

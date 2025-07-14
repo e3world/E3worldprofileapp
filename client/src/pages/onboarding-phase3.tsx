@@ -240,38 +240,38 @@ export default function OnboardingPhase3() {
   }
 
   return (
-    <div className="min-h-screen bg-[#e7e6e3] p-4">
-      <div className="max-w-lg mx-auto">
+    <div className="min-h-screen bg-[#e7e6e3] p-4 md:p-8">
+      <div className="max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto">
         {/* Header with divider */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-6">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center justify-center mb-6 md:mb-8">
             <div className="flex-1 h-px bg-[#292929]"></div>
-            <Shield className="w-8 h-8 mx-4 text-[#292929]" />
+            <Shield className="w-8 h-8 md:w-12 md:h-12 mx-4 text-[#292929]" />
             <div className="flex-1 h-px bg-[#292929]"></div>
           </div>
-          <h1 className="text-3xl font-bold text-[#292929] mb-4 tracking-tight">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#292929] mb-4 tracking-tight">
             FINAL <span className="italic font-medium">STEP</span>
           </h1>
-          <p className="text-[#292929]/70 text-sm font-medium mb-6">Step 3 of 3</p>
+          <p className="text-[#292929]/70 text-sm md:text-base font-medium mb-6">Step 3 of 3</p>
           <div className="h-px bg-[#292929]/30 w-full"></div>
         </div>
 
         {/* Profile Image Upload */}
-        <Card className="p-6 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6">
+        <Card className="p-6 md:p-8 shadow-[0_6px_16px_rgba(0,0,0,0.15)] border border-[#292929]/10 bg-[#292929] mb-6 md:mb-8">
           <div className="text-center">
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4 md:mb-6">
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
-              <h3 className="px-3 text-lg font-bold text-[#e7e6e3] tracking-tight">
+              <h3 className="px-3 text-lg md:text-xl lg:text-2xl font-bold text-[#e7e6e3] tracking-tight">
                 <span className="italic font-medium">PHOTO</span>
               </h3>
               <div className="flex-1 h-px bg-[#e7e6e3]/20"></div>
             </div>
             <div className="relative inline-block">
-              <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-[#e7e6e3] flex items-center justify-center overflow-hidden border-2 border-[#292929]/20">
+              <div className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 mx-auto mb-3 md:mb-4 rounded-full bg-[#e7e6e3] flex items-center justify-center overflow-hidden border-2 border-[#292929]/20">
                 {imagePreview ? (
                   <img src={imagePreview} alt="Profile preview" className="w-full h-full object-cover" />
                 ) : (
-                  <User className="w-8 h-8 text-[#292929]/40" />
+                  <User className="w-8 h-8 md:w-12 md:h-12 text-[#292929]/40" />
                 )}
               </div>
               <input
