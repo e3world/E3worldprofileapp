@@ -79,11 +79,11 @@ const TypewriterText = ({ text, delay = 750 }: { text: string, delay?: number })
         } else {
           clearInterval(typeInterval);
           setIsTyping(false);
-          // Restart after 2 seconds
+          // Restart after 5 seconds
           setTimeout(() => {
             setDisplayedText('');
             startTyping();
-          }, 2000);
+          }, 5000);
         }
       }, 50);
     };
